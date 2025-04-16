@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
+import { validateEnv } from '@/common';
 
-const nextConfig: NextConfig = {
-  /* config options here */
+// Valider les variables d'environnement au démarrage
+try {
+  validateEnv();
+} catch (error) {
+  console.error('\n', error);
+  process.exit(1);
+}
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  transpilePackages: ['framer-motion'],
 };
 
-export default nextConfig;
+module.exports = nextConfig;

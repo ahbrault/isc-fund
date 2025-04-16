@@ -1,103 +1,133 @@
-import Image from "next/image";
+import React from 'react';
+import { Metadata, NextPage } from 'next';
+import { Button, Header, Section } from '@/components';
+import Image from 'next/image';
 
-export default function Home() {
+// TODO add metadata
+export const metadata: Metadata = {
+  title: 'International Sicle Cell Fund',
+  description:
+    'ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children in Africa.',
+  // TODO add robots.txt
+  robots: 'index, follow',
+};
+
+const LandingPage: NextPage = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <>
+      <Header />
+      <main className="pt-20">
+        <Section className="min-h-[calc(100vh-5rem)] bg-primary pt-6 md:min-h-[70vh] md:py-16 md:pt-32">
+          <div className="grid gap-4 md:grid-cols-2 md:gap-8">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/images/kid-1.png"
+              width={300}
+              height={300}
+              className="mx-auto h-96 w-auto"
+              alt="Save a child"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            <div>
+              <h1 className="text-white">
+                Every day 1000 children die from a disease that no one talks about
+              </h1>
+              <p className="text-white">
+                ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children in
+                Africa.
+              </p>
+              <Button className="my-8 w-full font-bold">Donate Now</Button>
+            </div>
+          </div>
+        </Section>
+        <Section>
+          <Image
+            src="/logo-2.svg"
+            width={300}
+            height={100}
+            className="mx-auto h-24 w-auto"
+            alt="Save a child"
+          />
+          <h2 className="mt-10 text-center">Sickle cell is #1 genetic disease in the World</h2>
+          <p className="mb-2">
+            The International Sickle Cell Fund was founded to fight Sickle Cell Disease, the most
+            common genetic disorder in the world, affecting millions of gene carriers globally — 80%
+            of whom live in Africa.
+          </p>
+          <p className="mb-2">
+            Despite its scale and devastating consequences, this disease remains largely overlooked.
+          </p>
+          <Image
+            src="/images/schema.png"
+            width={300}
+            height={100}
+            className="mx-auto my-12 w-auto"
+            alt="Save a child"
+          />
+          <ul className="space-y-4">
+            <li className="inline-flex items-center gap-4">
+              <div className="size-10 rounded-full bg-primary/20"></div>
+              50% mortality under 5
+            </li>
+            <li className="inline-flex items-center gap-4">
+              <div className="size-10 rounded-full bg-primary/20"></div>
+              60$ = 1 child saved
+            </li>
+            <li className="inline-flex items-center gap-4">
+              <div className="size-10 rounded-full bg-primary/20"></div>
+              2025: Rollout in 5 African countries
+            </li>
+          </ul>
+        </Section>
+        <Section className="bg-primary">
+          <h2 className="mb-0 text-center text-white">
+            We created ISC Fund to give access to the sickle cell treatment in Africa
+          </h2>
+        </Section>
+        <Section>
+          <h2 className="text-center">
+            The first treatment for Sickle Cells disease produced in Africa at cost
+          </h2>
+          <Image
+            src="/images/drepaf.png"
+            width={300}
+            height={100}
+            className="mx-auto my-12 w-40"
+            alt="Save a child"
+          />
+          <p className="mb-2">
+            The International Sickle Cell Fund was founded to fight Sickle Cell Disease, the most
+            common genetic disorder in the world, affecting millions of gene carriers globally — 80%
+            of whom live in Africa.
+          </p>
+          <p className="mb-2">
+            Despite its scale and devastating consequences, this disease remains largely overlooked.
+          </p>
+        </Section>
+        <Section className="bg-primary">
+          <h2 className="text-center text-4xl text-white">
+            Every $60 can saves a child&apos;s life
+          </h2>
+          <Image
+            src="/images/kid-2.png"
+            width={300}
+            height={300}
+            className="mx-auto my-6 w-full"
+            alt="Save a child"
+          />
+          <p className="mb-2 text-center text-xl text-white">
+            Sickle Cell is invisible — but deadly.
+          </p>
+          <p className="mb-2 text-center text-xl text-white">
+            Together, <b className="text-white">we can change that</b>.
+          </p>
+          <p className="mb-2 text-center text-xl text-white">
+            Just <b className="text-white">$60 per year</b> gives a child the treatment they need to
+            live.
+          </p>
+          <Button className="my-4 w-full font-bold">Donate Now</Button>
+        </Section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
-}
+};
+
+export default LandingPage;
