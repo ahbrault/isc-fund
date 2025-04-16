@@ -13,7 +13,6 @@ export default function Header() {
   const isMobile = useIsMobile();
   const { scrollY } = useScroll();
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
-  const [hasScrolledBorder, setHasScrolledBorder] = useState(false);
   const [hasScrolledButton, setHasScrolledButton] = useState(false);
   const prevY = React.useRef(0);
   const [isMounted, setIsMounted] = useState(false);
@@ -37,8 +36,7 @@ export default function Header() {
 
     const newDirection = y > prevY.current ? 'down' : 'up';
     setScrollDirection(newDirection);
-    setHasScrolledBorder(y > window.innerHeight * 0.1);
-    setHasScrolledButton(y > window.innerHeight * 0.4);
+    setHasScrolledButton(y > window.innerHeight * 0.6);
     prevY.current = y;
   });
 
@@ -50,7 +48,7 @@ export default function Header() {
         type: 'spring',
         stiffness: 500,
         damping: 30,
-        delay: scrollDirection === 'down' || !hasScrolledBorder ? 0 : ANIMATION_DELAY,
+        delay: scrollDirection === 'down' || !hasScrolledButton ? 0 : ANIMATION_DELAY,
       },
     };
     if (hasScrolledButton)
@@ -64,7 +62,7 @@ export default function Header() {
       x: '-50%',
       ...transition,
     };
-  }, [isMounted, isMobile, scrollDirection, hasScrolledBorder, hasScrolledButton]);
+  }, [isMounted, isMobile, scrollDirection, hasScrolledButton]);
 
   if (!isMounted) return;
 
@@ -72,7 +70,7 @@ export default function Header() {
     <header
       className={classNames(
         'fixed left-0 right-0 top-0 z-50 bg-primary py-4',
-        hasScrolledBorder && 'border-b border-gray-200'
+        hasScrolledButton && 'shadow-md'
       )}
     >
       <motion.div
@@ -123,7 +121,7 @@ export default function Header() {
               <Button
                 href={APP_ROUTES.donation.path}
                 size={isMobile ? 'sm' : 'md'}
-                className="whitespace-nowrap"
+                className="whitespace-nowrap font-bold"
               >
                 Donate now
               </Button>
