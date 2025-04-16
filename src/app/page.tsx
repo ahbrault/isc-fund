@@ -2,7 +2,6 @@ import React from 'react';
 import { Metadata, NextPage } from 'next';
 import { Button, Header, Section } from '@/components';
 import Image from 'next/image';
-import { classNames } from '@/common';
 
 // TODO add metadata
 export const metadata: Metadata = {
@@ -210,7 +209,7 @@ const LandingPage: NextPage = () => {
               src="/images/kid-2.png"
               width={300}
               height={300}
-              className="mx-auto my-6 w-full max-w-96"
+              className="mx-auto my-6 h-auto max-h-[40vh] w-auto max-w-52"
               alt="Save a child"
             />
             <p className="mb-2 text-center text-xl text-white">
@@ -235,7 +234,7 @@ const LandingPage: NextPage = () => {
               <p className="mb-4 text-2xl text-white">
                 Together, <b className="text-white">we can change that</b>.
               </p>
-              <p className="mb-4 text-2xl text-white">
+              <p className="mb-2 text-2xl text-white">
                 Just <b className="text-white">$60 per year</b> gives a child the treatment they
                 need to live.
               </p>
