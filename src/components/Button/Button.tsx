@@ -36,25 +36,17 @@ const Button = forwardRef<RefType, ButtonProps>((props, ref) => {
       }
     };
 
-    // Déterminer l'origine en fonction de l'environnement
-    const baseOrigin =
-      typeof window !== 'undefined'
-        ? window.location.origin
-        : process.env.NEXT_PUBLIC_BASE_URL || '';
-    const hrefWithUTM = new URL(href, baseOrigin);
-
     return (
-      <Link href={hrefWithUTM.toString()} passHref legacyBehavior>
-        <a
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          className={combinedClasses}
-          onClick={handleLinkClick}
-          aria-disabled={disabled}
-          {...anchorProps}
-        >
-          <span className={styles.touchTarget} aria-hidden="true" />
-          {children}
-        </a>
+      <Link
+        href={href}
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        className={combinedClasses}
+        onClick={handleLinkClick}
+        aria-disabled={disabled}
+        {...anchorProps}
+      >
+        <span className={styles.touchTarget} aria-hidden="true" />
+        {children}
       </Link>
     );
   }

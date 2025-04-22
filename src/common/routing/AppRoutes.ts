@@ -10,13 +10,13 @@ const home: RouteType = {
   build: () => '/',
 };
 
-const donation: RouteType = {
-  id: 'donationRoute',
-  path: '/donation',
-  build: () => '/donation',
+const donate: RouteType = {
+  id: 'donateRoute',
+  path: '/donate',
+  build: () => '/donate',
 };
 
 export const APP_ROUTES = Object.freeze({
   home,
-  donation,
+  donate,
 });

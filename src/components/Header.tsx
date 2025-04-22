@@ -119,7 +119,7 @@ export default function Header() {
               className="flex-shrink-0"
             >
               <Button
-                href={APP_ROUTES.donation.path}
+                href={APP_ROUTES.donate.path}
                 size={isMobile ? 'sm' : 'md'}
                 className="whitespace-nowrap font-bold"
               >

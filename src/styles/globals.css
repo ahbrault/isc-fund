@@ -41,6 +41,10 @@ h3 {
   @apply font-semibold text-xl mb-2;
 }
 
+p {
+  @apply mb-2;
+}
+
 .container {
   @apply mx-auto max-w-[88rem] px-8 md:px-12 lg:px-24 w-full;
 }

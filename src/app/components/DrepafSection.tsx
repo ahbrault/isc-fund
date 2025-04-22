@@ -6,58 +6,53 @@ const DrepafSection = () => {
   return (
     <Section>
       <div className="md:hidden">
-        <h2>The first treatment for Sickle Cells disease produced in Africa at cost</h2>
+        <h2 className="flex flex-col">
+          The first treatment for Sickle Cell disease produced in Africa{' '}
+          <span className="block uppercase">at cost</span>
+        </h2>
         <Image
-          src="/images/drepaf.png"
+          src="/images/drepaf-box.png"
           width={300}
           height={100}
           className="mx-auto my-12 w-40"
           alt="Drepaf treatment"
         />
-        <p className="mb-2">
-          The ISC Fund provides financial support to DREP AFRIQUE and, most notably, to the DREPAF®
-          program.
+        <p>
+          The International Sickle Cell Fund financially supports the NGO Drep Afrique, particularly
+          the DREPAF® project.
         </p>
-        <p className="mb-2">
-          This program is the result of a groundbreaking humanitarian agreement with the
-          pharmaceutical company Teranga Pharma, to produce and distribute the only known treatment
-          proven to drastically reduce child mortality from Sickle Cell Disease: hydroxyurea.
+        <p>
+          The association has signed a unique humanitarian agreement with the laboratory Teranga
+          Pharma to produce and distribute the only treatment that significantly reduces infant
+          mortality among patients with Sickle Cell Disease using the hydroxyurea molecule.
         </p>
-        <p className="mb-2">
-          DREPAF® will be manufactured in Senegal and sold at cost price beginning in 2025 — $60
-          per year per child.
+        <p>
+          DREPAF® will be produced in Senegal and sold at cost price, starting in 2025, at $60 per
+          year.
         </p>
-        <p className="mb-2">
-          We are currently awaiting final approval from the Senegalese National Drug Agency to begin
-          distribution in local pharmacies. The program will then be expanded to four additional
-          African countries.
-        </p>
+        <p>The program will soon be available in four other African countries.</p>
       </div>
       <div className="hidden items-center md:grid md:grid-cols-2 md:gap-16">
         <div>
           <h2>The first treatment for Sickle Cells disease produced in Africa at cost</h2>
-          <p className="mb-2">
-            The ISC Fund provides financial support to DREP AFRIQUE and, most notably, to the
-            DREPAF® program.
+          <p>
+            The International Sickle Cell Fund financially supports the NGO Drep Afrique,
+            particularly the DREPAF® project.
           </p>
-          <p className="mb-2">
-            This program is the result of a groundbreaking humanitarian agreement with the
-            pharmaceutical company Teranga Pharma, to produce and distribute the only known
-            treatment proven to drastically reduce child mortality from Sickle Cell Disease:
-            hydroxyurea.
+          <p>
+            The association has signed a unique humanitarian agreement with the laboratory Teranga
+            Pharma to produce and distribute the only treatment that significantly reduces infant
+            mortality among patients with Sickle Cell Disease using the hydroxyurea molecule.
           </p>
-          <p className="mb-2">
-            DREPAF® will be manufactured in Senegal and sold at cost price beginning in 2025 — $60
-            per year per child.
+          <p>
+            DREPAF® will be produced in Senegal and sold at cost price, starting in 2025, at $60
+            per year.
           </p>
-          <p className="mb-2">
-            We are currently awaiting final approval from the Senegalese National Drug Agency to
-            begin distribution in local pharmacies. The program will then be expanded to four
-            additional African countries.
-          </p>
+          <p>The program will soon be available in four other African countries.</p>
         </div>
+
         <Image
-          src="/images/drepaf.png"
+          src="/images/drepaf-box.png"
           width={300}
           height={100}
           className="mx-auto my-12 max-h-[400px] w-auto"

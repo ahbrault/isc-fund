@@ -10,11 +10,14 @@
     "format": "prettier --write \"**/*.{ts,tsx}\""
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^3.6.0",
+    "@stripe/stripe-js": "^7.1.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.7.3",
     "next": "15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "stripe": "^18.0.0",
     "tailwind-merge": "^3.2.0",
     "zod": "^3.24.2"
   },

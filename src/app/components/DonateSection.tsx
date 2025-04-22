@@ -6,7 +6,7 @@ const DonateSection = () => {
   return (
     <Section backgroundColor="bg-primary">
       <div className="md:hidden">
-        <h2 className="text-4xl text-white">Every $60 can saves a child&apos;s life</h2>
+        <h2 className="text-4xl uppercase text-white">You can save a life for $60</h2>
         <Image
           src="/images/kid-2.png"
           width={300}
@@ -14,32 +14,40 @@ const DonateSection = () => {
           className="mx-auto my-6 h-auto max-h-[40vh] w-auto max-w-52"
           alt="Save a child"
         />
-        <p className="mb-2 text-center text-xl text-white">
-          Sickle Cell is invisible — but deadly.
+        <p className="text-lg text-white">
+          The generic hydroxyurea DREPAF is sold at cost price in Senegal, making it three times
+          cheaper than the few treatments available today.
         </p>
-        <p className="mb-2 text-center text-xl text-white">
-          Together, <b className="text-white">we can change that</b>.
+        <p className="text-lg text-white">
+          However, even at this reduced price, the poorest families with multiple children affected
+          by the disease cannot afford the treatment.
         </p>
-        <p className="mb-2 text-center text-xl text-white">
-          Just <b className="text-white">$60 per year</b> gives a child the treatment they need to
-          live.
+        <p className="text-lg text-white">
+          This is why the International Sickle Cell Fund is reaching out to your generosity to help
+          save thousands of children suffering from the severe form of the disease.
         </p>
+        <p className="text-lg text-white">Together, we can change their lives!</p>
         <Button className="my-4 w-full font-bold">Donate Now</Button>
       </div>
 
       <div className="hidden items-center md:grid md:grid-cols-2 md:gap-x-16">
-        <h2 className="col-span-2 text-center text-5xl text-white">
-          Every $60 can saves a child&apos;s life
+        <h2 className="col-span-2 text-center text-5xl uppercase text-white">
+          You can save a life for $60
         </h2>
         <div>
-          <p className="mb-4 text-2xl text-white">Sickle Cell is invisible — but deadly.</p>
-          <p className="mb-4 text-2xl text-white">
-            Together, <b className="text-white">we can change that</b>.
+          <p className="text-lg text-white">
+            The generic hydroxyurea DREPAF is sold at cost price in Senegal, making it three times
+            cheaper than the few treatments available today.
           </p>
-          <p className="mb-2 text-2xl text-white">
-            Just <b className="text-white">$60 per year</b> gives a child the treatment they need to
-            live.
+          <p className="text-lg text-white">
+            However, even at this reduced price, the poorest families with multiple children
+            affected by the disease cannot afford the treatment.
           </p>
+          <p className="text-lg text-white">
+            This is why the International Sickle Cell Fund is reaching out to your generosity to
+            help save thousands of children suffering from the severe form of the disease.
+          </p>
+          <p className="text-lg text-white">Together, we can change their lives!</p>
           <Button className="my-4 font-bold">Donate Now</Button>
         </div>
 

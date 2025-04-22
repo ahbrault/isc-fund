@@ -6,15 +6,10 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
   if (mobile) {
     return (
       <div className="my-8 rounded-lg bg-white/30 p-4 md:hidden">
-        <div className="mb-1 inline-flex items-center gap-2">
-          <div className="rounded-full font-bold uppercase">Next event</div>
-          <span>•</span>
-          <span className="font-medium">May 9–10, 2025</span>
-        </div>
+        <div className="mb-1 rounded-full font-bold uppercase">Next event</div>
         <div className="mx-auto inline-flex flex-wrap items-center gap-x-2">
-          <span className="text-lg font-medium text-white">
-            Las Vegas Charity Gala & Supercar Race
-          </span>
+          <span className="text-sm font-medium text-white">May 9–10, 2025</span>
+          <span className="text-sm text-white">Las Vegas Charity Gala & Supercar Race</span>
         </div>
       </div>
     );
@@ -47,20 +42,12 @@ const HeroSection = () => {
         />
         <div className="md:order-1">
           <EventBanner />
-          <h1 className="uppercase text-white md:normal-case">
+          <h1 className="text-white">
             Every day 1000 children die from a disease that no one talks about
           </h1>
           <p className="text-white md:text-lg">
-            Sickle cell disease is the world&apos;s most common genetic disorder, affecting over 100
-            million people, primarily in Africa, the disease kills half of children with the severe
-            form before age five, predominantly impacting black populations.
-          </p>
-          <p className="text-white md:text-lg">
-            Despite its high mortality, sickle cell remains largely underfunded and overlooked
-            globally, with limited access to life-saving treatments.
-          </p>
-          <p className="text-white md:text-lg">
-            This silent epidemic claims more lives than HIV/AIDS in Africa...
+            ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children in
+            Africa.
           </p>
           <Button className="my-4 w-full font-bold md:w-auto">Donate Now</Button>
         </div>

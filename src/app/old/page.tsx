@@ -3,7 +3,6 @@ import { Metadata, NextPage } from 'next';
 import { Header } from '@/components';
 import {
   BannerSection,
-  ContactSection,
   DonateSection,
   DrepafSection,
   HeroSection,
@@ -45,7 +44,6 @@ const LandingPage: NextPage = () => {
         <BannerSection />
         <DrepafSection />
         <DonateSection />
-        <ContactSection />
       </main>
     </>
   );
