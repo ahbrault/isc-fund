@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Section } from '@/components';
 import Image from 'next/image';
+import { APP_ROUTES } from '@/common';
 
 const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
   if (mobile) {
@@ -62,7 +63,9 @@ const HeroSection = () => {
           <p className="text-white md:text-lg">
             This silent epidemic claims more lives than HIV/AIDS in Africa...
           </p>
-          <Button className="my-4 w-full font-bold md:w-auto">Donate Now</Button>
+          <Button href={APP_ROUTES.donate.path} className="my-4 w-full font-bold md:w-auto">
+            Donate Now
+          </Button>
         </div>
         <EventBanner mobile />
       </div>

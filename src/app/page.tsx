@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata, NextPage } from 'next';
-import { Header } from '@/components';
+import { Footer, Header } from '@/components';
 import {
   BannerSection,
   ContactSection,
@@ -46,6 +46,7 @@ const LandingPage: NextPage = () => {
         <DrepafSection />
         <DonateSection />
         <ContactSection />
+        <Footer />
       </main>
     </>
   );

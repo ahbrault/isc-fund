@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Button, Section } from '@/components';
+import { APP_ROUTES } from '@/common';
 
 const DonateSection = () => {
   return (
@@ -22,7 +23,9 @@ const DonateSection = () => {
           Just <b className="text-white">$60 per year</b> gives a child the treatment they need to
           live.
         </p>
-        <Button className="my-4 w-full font-bold">Donate Now</Button>
+        <Button href={APP_ROUTES.donate.path} className="my-4 w-full font-bold">
+          Donate Now
+        </Button>
       </div>
 
       <div className="hidden items-center md:grid md:grid-cols-2 md:gap-x-16">
@@ -38,7 +41,9 @@ const DonateSection = () => {
             Just <b className="text-white">$60 per year</b> gives a child the treatment they need to
             live.
           </p>
-          <Button className="my-4 font-bold">Donate Now</Button>
+          <Button href={APP_ROUTES.donate.path} className="my-4 font-bold">
+            Donate Now
+          </Button>
         </div>
 
         <Image
