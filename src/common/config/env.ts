@@ -7,6 +7,7 @@ const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   NEXT_PUBLIC_BASE_URL: z.string().url("L'URL de base de l'application doit être une URL valide"),
   STRIPE_SECRET_KEY: z.string().min(1, "La clé d'API Stripe est requise"),
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1, "La clé d'API publique Stripe est requise"),
 });
 
 /**
