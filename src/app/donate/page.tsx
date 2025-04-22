@@ -183,18 +183,21 @@ import { NextPage } from 'next';
 import { Footer, Section } from '@/components';
 import Image from 'next/image';
 import Link from 'next/link';
+import { APP_ROUTES } from '@/common';
 
 const DonatePage: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-primary">
-      <Image
-        height={100}
-        width={240}
-        src="/logo.svg"
-        alt="ISC Fund"
-        className="w-60 py-8"
-        priority
-      />
+      <Link href={APP_ROUTES.home.path}>
+        <Image
+          height={100}
+          width={240}
+          src="/logo.svg"
+          alt="ISC Fund"
+          className="w-60 py-8"
+          priority
+        />
+      </Link>
       <Section className="grid items-center md:grid-cols-2">
         <Image
           src="/images/kid-2.png"
