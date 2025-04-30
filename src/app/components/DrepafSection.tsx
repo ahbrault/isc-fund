@@ -27,8 +27,8 @@ const DrepafSection = () => {
           mortality among patients with Sickle Cell Disease using the hydroxyurea molecule.
         </p>
         <p>
-          DREPAF® will be produced in Senegal and sold at cost price, starting in 2025, at $60 per
-          year.
+          DREPAF® is produced in Senegal by Teranga Pharma. The first treatment sold at cost,
+          available in 2025 in all pharmacies from $60 per year.
         </p>
         <p>The program will soon be available in four other African countries.</p>
       </div>
@@ -45,8 +45,8 @@ const DrepafSection = () => {
             mortality among patients with Sickle Cell Disease using the hydroxyurea molecule.
           </p>
           <p>
-            DREPAF® will be produced in Senegal and sold at cost price, starting in 2025, at $60
-            per year.
+            DREPAF® is produced in Senegal by Teranga Pharma. The first treatment sold at cost,
+            available in 2025 in all pharmacies from $60 per year.
           </p>
           <p>The program will soon be available in four other African countries.</p>
         </div>

@@ -16,8 +16,8 @@ const DonateSection = () => {
           alt="Save a child"
         />
         <p className="text-lg text-white">
-          The generic hydroxyurea DREPAF is sold at cost price in Senegal, making it three times
-          cheaper than the few treatments available today.
+          The generic hydroxyurea formulation DREPAF® is sold at cost price in Senegal, making it
+          three times cheaper than the few treatments available today.
         </p>
         <p className="text-lg text-white">
           However, even at this reduced price, the poorest families with multiple children affected
@@ -39,8 +39,8 @@ const DonateSection = () => {
         </h2>
         <div>
           <p className="text-lg text-white">
-            The generic hydroxyurea DREPAF is sold at cost price in Senegal, making it three times
-            cheaper than the few treatments available today.
+            The generic hydroxyurea formulation DREPAF® is sold at cost price in Senegal, making it
+            three times cheaper than the few treatments available today.
           </p>
           <p className="text-lg text-white">
             However, even at this reduced price, the poorest families with multiple children
