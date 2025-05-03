@@ -5,7 +5,7 @@ type Props = DonorInfo & {
   amount?: number;
 };
 
-export default function SummaryDonorInfo({ name, email, phone, action, amount }: Props) {
+export default function SummaryCard({ name, email, phone, action, amount }: Props) {
   return (
     <div className="rounded-md border border-gray-200 p-4 text-sm">
       <div className="flex items-center justify-between">

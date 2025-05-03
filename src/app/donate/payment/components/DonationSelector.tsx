@@ -9,7 +9,7 @@ import {
   retrieveDonorInfo,
   saveDonorInfo,
 } from '@/common';
-import SummaryDonorInfo from './SummaryDonorInfo';
+import SummaryCard from './SummaryCard';
 
 const donationOptions = [
   { id: 'price_1RGfQ3LgzWiYznm9S4Lt5nh9', label: '$60 – Help 1 child', amount: 60 },
@@ -206,7 +206,7 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
       </div>
 
       {donorInfo ? (
-        <SummaryDonorInfo
+        <SummaryCard
           {...donorInfo}
           action={() => {
             clearDonorInfo();

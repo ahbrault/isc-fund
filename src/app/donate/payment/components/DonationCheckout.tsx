@@ -42,6 +42,7 @@ export default function DonationCheckout({ name, email, phone }: DonorInfo) {
   return (
     <form onSubmit={handleConfirm} className="mx-auto mt-8 w-full max-w-xl space-y-6">
       <PaymentElement
+        onChange={() => setMessage('')}
         options={{
           layout: {
             type: 'tabs',

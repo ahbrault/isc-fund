@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { DonationCheckout, DonationSelector, SummaryDonorInfo } from './components';
+import { DonationCheckout, DonationSelector, SummaryCard } from './components';
 import { StripeElementsOptions } from '@stripe/stripe-js';
 import { clearDonorInfo, DonorSummary } from '@/common';
 
@@ -63,7 +63,7 @@ export default function Page() {
         <div className="mx-auto max-w-xl space-y-6">
           <Elements stripe={stripePromise} options={options}>
             {summary && (
-              <SummaryDonorInfo
+              <SummaryCard
                 {...summary}
                 action={() => {
                   clearDonorInfo();
