@@ -5,19 +5,19 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { DonationCheckout, DonationSelector, SummaryDonorInfo } from './components';
 import { StripeElementsOptions } from '@stripe/stripe-js';
-import { clearDonorInfo } from '@/common';
+import { clearDonorInfo, DonorSummary } from '@/common';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function Page() {
   const [clientSecret, setClientSecret] = useState('');
-  const [summary, setSummary] = useState<{
-    name: string;
-    email: string;
-    phone: string;
-    amount: number;
-    label: string;
-  }>({ name: '', email: '', phone: '', amount: 0, label: '' });
+  const [summary, setSummary] = useState<DonorSummary>({
+    name: '',
+    email: '',
+    phone: '',
+    amount: 0,
+    label: '',
+  });
 
   const [step, setStep] = useState<'form' | 'checkout'>('form');
 

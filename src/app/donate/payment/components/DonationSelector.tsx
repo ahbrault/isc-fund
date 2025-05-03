@@ -2,7 +2,13 @@
 
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { clearDonorInfo, retrieveDonorInfo, saveDonorInfo } from '@/common';
+import {
+  clearDonorInfo,
+  DonorInfo,
+  DonorSummary,
+  retrieveDonorInfo,
+  saveDonorInfo,
+} from '@/common';
 import SummaryDonorInfo from './SummaryDonorInfo';
 
 const donationOptions = [
@@ -12,24 +18,13 @@ const donationOptions = [
   { id: 'custom', label: 'Custom amount', amount: 0 },
 ];
 
-interface FormValues {
-  name: string;
-  phone: string;
-  email: string;
+type FormValues = DonorInfo & {
   customAmount?: number;
-}
+};
 
 interface Props {
   onClientSecret: Dispatch<SetStateAction<string>>;
-  onSummary: Dispatch<
-    SetStateAction<{
-      name: string;
-      email: string;
-      phone: string;
-      amount: number;
-      label: string;
-    }>
-  >;
+  onSummary: Dispatch<SetStateAction<DonorSummary>>;
   defaultValues?: Partial<FormValues>;
 }
 
@@ -123,7 +118,7 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
         label: selectedOption.label,
       });
 
-      saveDonorInfo(infos.name, infos.email, infos.phone);
+      saveDonorInfo(infos);
     } catch (err: any) {
       setMessage(err.message || 'Unexpected error occurred.');
     } finally {

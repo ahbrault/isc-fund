@@ -1,15 +1,10 @@
 'use client';
 
+import React, { useState } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
-import { useState } from 'react';
+import { DonorInfo } from '@/common';
 
-interface Props {
-  name: string;
-  email: string;
-  phone: string;
-}
-
-export default function DonationCheckout({ name, email, phone }: Props) {
+export default function DonationCheckout({ name, email, phone }: DonorInfo) {
   const stripe = useStripe();
   const elements = useElements();
   const [message, setMessage] = useState('');

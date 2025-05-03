@@ -1,10 +1,9 @@
-interface Props {
-  name: string;
-  email: string;
-  phone: string;
+import { DonorInfo } from '@/common';
+
+type Props = DonorInfo & {
   action: () => any;
   amount?: number;
-}
+};
 
 export default function SummaryDonorInfo({ name, email, phone, action, amount }: Props) {
   return (
