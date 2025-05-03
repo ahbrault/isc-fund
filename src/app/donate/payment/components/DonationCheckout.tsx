@@ -46,7 +46,21 @@ export default function DonationCheckout({ name, email, phone }: Props) {
 
   return (
     <form onSubmit={handleConfirm} className="mx-auto mt-8 w-full max-w-xl space-y-6">
-      <PaymentElement />
+      <PaymentElement
+        options={{
+          layout: {
+            type: 'tabs',
+            defaultCollapsed: false,
+          },
+          defaultValues: {
+            billingDetails: {
+              name,
+              phone,
+              email,
+            },
+          },
+        }}
+      />
       <button
         type="submit"
         disabled={!stripe || loading}
