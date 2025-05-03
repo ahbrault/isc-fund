@@ -1,72 +1,93 @@
-import React from 'react';
-import { NextPage } from 'next';
-import { Footer, Section } from '@/components';
+'use client';
+
+import React, { useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import { DonationCheckout, DonationSelector, SummaryCard } from './components';
+import { StripeElementsOptions } from '@stripe/stripe-js';
+import { APP_ROUTES, clearDonorInfo, DonorSummary } from '@/common';
 import Image from 'next/image';
 import Link from 'next/link';
-import { APP_ROUTES } from '@/common';
 
-const DonatePage: NextPage = () => {
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+
+export default function Page() {
+  const [clientSecret, setClientSecret] = useState('');
+  const [summary, setSummary] = useState<DonorSummary>({
+    name: '',
+    email: '',
+    phone: '',
+    amount: 0,
+    label: '',
+  });
+
+  const [step, setStep] = useState<'form' | 'checkout'>('form');
+
+  const options: StripeElementsOptions = {
+    clientSecret,
+    appearance: {
+      theme: 'stripe',
+      variables: {
+        colorPrimary: '#4f46e5',
+        fontFamily: '"Cabin", "Inter", system-ui, sans-serif',
+        borderRadius: '6px',
+      },
+      rules: {
+        '.Input--selected': {
+          borderColor: '#e5e7eb',
+          boxShadow:
+            '0px 1px 1px rgba(0, 0, 0, 0.03), 0px 3px 6px rgba(18, 42, 66, 0.02), 0 0 0 2px var(--colorPrimary)',
+        },
+      },
+    },
+  };
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-primary">
+    <div className="min-h-screen px-4 py-10">
       <Link href={APP_ROUTES.home.path}>
         <Image
           height={100}
           width={240}
-          src="/logo.svg"
+          src="/logo-icon-indigo.svg"
           alt="ISC Fund"
-          className="w-60 py-8"
+          className="mx-auto mb-4 h-12"
           priority
         />
       </Link>
-      <Section className="grid items-center md:grid-cols-2">
-        <Image
-          src="/images/kid-2.png"
-          width={300}
-          height={300}
-          className="mx-auto mb-6 h-auto max-h-[40vh] w-auto max-w-52 md:max-h-full md:max-w-full"
-          alt="Save a child"
+
+      {step === 'form' ? (
+        <DonationSelector
+          onClientSecret={secret => {
+            setClientSecret(secret);
+            setStep('checkout');
+          }}
+          onSummary={setSummary}
+          defaultValues={{
+            name: summary.name,
+            email: summary.email,
+            phone: summary.phone,
+            customAmount:
+              summary.amount && !['$60', '$600', '$6000'].includes(summary.label)
+                ? summary.amount
+                : undefined,
+          }}
         />
-        <div>
-          <h2 className="text-white">Your donation can save lives.</h2>
-          <h4 className="mb-8 text-white">
-            Join the fight against sickle cell disease – the most common genetic disorder in the
-            world.
-          </h4>
-          <h3 className="text-white">Make a donation today</h3>
-          <p className="text-white">Online donations will be available soon.</p>
-          <p className="text-white">
-            In the meantime, you can support us by making a direct bank transfer to our endowment
-            account:
-          </p>
-          <p className="font-semibold uppercase text-white">Bank details</p>
-          <p className="text-white">
-            Domiciliation: <span className="font-bold text-white">BRED PARIS AGENCE RAPEE</span>
-          </p>
-          <p className="mb-8 text-white">
-            International Bank Account Number (IBAN):{' '}
-            <span className="font-bold text-white">FR76 1010 7001 1800 1260 5180 392</span>.
-          </p>
-          <h3 className="text-white">Prefer to speak with us?</h3>
-          <p className="text-white">
-            For more donation options or to request a receipt, please feel free to contact:
-          </p>
-          <p className="font-bold text-white">Emmanuel Jayr </p>
-          <p className="text-white">Co-founder & Treasurer – ISC Fund</p>
-          <p className="mb-8 text-white">
-            <Link href="mailto:manujayr@gmail.com" className="underline">
-              manujayr@gmail.com
-            </Link>
-          </p>
-          <h3 className="text-white">Thank you for your support</h3>
-          <p className="text-white">
-            Every donation brings us closer to a world where sickle cell disease no longer takes
-            lives.
-          </p>
+      ) : clientSecret ? (
+        <div className="mx-auto max-w-xl space-y-6">
+          <Elements stripe={stripePromise} options={options}>
+            {summary && (
+              <SummaryCard
+                {...summary}
+                action={() => {
+                  clearDonorInfo();
+                  setStep('form');
+                }}
+              />
+            )}
+            <DonationCheckout name={summary.name} email={summary.email} phone={summary.phone} />
+          </Elements>
         </div>
-      </Section>
-      <Footer />
+      ) : null}
     </div>
   );
-};
-
-export default DonatePage;
+}

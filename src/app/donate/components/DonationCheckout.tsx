@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
-import { DonorInfo } from '@/common';
+import { APP_ROUTES, DonorInfo } from '@/common';
 
 export default function DonationCheckout({ name, email, phone }: DonorInfo) {
   const stripe = useStripe();
@@ -20,7 +20,7 @@ export default function DonationCheckout({ name, email, phone }: DonorInfo) {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/donate/return`,
+        return_url: `${window.location.origin}/${APP_ROUTES.thankYou.path}`,
         receipt_email: email,
         payment_method_data: {
           billing_details: {

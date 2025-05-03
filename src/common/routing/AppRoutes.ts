@@ -16,7 +16,14 @@ const donate: RouteType = {
   build: () => '/donate',
 };
 
+const thankYou: RouteType = {
+  id: 'thankYouRoute',
+  path: '/thank-you',
+  build: () => '/thank-you',
+};
+
 export const APP_ROUTES = Object.freeze({
   home,
   donate,
+  thankYou,
 });
