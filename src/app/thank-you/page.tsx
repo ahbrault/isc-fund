@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircleIcon, XCircleIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { APP_ROUTES } from '@/common';
@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 type PaymentStatus = 'loading' | 'succeeded' | 'processing' | 'requires_payment_method' | 'error';
 
-export default function ThankYouPage() {
+function ReturnClient() {
   const searchParams = useSearchParams();
   const clientSecret = searchParams.get('payment_intent_client_secret');
 
@@ -138,5 +138,13 @@ export default function ThankYouPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function ThankYouPage() {
+  return (
+    <Suspense fallback={<div className="mt-16 text-center">Loading confirmation...</div>}>
+      <ReturnClient />
+    </Suspense>
   );
 }
