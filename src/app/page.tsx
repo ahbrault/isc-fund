@@ -18,10 +18,10 @@ const LandingPage: NextPage = () => {
 
       <main className="pt-20">
         <HeroSection />
+        <AuctionCatalogSection />
         <WhatIsSickleSection />
         <BannerSection />
         <DrepafSection />
-        <AuctionCatalogSection />
         <DonateSection />
         <ContactSection />
         <Footer />

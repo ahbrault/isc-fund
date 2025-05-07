@@ -28,7 +28,7 @@ export default function AuctionCatalogSection() {
         />
         <p className="text-xl font-semibold text-black">hosted by Cathy Guetta</p>
       </div>
-      <h2 className="mb-8 text-center text-3xl font-bold">Auction & Raffle Catalog</h2>
+      <h2 className="mb-8 text-center text-3xl font-bold">Auction & Lottery Catalog</h2>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {lots.map(lot => (

@@ -14,7 +14,7 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
         </div>
         <div className="mx-auto inline-flex flex-wrap items-center gap-x-2">
           <span className="text-lg font-medium text-white">
-            Las Vegas Charity Gala & Supercar Race
+            Fast Lane Drive Auction for Sickle Cells Disease
           </span>
         </div>
         <Image
@@ -36,7 +36,7 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
       <div className="mx-auto mr-2 inline-flex flex-wrap items-center gap-x-1 font-medium">
         <span className="text-sm text-white">May 9–10, 2025</span>
         <span className="hidden text-sm text-white md:block">·</span>
-        <span className="text-sm text-white">Las Vegas Charity Gala & Supercar Race</span>
+        <span className="text-sm text-white">Fast Lane Drive Auction for Sickle Cells Disease</span>
       </div>
     </div>
   );
