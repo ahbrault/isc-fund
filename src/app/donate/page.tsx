@@ -3,15 +3,15 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { DonationCheckout, DonationSelector, SummaryCard } from './components';
-import { StripeElementsOptions } from '@stripe/stripe-js';
-import { APP_ROUTES, clearDonorInfo, DonorSummary } from '@/common';
+import { DonationCheckout, DonationSelector } from './components';
+import { APP_ROUTES, clearDonorInfo, DonorSummary, getStripeOptions } from '@/common';
 import Image from 'next/image';
 import Link from 'next/link';
+import { SummaryCard } from '@/components';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-export default function Page() {
+export default function DonatePage() {
   const [clientSecret, setClientSecret] = useState('');
   const [summary, setSummary] = useState<DonorSummary>({
     name: '',
@@ -22,25 +22,7 @@ export default function Page() {
   });
 
   const [step, setStep] = useState<'form' | 'checkout'>('form');
-
-  const options: StripeElementsOptions = {
-    clientSecret,
-    appearance: {
-      theme: 'stripe',
-      variables: {
-        colorPrimary: '#4f46e5',
-        fontFamily: '"Cabin", "Inter", system-ui, sans-serif',
-        borderRadius: '6px',
-      },
-      rules: {
-        '.Input--selected': {
-          borderColor: '#e5e7eb',
-          boxShadow:
-            '0px 1px 1px rgba(0, 0, 0, 0.03), 0px 3px 6px rgba(18, 42, 66, 0.02), 0 0 0 2px var(--colorPrimary)',
-        },
-      },
-    },
-  };
+  const options = getStripeOptions(clientSecret);
 
   return (
     <div className="min-h-screen px-4 py-10">

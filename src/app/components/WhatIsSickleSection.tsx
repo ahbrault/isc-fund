@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const WhatIsSickleSection = () => {
   return (
-    <Section>
+    <Section id="what-is">
       <Image
         src="/logo-icon-primary.svg"
         width={300}

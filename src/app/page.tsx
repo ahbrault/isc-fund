@@ -1,7 +1,8 @@
 import React from 'react';
-import { Metadata, NextPage } from 'next';
+import { NextPage } from 'next';
 import { Footer, Header } from '@/components';
 import {
+  AuctionCatalogSection,
   BannerSection,
   ContactSection,
   DonateSection,
@@ -20,6 +21,7 @@ const LandingPage: NextPage = () => {
         <WhatIsSickleSection />
         <BannerSection />
         <DrepafSection />
+        <AuctionCatalogSection />
         <DonateSection />
         <ContactSection />
         <Footer />

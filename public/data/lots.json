@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "title": "David Guetta Gold Record",
+    "shortDescription": "Signed gold record from David Guetta’s personal collection – a rare piece of music history.",
+    "description": "An exceptional piece from David Guetta’s\npersonal collection, this gold record\ncommemorates his most celebrated hits. Signed\nby the artist himself, it stands as a rare and\nirreplaceable piece of music history,\nas the industry has largely moved away from\nproducing gold records. Size 38,6’’ x 28,7’’.",
+    "image": "/images/lots/1.png",
+    "type": "auction",
+    "reserve": 25000
+  },
+  {
+    "id": 2,
+    "title": "Private Dinner with Cathy Guetta in Ibiza",
+    "shortDescription": "Dinner for 2 with Cathy Guetta at a top Ibiza restaurant – glimpse into global nightlife.",
+    "description": "The winning bidder and a guest will join Cathy Guetta - the visionary behind the iconic *F**** ME I'M FAMOUS! parties - for an intimate dinner for 2 people at one of Ibiza's most prestigious restaurants. This experience offers a rate glimpse into the world of global nightlife and entertainment.",
+    "image": "/images/lots/2.jpg",
+    "type": "auction",
+    "reserve": 15000
+  },
+  {
+    "id": 3,
+    "title": "Formula 1 Replica by GR Monaco",
+    "shortDescription": "Handcrafted Ferrari-inspired 2024 replica – precision-built automotive art.",
+    "description": "Inspired by the 2024 Ferrari!\u2028Handcrafted with precision and passion. \u2028Don’t miss out on owning a piece of automotive art! \u2028Size: 52” x 19”",
+    "image": "/images/lots/3.png",
+    "type": "auction",
+    "reserve": 3000
+  },
+  {
+    "id": 4,
+    "title": "Weekend in Las Vegas with Ferrari Rentals",
+    "shortDescription": "2 nights at Fontainebleau + Ferrari rental in Vegas – unforgettable weekend.",
+    "description": "Include 2 nights at the Fontainebleau Hotel and a Ferrai rentals in Las Vegas.",
+    "image": "/images/lots/4.png",
+    "type": "auction",
+    "reserve": 5000
+  },
+  {
+    "id": 5,
+    "title": "Nativa Interiors Gift Card",
+    "shortDescription": "Gift card to choose any furniture from the Nativa Interiors collection.",
+    "description": "Select the pieces of your choice in the whole Nativa Interiors collection including living, dining, bedroom, interior design…",
+    "image": "/images/lots/5.png",
+    "type": "auction",
+    "reserve": 1500
+  },
+  {
+    "id": 6,
+    "title": "Hennessy Louis XIII Tasting x10",
+    "shortDescription": "Exclusive Louis XIII tasting for 10 people – location and date arranged with brand.",
+    "description": "The LOUIS XIII «XIIIth Hour experience » is a fantastic tasting for 10 guests, location to be determined based on location availability and provided by a brand-team member.",
+    "image": "/images/lots/6.png",
+    "type": "auction",
+    "reserve": 4000
+  },
+  {
+    "id": 7,
+    "title": "Three Days Health Retreat in Mexico",
+    "shortDescription": "Luxury wellness stay near Ensenada: 2 nights in a villa, full board & spa package.",
+    "description": "Just two hours south of San Diego and thirty minutes from Ensenada, Montevalle offers an ideal wellness retreat surrounded by natural beauty and renowned wineries. Often compared to Sonoma in Northern California, this peaceful haven blends tranquility, nature, and world-class amenities. Includes a complimentary 3 days / 2 night stay for two guests in a Villa, with 3 meals per day at Restaurant Liebre, one wellness package, and full access to amenities.",
+    "image": "/images/lots/7.png",
+    "type": "lottery",
+    "ticketPrice": 100
+  },
+  {
+    "id": 8,
+    "title": "VIP Experience with David Guetta at LIV Beach Party",
+    "shortDescription": "DJ booth access + photo with David Guetta during his May 10th LIV Beach performance.",
+    "description": "Enjoy privileged access to David Guetta's DJ booth during his performance at the LIV Beach Party at the Fontainebleau on May 10th. The winning bidder and a guest will also have the opportunity for a personal photo with David Guetta amidst one of the most electric atmospheres in the world.",
+    "image": "/images/lots/8.png",
+    "type": "lottery",
+    "ticketPrice": 200
+  },
+  {
+    "id": 9,
+    "title": "Cavallino Grand Weekend Package",
+    "shortDescription": "2 nights at Casa Maria Luigia + Michelin-star meals + parade access at Cavallino Classic Modena.",
+    "description": "Enjoy Cavallino Classic Modena with our complete package during Spring 2026. Cavallino Classic Modena, a one-of-a-kind “Concorso d’Eleganza”, takes place at Casa Maria Luigia, the enchanted property of Massimo Bottura, in Enzo Ferrari’s hometown. \u2028This package includes for two people : two nights at Casa Maria Luigia, 2 dinners and one lunch with wine pairing with the three Michelin stars Chef Massimo Bottura, Access to the Saturday Parade and to the Sunday Tour above Maranello, \u2028A private lunch at Casa Canossa by the Michelin-starred Chef Andrea Incerti Vezzani.",
+    "image": "/images/lots/9.png",
+    "type": "auction",
+    "reserve": 24000
+  }
+]

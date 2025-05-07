@@ -4,7 +4,7 @@ import { Section } from '@/components';
 
 const DrepafSection = () => {
   return (
-    <Section>
+    <Section id="drepaf">
       <div className="md:hidden">
         <h2 className="flex flex-col">
           The first treatment for Sickle Cell disease produced in Africa{' '}

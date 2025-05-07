@@ -9,7 +9,10 @@ type ContactSectionProps = {
 
 const ContactSection: React.FC<ContactSectionProps> = () => {
   return (
-    <Section className="grid items-center justify-center gap-16 py-20 md:grid-cols-2 md:py-32">
+    <Section
+      className="grid items-center justify-center gap-16 py-20 md:grid-cols-2 md:py-32"
+      id="contact"
+    >
       <Image
         src="/images/drep-africa.png"
         width={400}

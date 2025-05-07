@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const BannerSection = () => {
   return (
-    <Section backgroundColor="bg-primary">
+    <Section backgroundColor="bg-primary" id="banner">
       <div className="grid gap-8 md:grid-cols-3 md:items-center md:gap-16">
         <div className="col-span-1 flex flex-wrap items-center gap-4 lg:flex-nowrap">
           <Image

@@ -5,7 +5,7 @@ import { APP_ROUTES } from '@/common';
 
 const DonateSection = () => {
   return (
-    <Section backgroundColor="bg-primary">
+    <Section backgroundColor="bg-primary" id="donate">
       <div className="md:hidden">
         <h2 className="text-4xl uppercase text-white">You can save a life for $60</h2>
         <Image

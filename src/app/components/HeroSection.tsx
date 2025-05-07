@@ -17,6 +17,13 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
             Las Vegas Charity Gala & Supercar Race
           </span>
         </div>
+        <Image
+          src="/images/event-auction.jpg"
+          height="500"
+          width="300"
+          className="mt-6 w-full"
+          alt="Fast Lane Drive"
+        />
       </div>
     );
   }
@@ -37,7 +44,11 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
 
 const HeroSection = () => {
   return (
-    <Section backgroundColor="bg-primary" className="pt-6 md:min-h-[70vh] md:py-16 md:pt-32">
+    <Section
+      backgroundColor="bg-primary"
+      className="pt-6 md:min-h-[70vh] md:py-16 md:pt-32"
+      id="hero"
+    >
       <div className="flex flex-col items-center gap-4 md:flex-row md:gap-16">
         <Image
           src="/images/kid-1.png"

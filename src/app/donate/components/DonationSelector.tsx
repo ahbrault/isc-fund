@@ -9,7 +9,7 @@ import {
   retrieveDonorInfo,
   saveDonorInfo,
 } from '@/common';
-import SummaryCard from './SummaryCard';
+import { SummaryCard } from '@/components';
 
 const donationOptions = [
   { id: 'price_1RGfQ3LgzWiYznm9S4Lt5nh9', label: '$60 – Help 1 child', amount: 60 },
