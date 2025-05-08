@@ -68,14 +68,21 @@ export default async function AuctionLotPage({ params }: { params: Promise<{ slu
         </span>
 
         {/* Starting Bid */}
-        {lot.type === 'auction' && lot.reserve && (
+        {lot.type === 'auction' && lot.reserve && lot.reservePrice && (
           <p className="text-sm font-semibold text-gray-900">
-            Starting Bid: ${lot.reserve.toLocaleString()}
+            Starting Bid: ${lot.reservePrice.toLocaleString()}
           </p>
         )}
       </div>
 
       <p className="mb-8 text-gray-700">{lot.description}</p>
+
+      {lot.video && (
+        <video controls preload="none" width="100%" height="auto">
+          <source src={lot.video} type="video/mp4" />
+          Votre navigateur ne supporte pas la balise vidéo.
+        </video>
+      )}
 
       <AuctionLotClient lot={lot} />
 

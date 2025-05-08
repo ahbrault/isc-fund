@@ -5,7 +5,8 @@ export type Lot = {
   shortDescription?: string;
   image: string;
   type: 'auction' | 'lottery';
-  reserve?: number | null;
+  reserve?: boolean;
+  reservePrice?: number;
   ticketPrice?: number;
   video?: string;
 };

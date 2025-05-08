@@ -62,9 +62,9 @@ export default function AuctionCatalogSection() {
                 <h3 className="text-lg font-semibold text-gray-900">{lot.title}</h3>
                 <p className="text-sm text-gray-600">{lot.shortDescription}</p>
 
-                {lot.type === 'auction' && lot.reserve && (
+                {lot.type === 'auction' && lot.reserve && lot.reservePrice && (
                   <p className="text-sm font-semibold text-gray-900">
-                    Starting Bid: ${lot.reserve.toLocaleString()}
+                    Starting Bid: ${lot.reservePrice.toLocaleString()}
                   </p>
                 )}
               </div>
