@@ -3,7 +3,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircleIcon, XCircleIcon, ClockIcon } from '@heroicons/react/24/outline';
-import { APP_ROUTES } from '@/common';
+import { APP_ROUTES, retrieveDonorInfo, retrieveDonorBidInfo, DonorInfo } from '@/common';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,11 +12,35 @@ type PaymentStatus = 'loading' | 'succeeded' | 'processing' | 'requires_payment_
 function ReturnClient() {
   const searchParams = useSearchParams();
   const clientSecret = searchParams.get('payment_intent_client_secret');
+  const mode = searchParams.get('mode'); // 'bid'
+  const lotId = searchParams.get('lot_id'); // used for auction summary
 
   const [status, setStatus] = useState<PaymentStatus>('loading');
   const [email, setEmail] = useState<string | null>(null);
+  const [donorInfo, setDonorInfo] = useState<DonorInfo | null>(null);
+  const [amount, setAmount] = useState<number | null>(null);
 
   useEffect(() => {
+    if (mode === 'bid' && lotId) {
+      const bid = retrieveDonorBidInfo(Number(lotId));
+      if (bid) {
+        setDonorInfo(bid);
+        setAmount(bid.amount);
+      }
+      setStatus('succeeded');
+      return;
+    }
+
+    const info = retrieveDonorInfo();
+    if (info) {
+      setDonorInfo(info);
+    }
+
+    const storedAmount = sessionStorage.getItem('donation_amount');
+    if (storedAmount) {
+      setAmount(Number(storedAmount));
+    }
+
     if (!clientSecret) {
       setStatus('error');
       return;
@@ -53,9 +77,42 @@ function ReturnClient() {
     };
 
     checkPaymentStatus();
-  }, [clientSecret]);
+  }, [clientSecret, mode, lotId]);
 
   const renderContent = () => {
+    const summaryBlock = donorInfo && (
+      <div className="mt-4 space-y-1 text-center text-sm text-gray-800">
+        <p>
+          <strong>Name:</strong> {donorInfo.name}
+        </p>
+        <p>
+          <strong>Email:</strong> {donorInfo.email}
+        </p>
+        <p>
+          <strong>Phone:</strong> {donorInfo.phone}
+        </p>
+        {amount && (
+          <p>
+            <strong>Amount:</strong> ${amount.toFixed(2)}
+          </p>
+        )}
+      </div>
+    );
+
+    if (mode === 'bid') {
+      return {
+        icon: <CheckCircleIcon className="mx-auto h-12 w-12 stroke-indigo-600" />,
+        title: 'Bid submitted!',
+        message: 'Thank you for your bid. We’ll contact you if you’re the winning participant.',
+        note: 'No payment has been processed yet.',
+        action: {
+          label: 'Back to lots',
+          href: APP_ROUTES.home.path + '#auction-section',
+        },
+        summary: summaryBlock,
+      };
+    }
+
     switch (status) {
       case 'loading':
         return {
@@ -75,6 +132,7 @@ function ReturnClient() {
             label: 'Make another donation',
             href: APP_ROUTES.donate.path,
           },
+          summary: summaryBlock,
         };
       case 'processing':
         return {
@@ -124,6 +182,7 @@ function ReturnClient() {
       {content.icon}
       <h1 className="mt-4 text-center text-2xl font-semibold text-gray-900">{content.title}</h1>
       <p className="mt-2 text-center text-sm text-gray-600">{content.message}</p>
+      {content.summary}
       {content.note && (
         <p className="mt-2 text-center text-sm font-medium text-indigo-600">{content.note}</p>
       )}

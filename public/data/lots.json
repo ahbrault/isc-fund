@@ -6,8 +6,7 @@
     "description": "An exceptional piece from David Guetta\u2019s personal collection, this gold record commemorates his most celebrated hits. Signed by the artist himself, it stands as a rare and irreplaceable piece of music history, as the industry has largely moved away from producing gold records.",
     "image": "/images/lots/1.png",
     "video": "/videos/david-guetta.mp4",
-    "type": "auction",
-    "reserve": 25000
+    "type": "auction"
   },
   {
     "id": 2,
@@ -15,8 +14,7 @@
     "shortDescription": "Dinner for 2 with Cathy Guetta at a top Ibiza restaurant \u2013 glimpse into global nightlife.",
     "description": "The winning bidder and a guest will join Cathy Guetta - the visionary behind the iconic F*** ME I'M FAMOUS! parties - for an intimate dinner for 2 people at one of Ibiza's most prestigious restaurants. This experience offers a rare glimpse into the world of global nightlife and entertainment. Travel and accommodations not included, valid between June 7, 2025 and September 20th, 2025. Subject to availability.",
     "image": "/images/lots/2.jpg",
-    "type": "auction",
-    "reserve": 15000
+    "type": "auction"
   },
   {
     "id": 3,
@@ -36,12 +34,11 @@
   },
   {
     "id": 5,
-    "title": "Nativa Interiors Gift Card",
+    "title": "Nativa Interiors Gift Card $1500",
     "shortDescription": "Gift card to choose any furniture from the Nativa Interiors collection.",
     "description": "Select the pieces of your choice in the whole Nativa Interiors collection including living, dining, bedroom, interior design\u2026",
     "image": "/images/lots/5.png",
-    "type": "auction",
-    "reserve": 1500
+    "type": "auction"
   },
   {
     "id": 6,
@@ -76,8 +73,7 @@
     "shortDescription": "2 nights at Casa Maria Luigia + Michelin-star meals + parade access at Cavallino Classic Modena.",
     "description": "Enjoy Cavallino Classic Modena with our complete package during Spring 2026. Cavallino Classic Modena, a one-of-a-kind \u201cConcorso d\u2019Eleganza\u201d, takes place at Casa Maria Luigia, the enchanted property of Massimo Bottura, in Enzo Ferrari\u2019s hometown. This package includes for two people: two nights at Casa Maria Luigia, 2 dinners and one lunch with wine pairing with the three Michelin stars Chef Massimo Bottura, access to the Saturday Parade and to the Sunday Tour above Maranello, and a private lunch at Casa Canossa by the Michelin-starred Chef Andrea Incerti Vezzani.",
     "image": "/images/lots/9.png",
-    "type": "auction",
-    "reserve": 24000
+    "type": "auction"
   },
   {
     "id": 10,
@@ -85,7 +81,6 @@
     "shortDescription": "High Performance ECU tune for your car, Powered by Formula Dynamics and DME Tuning.",
     "description": "High Performance ECU tune for your car of choice, Powered by Formula Dynamics and DME Tuning.",
     "image": "/images/lots/10.png",
-    "type": "auction",
-    "reserve": 3000
+    "type": "auction"
   }
 ]

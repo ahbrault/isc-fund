@@ -3,11 +3,14 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import {
+  APP_ROUTES,
   DonorInfo,
   DonorSummary,
-  retrieveDonorInfo,
+  saveDonorBidInfo,
+  retrieveDonorBidInfo,
+  clearDonorBidInfo,
   saveDonorInfo,
-  clearDonorInfo,
+  retrieveDonorInfo,
 } from '@/common';
 import SummaryCard from './SummaryCard';
 
@@ -15,10 +18,10 @@ type Props = {
   onClientSecret: Dispatch<SetStateAction<string>>;
   onSummary: Dispatch<SetStateAction<DonorSummary>>;
   mode: 'donation' | 'lottery' | 'auction';
-  defaultValues?: Partial<DonorInfo>;
   fixedAmount?: number;
   label?: string;
   metadata?: Record<string, any>;
+  defaultValues?: Partial<DonorInfo>;
 };
 
 type FormValues = DonorInfo & {
@@ -38,17 +41,35 @@ export default function GenericCheckoutForm({
   const [message, setMessage] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
   const [donorInfo, setDonorInfo] = useState<Omit<FormValues, 'customAmount'> | null>(null);
+  const [existingBid, setExistingBid] = useState<DonorSummary | null>(null);
 
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<FormValues>({
-    defaultValues,
-  });
+  } = useForm<FormValues>({ defaultValues });
 
   const watchCustomAmount = watch('customAmount');
+
+  useEffect(() => {
+    if (mode === 'auction' && metadata?.lot_id) {
+      const bid = retrieveDonorBidInfo(metadata.lot_id);
+      if (bid) {
+        setExistingBid(bid);
+      }
+    } else {
+      setDonorInfo(retrieveDonorInfo());
+    }
+    setIsLoaded(true);
+  }, [mode, metadata?.lot_id]);
+
+  const handleChangeBid = () => {
+    if (mode === 'auction' && metadata?.lot_id) {
+      clearDonorBidInfo(metadata.lot_id);
+      setExistingBid(null);
+    }
+  };
 
   const onSubmit = async (data: FormValues) => {
     const amount =
@@ -70,8 +91,14 @@ export default function GenericCheckoutForm({
     };
 
     try {
+      const summary: DonorSummary = {
+        ...infos,
+        amount,
+        label: label ?? '',
+      };
+
       if (mode === 'auction') {
-        // 🔁 Appel du webhook n8n
+        // Send to n8n webhook
         await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK || '', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -83,15 +110,13 @@ export default function GenericCheckoutForm({
           }),
         });
 
-        onSummary({
-          ...infos,
-          amount,
-          label: label ?? '',
-        });
+        saveDonorBidInfo(metadata.lot_id, summary);
+        onSummary(summary);
 
-        saveDonorInfo(infos);
+        window.location.href = `${APP_ROUTES.thankYou.path}?mode=bid`;
+        return;
       } else {
-        // Paiement Stripe (donation/lottery)
+        // Create Stripe Payment Intent
         const res = await fetch('/api/create-payment-intent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -115,12 +140,7 @@ export default function GenericCheckoutForm({
         }
 
         onClientSecret(json.clientSecret);
-        onSummary({
-          ...infos,
-          amount,
-          label: label ?? '',
-        });
-
+        onSummary(summary);
         saveDonorInfo(infos);
       }
     } catch (err: any) {
@@ -130,12 +150,21 @@ export default function GenericCheckoutForm({
     }
   };
 
-  useEffect(() => {
-    setDonorInfo(retrieveDonorInfo());
-    setIsLoaded(true);
-  }, []);
+  if (!isLoaded) return null;
 
-  return isLoaded ? (
+  // ✅ If a bid exists for this lot, show summary directly
+  if (mode === 'auction' && existingBid) {
+    return (
+      <div className="mx-auto mt-8 w-full max-w-xl space-y-6">
+        <SummaryCard {...existingBid} action={handleChangeBid} />
+        <p className="text-center text-sm italic text-gray-500">
+          You’ve already placed a bid on this lot.
+        </p>
+      </div>
+    );
+  }
+
+  return (
     <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8 w-full max-w-xl space-y-6">
       <h2 className="text-2xl font-semibold text-indigo-600">
         {mode === 'donation'
@@ -145,7 +174,6 @@ export default function GenericCheckoutForm({
             : 'Place your bid'}
       </h2>
 
-      {/* Fields */}
       <div className="grid gap-4 rounded-md border border-gray-200 p-4">
         <label className="block">
           <span className="text-sm font-medium text-gray-800">Full Name</span>
@@ -155,7 +183,7 @@ export default function GenericCheckoutForm({
             {...register('name', { required: true })}
             className="mt-1 w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 transition-all placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
           />
-          {errors.name && <p className="mt-1 text-sm text-red-600">Please enter a valid name.</p>}
+          {errors.name && <p className="text-sm text-red-600">Please enter a valid name.</p>}
         </label>
 
         <label className="block">
@@ -169,7 +197,7 @@ export default function GenericCheckoutForm({
             })}
             className="mt-1 w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 transition-all placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
           />
-          {errors.email && <p className="mt-1 text-sm text-red-600">Please enter a valid email.</p>}
+          {errors.email && <p className="text-sm text-red-600">Please enter a valid email.</p>}
         </label>
 
         <label className="block">
@@ -180,9 +208,7 @@ export default function GenericCheckoutForm({
             {...register('phone', { required: true })}
             className="mt-1 w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 transition-all placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
           />
-          {errors.phone && (
-            <p className="mt-1 text-sm text-red-600">Please enter a valid phone number.</p>
-          )}
+          {errors.phone && <p className="text-sm text-red-600">Please enter a valid phone.</p>}
         </label>
 
         {/* Amount */}
@@ -200,7 +226,7 @@ export default function GenericCheckoutForm({
               className="mt-1 w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 transition-all placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
             />
             {errors.customAmount && (
-              <p className="mt-1 text-sm text-red-600">Please enter a valid amount.</p>
+              <p className="text-sm text-red-600">Please enter a valid amount.</p>
             )}
           </label>
         ) : (
@@ -209,18 +235,6 @@ export default function GenericCheckoutForm({
           </div>
         )}
       </div>
-
-      {/* Résumé si infos déjà en mémoire */}
-      {donorInfo && (
-        <SummaryCard
-          {...donorInfo}
-          amount={fixedAmount}
-          action={() => {
-            clearDonorInfo();
-            setDonorInfo(null);
-          }}
-        />
-      )}
 
       <button
         type="submit"
@@ -232,5 +246,5 @@ export default function GenericCheckoutForm({
 
       {message && <p className="text-center text-red-600">{message}</p>}
     </form>
-  ) : null;
+  );
 }
