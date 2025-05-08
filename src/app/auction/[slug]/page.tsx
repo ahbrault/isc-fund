@@ -80,9 +80,8 @@ export default async function AuctionLotPage({ params }: { params: Promise<{ slu
       <AuctionLotClient lot={lot} />
 
       <p className="mt-6 text-xs italic text-gray-500">
-        {lot.type === 'lottery'
-          ? '*By submitting, participants agree that if they win the auction, they commit to donating the bid amount on iscfund.com immediately.'
-          : 'Please note: Any payment made for a lot will be considered a donation. If you wish to place a bid, please wait for May 9th.'}
+        {lot.type !== 'lottery' &&
+          '*Each participant acknowledges that if they win the bid, they commit to donating the amount of their offer on the website www.ISCFund.com.'}
       </p>
 
       <Link

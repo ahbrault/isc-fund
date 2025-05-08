@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import GenericCheckoutForm from '@/components/forms/GenericCheckoutForm';
-import SummaryCard from '@/components/forms/SummaryCard';
+import { GenericCheckoutForm, SummaryCard } from '@/components';
 import { DonorSummary, getStripeOptions } from '@/common';
 import { DonationCheckout } from '@/app/donate/components';
 
