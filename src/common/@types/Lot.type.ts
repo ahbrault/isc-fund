@@ -7,4 +7,5 @@ export type Lot = {
   type: 'auction' | 'lottery';
   reserve?: number | null;
   ticketPrice?: number;
+  video?: string;
 };

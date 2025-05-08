@@ -11,12 +11,11 @@ const cabinSans = Cabin({
 
 export const metadata: Metadata = {
   title: 'International Sickle Cell Fund',
-  description:
-    'ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children in Africa.',
+  description: 'ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children.',
   openGraph: {
     title: 'International Sickle Cell Fund',
     description:
-      'ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children in Africa.',
+      'ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children.',
     url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     type: 'website',
     images: [

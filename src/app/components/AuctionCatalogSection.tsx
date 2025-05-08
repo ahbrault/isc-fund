@@ -21,8 +21,8 @@ export default function AuctionCatalogSection() {
       <div className="mb-8 flex items-center justify-center gap-4">
         <Image
           src="/images/logo-fld.png"
-          height="500"
-          width="300"
+          height={500}
+          width={300}
           className="mt-6 w-full max-w-48"
           alt="Fast Lane Drive"
         />
@@ -58,8 +58,15 @@ export default function AuctionCatalogSection() {
                       : 'AUCTION – NO RESERVE'
                     : `LOTTERY – $${lot.ticketPrice} TICKET`}
                 </span>
+
                 <h3 className="text-lg font-semibold text-gray-900">{lot.title}</h3>
-                <p className="text-sm text-gray-600">{lot.description}</p>
+                <p className="text-sm text-gray-600">{lot.shortDescription}</p>
+
+                {lot.type === 'auction' && lot.reserve && (
+                  <p className="text-sm font-semibold text-gray-900">
+                    Starting Bid: ${lot.reserve.toLocaleString()}
+                  </p>
+                )}
               </div>
 
               <Link

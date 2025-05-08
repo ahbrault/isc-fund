@@ -4,7 +4,7 @@ export const saveDonorInfo = (info: DonorInfo) => {
   return localStorage.setItem('donorInfo', JSON.stringify(info));
 };
 
-export const retrieveDonorInfo = (): { name: string; email: string; phone: string } | null => {
+export const retrieveDonorInfo = (): DonorInfo | null => {
   const localInfo = localStorage.getItem('donorInfo');
   return localInfo ? JSON.parse(localInfo) : null;
 };

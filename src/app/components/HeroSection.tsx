@@ -63,9 +63,9 @@ const HeroSection = () => {
             Every day 1000 children die from a disease that no one talks about
           </h1>
           <p className="text-white md:text-lg">
-            Sickle cell disease is the world&apos;s most common genetic disorder, affecting over 20
-            million people, primarily in Africa, the disease kills half of children with the severe
-            form before age five, predominantly impacting black populations.
+            Sickle cell disease is the world&apos;s most common genetic disorder, affecting over 12
+            million people, the disease kills half of children with the severe form before age five,
+            predominantly impacting black populations.
           </p>
           <p className="text-white md:text-lg">
             Despite its high mortality, sickle cell remains largely underfunded and overlooked

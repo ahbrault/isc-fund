@@ -53,6 +53,8 @@ export default async function AuctionLotPage({ params }: { params: Promise<{ slu
 
       <div className="mb-6 space-y-2">
         <h1 className="text-3xl font-bold text-gray-900">{lot.title}</h1>
+
+        {/* Badge */}
         <span
           className={`inline-block rounded-full px-3 py-1 text-sm font-medium ${
             lot.type === 'auction' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-800'
@@ -64,6 +66,13 @@ export default async function AuctionLotPage({ params }: { params: Promise<{ slu
               : 'AUCTION – NO RESERVE'
             : `LOTTERY – $${lot.ticketPrice} TICKET`}
         </span>
+
+        {/* Starting Bid */}
+        {lot.type === 'auction' && lot.reserve && (
+          <p className="text-sm font-semibold text-gray-900">
+            Starting Bid: ${lot.reserve.toLocaleString()}
+          </p>
+        )}
       </div>
 
       <p className="mb-8 text-gray-700">{lot.description}</p>

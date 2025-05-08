@@ -2,17 +2,18 @@
   {
     "id": 1,
     "title": "David Guetta Gold Record",
-    "shortDescription": "Signed gold record from David Guetta’s personal collection – a rare piece of music history.",
-    "description": "An exceptional piece from David Guetta’s\npersonal collection, this gold record\ncommemorates his most celebrated hits. Signed\nby the artist himself, it stands as a rare and\nirreplaceable piece of music history,\nas the industry has largely moved away from\nproducing gold records. Size 38,6’’ x 28,7’’.",
+    "shortDescription": "Signed gold record from David Guetta\u2019s personal collection \u2013 a rare piece of music history.",
+    "description": "An exceptional piece from David Guetta\u2019s personal collection, this gold record commemorates his most celebrated hits. Signed by the artist himself, it stands as a rare and irreplaceable piece of music history, as the industry has largely moved away from producing gold records.",
     "image": "/images/lots/1.png",
+    "video": "/videos/david-guetta.mp4",
     "type": "auction",
     "reserve": 25000
   },
   {
     "id": 2,
     "title": "Private Dinner with Cathy Guetta in Ibiza",
-    "shortDescription": "Dinner for 2 with Cathy Guetta at a top Ibiza restaurant – glimpse into global nightlife.",
-    "description": "The winning bidder and a guest will join Cathy Guetta - the visionary behind the iconic *F**** ME I'M FAMOUS! parties - for an intimate dinner for 2 people at one of Ibiza's most prestigious restaurants. This experience offers a rate glimpse into the world of global nightlife and entertainment.",
+    "shortDescription": "Dinner for 2 with Cathy Guetta at a top Ibiza restaurant \u2013 glimpse into global nightlife.",
+    "description": "The winning bidder and a guest will join Cathy Guetta - the visionary behind the iconic F*** ME I'M FAMOUS! parties - for an intimate dinner for 2 people at one of Ibiza's most prestigious restaurants. This experience offers a rare glimpse into the world of global nightlife and entertainment. Travel and accommodations not included, valid between June 7, 2025 and September 20th, 2025. Subject to availability.",
     "image": "/images/lots/2.jpg",
     "type": "auction",
     "reserve": 15000
@@ -20,26 +21,24 @@
   {
     "id": 3,
     "title": "Formula 1 Replica by GR Monaco",
-    "shortDescription": "Handcrafted Ferrari-inspired 2024 replica – precision-built automotive art.",
-    "description": "Inspired by the 2024 Ferrari!\u2028Handcrafted with precision and passion. \u2028Don’t miss out on owning a piece of automotive art! \u2028Size: 52” x 19”",
+    "shortDescription": "Handcrafted Ferrari-inspired 2024 replica \u2013 precision-built automotive art.",
+    "description": "Inspired by the 2024 Ferrari! Handcrafted with precision and passion. Don\u2019t miss out on owning a piece of automotive art! Size: 52\u201d x 19\u201d.",
     "image": "/images/lots/3.png",
-    "type": "auction",
-    "reserve": 3000
+    "type": "auction"
   },
   {
     "id": 4,
     "title": "Weekend in Las Vegas with Ferrari Rentals",
-    "shortDescription": "2 nights at Fontainebleau + Ferrari rental in Vegas – unforgettable weekend.",
-    "description": "Include 2 nights at the Fontainebleau Hotel and a Ferrai rentals in Las Vegas.",
+    "shortDescription": "2 nights at Fontainebleau + Ferrari rental in Vegas \u2013 unforgettable weekend.",
+    "description": "Includes 2 nights at the Fontainebleau Hotel and a Ferrari rental in Las Vegas.",
     "image": "/images/lots/4.png",
-    "type": "auction",
-    "reserve": 5000
+    "type": "auction"
   },
   {
     "id": 5,
     "title": "Nativa Interiors Gift Card",
     "shortDescription": "Gift card to choose any furniture from the Nativa Interiors collection.",
-    "description": "Select the pieces of your choice in the whole Nativa Interiors collection including living, dining, bedroom, interior design…",
+    "description": "Select the pieces of your choice in the whole Nativa Interiors collection including living, dining, bedroom, interior design\u2026",
     "image": "/images/lots/5.png",
     "type": "auction",
     "reserve": 1500
@@ -47,8 +46,8 @@
   {
     "id": 6,
     "title": "Hennessy Louis XIII Tasting x10",
-    "shortDescription": "Exclusive Louis XIII tasting for 10 people – location and date arranged with brand.",
-    "description": "The LOUIS XIII «XIIIth Hour experience » is a fantastic tasting for 10 guests, location to be determined based on location availability and provided by a brand-team member.",
+    "shortDescription": "Exclusive Louis XIII tasting for 10 people \u2013 location and date arranged with brand.",
+    "description": "The LOUIS XIII \u00abXIIIth Hour experience\u00bb is a fantastic tasting for 10 guests, location to be determined based on availability and provided by a brand-team member.",
     "image": "/images/lots/6.png",
     "type": "auction",
     "reserve": 4000
@@ -75,9 +74,18 @@
     "id": 9,
     "title": "Cavallino Grand Weekend Package",
     "shortDescription": "2 nights at Casa Maria Luigia + Michelin-star meals + parade access at Cavallino Classic Modena.",
-    "description": "Enjoy Cavallino Classic Modena with our complete package during Spring 2026. Cavallino Classic Modena, a one-of-a-kind “Concorso d’Eleganza”, takes place at Casa Maria Luigia, the enchanted property of Massimo Bottura, in Enzo Ferrari’s hometown. \u2028This package includes for two people : two nights at Casa Maria Luigia, 2 dinners and one lunch with wine pairing with the three Michelin stars Chef Massimo Bottura, Access to the Saturday Parade and to the Sunday Tour above Maranello, \u2028A private lunch at Casa Canossa by the Michelin-starred Chef Andrea Incerti Vezzani.",
+    "description": "Enjoy Cavallino Classic Modena with our complete package during Spring 2026. Cavallino Classic Modena, a one-of-a-kind \u201cConcorso d\u2019Eleganza\u201d, takes place at Casa Maria Luigia, the enchanted property of Massimo Bottura, in Enzo Ferrari\u2019s hometown. This package includes for two people: two nights at Casa Maria Luigia, 2 dinners and one lunch with wine pairing with the three Michelin stars Chef Massimo Bottura, access to the Saturday Parade and to the Sunday Tour above Maranello, and a private lunch at Casa Canossa by the Michelin-starred Chef Andrea Incerti Vezzani.",
     "image": "/images/lots/9.png",
     "type": "auction",
     "reserve": 24000
+  },
+  {
+    "id": 10,
+    "title": "ECU tune for your car of choice",
+    "shortDescription": "High Performance ECU tune for your car, Powered by Formula Dynamics and DME Tuning.",
+    "description": "High Performance ECU tune for your car of choice, Powered by Formula Dynamics and DME Tuning.",
+    "image": "/images/lots/10.png",
+    "type": "auction",
+    "reserve": 3000
   }
 ]
