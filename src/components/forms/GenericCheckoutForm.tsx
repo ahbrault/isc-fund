@@ -72,19 +72,16 @@ export default function GenericCheckoutForm({
     try {
       if (mode === 'auction') {
         // 🔁 Appel du webhook n8n
-        await fetch(
-          'https://n8n.axiumassurance.fr/webhook-test/29bd5059-d119-44bf-ae7b-49b45f37d11e',
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              ...infos,
-              amount,
-              metadata,
-              type: 'bid',
-            }),
-          }
-        );
+        await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK || '', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...infos,
+            amount,
+            metadata,
+            type: 'bid',
+          }),
+        });
 
         onSummary({
           ...infos,
