@@ -70,36 +70,62 @@ export default function GenericCheckoutForm({
     };
 
     try {
-      const res = await fetch('/api/create-payment-intent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      if (mode === 'auction') {
+        // 🔁 Appel du webhook n8n
+        await fetch(
+          'https://n8n.axiumassurance.fr/webhook-test/29bd5059-d119-44bf-ae7b-49b45f37d11e',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...infos,
+              amount,
+              metadata,
+              type: 'bid',
+            }),
+          }
+        );
+
+        onSummary({
+          ...infos,
           amount,
-          email: infos.email,
-          description: label ?? 'Donation',
-          metadata: {
-            ...metadata,
-            full_name: infos.name,
-            phone: infos.phone,
+          label: label ?? '',
+        });
+
+        saveDonorInfo(infos);
+      } else {
+        // Paiement Stripe (donation/lottery)
+        const res = await fetch('/api/create-payment-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount,
             email: infos.email,
-          },
-        }),
-      });
+            description: label ?? 'Donation',
+            metadata: {
+              ...metadata,
+              full_name: infos.name,
+              phone: infos.phone,
+              email: infos.email,
+            },
+          }),
+        });
 
-      const json = await res.json();
+        const json = await res.json();
 
-      if (!json.clientSecret) {
-        throw new Error('Missing client secret');
+        if (!json.clientSecret) {
+          throw new Error('Missing client secret');
+        }
+
+        onClientSecret(json.clientSecret);
+        onSummary({
+          ...infos,
+          amount,
+          label: label ?? '',
+        });
+
+        saveDonorInfo(infos);
       }
-
-      onClientSecret(json.clientSecret);
-      onSummary({
-        ...infos,
-        amount,
-        label: label ?? '',
-      });
-
-      saveDonorInfo(infos);
     } catch (err: any) {
       setMessage(err.message || 'Unexpected error occurred.');
     } finally {
@@ -114,7 +140,7 @@ export default function GenericCheckoutForm({
 
   return isLoaded ? (
     <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8 w-full max-w-xl space-y-6">
-      <h2 className="text-center text-2xl font-semibold text-indigo-600">
+      <h2 className="text-2xl font-semibold text-indigo-600">
         {mode === 'donation'
           ? 'Make a donation'
           : mode === 'lottery'
@@ -204,7 +230,7 @@ export default function GenericCheckoutForm({
         disabled={loading}
         className="w-full rounded-md bg-indigo-600 py-2 text-white hover:bg-indigo-700"
       >
-        {loading ? 'Processing…' : 'Continue to payment'}
+        {loading ? 'Processing…' : mode === 'auction' ? 'Place your bid' : 'Continue to payment'}
       </button>
 
       {message && <p className="text-center text-red-600">{message}</p>}
