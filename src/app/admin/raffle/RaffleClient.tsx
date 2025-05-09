@@ -119,12 +119,19 @@ export default function RaffleClient() {
               <div className="text-sm text-gray-800">
                 {winner ? (
                   <div className="space-y-1">
-                    <p>
-                      🏆 <strong>{winner.full_name}</strong>
+                    <p className="text-gray-800">
+                      <strong className="text-indigo-500">{winner.full_name}</strong>
                     </p>
-                    <p>{winner.email}</p>
-                    <p>{winner.phone}</p>
-                    <p>Ticket ID: {winner.ticket_id}</p>
+                    <p className="text-gray-800">{winner.email}</p>
+                    <p className="text-gray-800">{winner.phone}</p>
+                    <a
+                      href={`https://dashboard.stripe.com/payments/${winner.ticket_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-block rounded-md bg-blue-100 px-3 py-1.5 text-xs font-medium text-blue-700 hover:bg-blue-200"
+                    >
+                      View Stripe Payment
+                    </a>
                   </div>
                 ) : (
                   <p className="italic text-gray-400">No winner drawn.</p>
