@@ -3,6 +3,7 @@ import { Cabin } from 'next/font/google';
 import localFont from 'next/font/local';
 import type { Metadata } from 'next';
 import '../styles/globals.css';
+import { Analytics } from '@vercel/analytics/next';
 
 const cabin = Cabin({
   subsets: ['latin'],
@@ -40,7 +41,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${cabin.variable} ${signPainter.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

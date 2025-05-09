@@ -19,6 +19,7 @@
     "@stripe/stripe-js": "^7.1.0",
     "@tanstack/react-query": "^5.75.7",
     "@tanstack/react-table": "^8.21.3",
+    "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.7.3",
