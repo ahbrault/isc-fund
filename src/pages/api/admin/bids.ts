@@ -1,5 +1,3 @@
-// pages/api/admin/bids.ts
-
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '@/common';
 
