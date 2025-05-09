@@ -11,9 +11,9 @@ type PaymentStatus = 'loading' | 'succeeded' | 'processing' | 'requires_payment_
 
 function ReturnClient() {
   const searchParams = useSearchParams();
-  const clientSecret = searchParams.get('payment_intent_client_secret');
-  const mode = searchParams.get('mode'); // 'bid'
-  const lotId = searchParams.get('lot_id'); // used for auction summary
+  const clientSecret = searchParams?.get('payment_intent_client_secret');
+  const mode = searchParams?.get('mode'); // 'bid'
+  const lotId = searchParams?.get('lot_id'); // used for auction summary
 
   const [status, setStatus] = useState<PaymentStatus>('loading');
   const [email, setEmail] = useState<string | null>(null);
