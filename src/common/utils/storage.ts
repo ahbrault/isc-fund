@@ -2,11 +2,11 @@ import { DonorSummary } from '@/common';
 
 export const getBidStorageKey = (lotId: number) => `bidInfo_${lotId}`;
 
-export const saveDonorBidInfo = (lotId: number, summary: DonorSummary) => {
+export const saveDonorBidInfo = (lotId: number, summary: DonorSummary & { id: string }) => {
   localStorage.setItem(getBidStorageKey(lotId), JSON.stringify(summary));
 };
 
-export const retrieveDonorBidInfo = (lotId: number): DonorSummary | null => {
+export const retrieveDonorBidInfo = (lotId: number): (DonorSummary & { id: string }) | null => {
   const raw = localStorage.getItem(getBidStorageKey(lotId));
   return raw ? JSON.parse(raw) : null;
 };

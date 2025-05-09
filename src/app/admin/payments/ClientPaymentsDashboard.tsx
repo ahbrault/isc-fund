@@ -151,7 +151,7 @@ export default function ClientPaymentsDashboard() {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
-      <div className="flex justify-between">
+      <div className="justify-between md:flex">
         <h1 className="mb-6 text-3xl font-bold text-indigo-500">
           Payments Dashboard (Live from Stripe)
         </h1>

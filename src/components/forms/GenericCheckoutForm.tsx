@@ -16,7 +16,7 @@ import SummaryCard from './SummaryCard';
 
 type Props = {
   onClientSecret: Dispatch<SetStateAction<string>>;
-  onSummary: Dispatch<SetStateAction<DonorSummary>>;
+  onSummary: Dispatch<SetStateAction<DonorSummary & { id?: string }>>;
   mode: 'donation' | 'lottery' | 'auction';
   fixedAmount?: number;
   label?: string;
@@ -110,8 +110,23 @@ export default function GenericCheckoutForm({
           }),
         });
 
-        saveDonorBidInfo(metadata.lot_id, summary);
-        onSummary(summary);
+        const res = await fetch('/api/admin/bids', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: infos.name,
+            email: infos.email,
+            phone: infos.phone,
+            amount,
+            metadata,
+          }),
+        });
+
+        const json = await res.json();
+        if (!json.id) throw new Error('Failed to create bid');
+
+        saveDonorBidInfo(metadata.lot_id, { ...summary, id: json.id });
+        onSummary({ ...summary, id: json.id });
 
         window.location.href = `${APP_ROUTES.thankYou.path}?mode=bid`;
         return;

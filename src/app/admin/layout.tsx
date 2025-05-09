@@ -10,6 +10,7 @@ import Image from 'next/image';
 
 const navigationItems = [
   { name: 'Payments', href: '/admin/payments', startsWith: '/admin/payments' },
+  { name: 'Bids', href: '/admin/bids', startsWith: '/admin/bids' },
   { name: 'Raffle', href: '/admin/raffle', startsWith: '/admin/raffle' },
 ];
 
