@@ -19,9 +19,13 @@ export default function AuctionCatalogSection() {
   return (
     <Section className="py-16" id="auction">
       <div className="mb-8 flex items-center justify-center gap-4">
-        <p className="font-sign-painter text-center text-4xl font-semibold md:text-5xl">
-          Cathy Guetta, Ambassador for Sickle Cell Disease presents
-        </p>
+        <Image
+          src="/images/cathyguetta-logo-ambassador.png"
+          width={500}
+          height={200}
+          className="mx-auto h-auto w-auto max-w-72"
+          alt="Cathy Guetta"
+        />
       </div>
       <h2 className="mb-8 text-center text-3xl font-bold">Auction & Lottery Catalog</h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
