@@ -92,6 +92,15 @@ export default function AuctionCatalogSection() {
         unwavering dedication as a Global Ambassador for Sickle Cell Disease has made this
         partnership with Fast Lane Drive possible
       </p>
+      <div className="mt-16 flex items-center justify-center gap-4">
+        <Image
+          src="/images/cathyguetta-logo-ambassador.png"
+          width={500}
+          height={200}
+          className="mx-auto h-auto w-auto max-w-72"
+          alt="Cathy Guetta"
+        />
+      </div>
     </Section>
   );
 }
