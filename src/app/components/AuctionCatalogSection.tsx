@@ -19,7 +19,7 @@ export default function AuctionCatalogSection() {
   return (
     <Section className="py-16" id="auction">
       <div className="mb-8 flex items-center justify-center gap-4">
-        <p className="font-sign-painter text-5xl font-semibold">
+        <p className="font-sign-painter text-center text-4xl font-semibold md:text-5xl">
           Cathy Guetta, Ambassador for Sickle Cell Disease presents
         </p>
       </div>
