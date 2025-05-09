@@ -6,6 +6,7 @@ import { APP_ROUTES, Lot } from '@/common';
 import Link from 'next/link';
 import AuctionLotClient from './AuctionLotClient';
 import React from 'react';
+import { ScrollToTopOnMount } from '@/components';
 
 export async function generateStaticParams() {
   const filePath = path.join(process.cwd(), 'public', 'data', 'lots.json');
@@ -32,77 +33,80 @@ export default async function AuctionLotPage({ params }: { params: Promise<{ slu
   if (!lot) return notFound();
 
   return (
-    <div className="mx-auto mt-8 min-h-screen w-full max-w-xl space-y-6 px-4 py-10">
-      <Link href={APP_ROUTES.home.path}>
+    <>
+      <ScrollToTopOnMount />
+      <div className="mx-auto mt-8 min-h-screen w-full max-w-xl space-y-6 px-4 py-10">
+        <Link href={APP_ROUTES.home.path}>
+          <Image
+            height={100}
+            width={240}
+            src="/logo-icon-indigo.svg"
+            alt="ISC Fund"
+            className="mx-auto mb-4 h-12"
+            priority
+          />
+        </Link>
         <Image
-          height={100}
-          width={240}
-          src="/logo-icon-indigo.svg"
-          alt="ISC Fund"
-          className="mx-auto mb-4 h-12"
-          priority
+          src={lot.image}
+          alt={lot.title}
+          width={800}
+          height={400}
+          className="mx-auto mb-8 rounded-md object-cover"
         />
-      </Link>
-      <Image
-        src={lot.image}
-        alt={lot.title}
-        width={800}
-        height={400}
-        className="mx-auto mb-8 rounded-md object-cover"
-      />
 
-      <div className="mb-6 space-y-2">
-        <h1 className="text-3xl font-bold text-gray-900">{lot.title}</h1>
+        <div className="mb-6 space-y-2">
+          <h1 className="text-3xl font-bold text-gray-900">{lot.title}</h1>
 
-        {/* Badge */}
-        <span
-          className={`inline-block rounded-full px-3 py-1 text-sm font-medium ${
-            lot.type === 'auction' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-800'
-          }`}
-        >
-          {lot.type === 'auction'
-            ? lot.reserve
-              ? 'AUCTION – WITH RESERVE'
-              : 'AUCTION – NO RESERVE'
-            : `LOTTERY – $${lot.ticketPrice} TICKET`}
-        </span>
+          {/* Badge */}
+          <span
+            className={`inline-block rounded-full px-3 py-1 text-sm font-medium ${
+              lot.type === 'auction' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-800'
+            }`}
+          >
+            {lot.type === 'auction'
+              ? lot.reserve
+                ? 'AUCTION – WITH RESERVE'
+                : 'AUCTION – NO RESERVE'
+              : `LOTTERY – $${lot.ticketPrice} TICKET`}
+          </span>
 
-        {/* Starting Bid */}
-        {lot.type === 'auction' && lot.reserve && lot.reservePrice ? (
-          <p className="text-sm font-semibold text-gray-900">
-            Starting Bid: ${lot.reservePrice.toLocaleString()}
-          </p>
-        ) : lot.type === 'auction' && lot.reservePrice ? (
-          <p className="text-sm font-semibold text-gray-900">
-            Value: ${lot.reservePrice.toLocaleString()}
-          </p>
-        ) : (
-          <></>
+          {/* Starting Bid */}
+          {lot.type === 'auction' && lot.reserve && lot.reservePrice ? (
+            <p className="text-sm font-semibold text-gray-900">
+              Starting Bid: ${lot.reservePrice.toLocaleString()}
+            </p>
+          ) : lot.type === 'auction' && lot.reservePrice ? (
+            <p className="text-sm font-semibold text-gray-900">
+              Value: ${lot.reservePrice.toLocaleString()}
+            </p>
+          ) : (
+            <></>
+          )}
+        </div>
+
+        <p className="mb-8 text-gray-700">{lot.description}</p>
+
+        {lot.video && (
+          <video controls preload="none" width="100%" height="auto">
+            <source src={lot.video} type="video/mp4" />
+            Votre navigateur ne supporte pas la balise vidéo.
+          </video>
         )}
+
+        <AuctionLotClient lot={lot} />
+
+        <p className="mt-6 text-xs italic text-gray-500">
+          {lot.type !== 'lottery' &&
+            '*Each participant acknowledges that if they win the bid, they commit to donating the amount of their offer on the website www.ISCFund.com.'}
+        </p>
+
+        <Link
+          href={`${APP_ROUTES.home.path}#auction-section`}
+          className="mt-6 inline-block text-sm font-semibold text-indigo-600 hover:underline"
+        >
+          ← Back to catalog
+        </Link>
       </div>
-
-      <p className="mb-8 text-gray-700">{lot.description}</p>
-
-      {lot.video && (
-        <video controls preload="none" width="100%" height="auto">
-          <source src={lot.video} type="video/mp4" />
-          Votre navigateur ne supporte pas la balise vidéo.
-        </video>
-      )}
-
-      <AuctionLotClient lot={lot} />
-
-      <p className="mt-6 text-xs italic text-gray-500">
-        {lot.type !== 'lottery' &&
-          '*Each participant acknowledges that if they win the bid, they commit to donating the amount of their offer on the website www.ISCFund.com.'}
-      </p>
-
-      <Link
-        href={`${APP_ROUTES.home.path}#auction-section`}
-        className="mt-6 inline-block text-sm font-semibold text-indigo-600 hover:underline"
-      >
-        ← Back to catalog
-      </Link>
-    </div>
+    </>
   );
 }
