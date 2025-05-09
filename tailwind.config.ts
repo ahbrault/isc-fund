@@ -12,6 +12,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['Cabin', 'Inter', ...defaultTheme.fontFamily.sans],
+        sign: ['var(--font-sign-painter)', 'cursive'],
       },
       animation: {
         'infinite-scroll': 'infinite-scroll 40s linear infinite',

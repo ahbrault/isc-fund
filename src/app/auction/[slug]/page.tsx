@@ -68,10 +68,16 @@ export default async function AuctionLotPage({ params }: { params: Promise<{ slu
         </span>
 
         {/* Starting Bid */}
-        {lot.type === 'auction' && lot.reserve && lot.reservePrice && (
+        {lot.type === 'auction' && lot.reserve && lot.reservePrice ? (
           <p className="text-sm font-semibold text-gray-900">
             Starting Bid: ${lot.reservePrice.toLocaleString()}
           </p>
+        ) : lot.type === 'auction' && lot.reservePrice ? (
+          <p className="text-sm font-semibold text-gray-900">
+            Value: ${lot.reservePrice.toLocaleString()}
+          </p>
+        ) : (
+          <></>
         )}
       </div>
 

@@ -1,12 +1,19 @@
 import React from 'react';
-
-import type { Metadata } from 'next';
 import { Cabin } from 'next/font/google';
+import localFont from 'next/font/local';
+import type { Metadata } from 'next';
 import '../styles/globals.css';
 
-const cabinSans = Cabin({
-  variable: '--font-cabin',
+const cabin = Cabin({
   subsets: ['latin'],
+  variable: '--font-cabin',
+  display: 'swap',
+});
+
+const signPainter = localFont({
+  src: '../../public/fonts/SignPainterHouseScript.ttf',
+  variable: '--font-sign-painter',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -27,18 +34,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-  // TODO add robots.txt
   robots: 'index, follow',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${cabinSans.variable} antialiased`}>{children}</body>
+    <html lang="en" className={`${cabin.variable} ${signPainter.variable}`}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

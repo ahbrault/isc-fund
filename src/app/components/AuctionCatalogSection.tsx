@@ -19,17 +19,11 @@ export default function AuctionCatalogSection() {
   return (
     <Section className="py-16" id="auction">
       <div className="mb-8 flex items-center justify-center gap-4">
-        <Image
-          src="/images/logo-fld.png"
-          height={500}
-          width={300}
-          className="mt-6 w-full max-w-48"
-          alt="Fast Lane Drive"
-        />
-        <p className="text-xl font-semibold text-black">hosted by Cathy Guetta</p>
+        <p className="font-sign-painter text-5xl font-semibold">
+          Cathy Guetta, Ambassador for Sickle Cell Disease presents
+        </p>
       </div>
       <h2 className="mb-8 text-center text-3xl font-bold">Auction & Lottery Catalog</h2>
-
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {lots.map(lot => (
           <div
@@ -38,8 +32,8 @@ export default function AuctionCatalogSection() {
           >
             <Image
               src={lot.image}
-              width={300}
-              height={300}
+              width={400}
+              height={320}
               className="h-80 w-full rounded-t-lg object-cover"
               alt={lot.title}
             />
@@ -62,10 +56,16 @@ export default function AuctionCatalogSection() {
                 <h3 className="text-lg font-semibold text-gray-900">{lot.title}</h3>
                 <p className="text-sm text-gray-600">{lot.shortDescription}</p>
 
-                {lot.type === 'auction' && lot.reserve && lot.reservePrice && (
+                {lot.type === 'auction' && lot.reserve && lot.reservePrice ? (
                   <p className="text-sm font-semibold text-gray-900">
                     Starting Bid: ${lot.reservePrice.toLocaleString()}
                   </p>
+                ) : lot.type === 'auction' && lot.reservePrice ? (
+                  <p className="text-sm font-semibold text-gray-900">
+                    Value: ${lot.reservePrice.toLocaleString()}
+                  </p>
+                ) : (
+                  <></>
                 )}
               </div>
 
@@ -83,6 +83,11 @@ export default function AuctionCatalogSection() {
           </div>
         ))}
       </div>
+      <p className="mt-16 text-center text-xl font-semibold">
+        The International Sickle Cell Fund extends its heartfelt thanks to Cathy Guetta whose
+        unwavering dedication as a Global Ambassador for Sickle Cell Disease has made this
+        partnership with Fast Lane Drive possible
+      </p>
     </Section>
   );
 }

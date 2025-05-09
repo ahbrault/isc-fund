@@ -7,15 +7,13 @@
   --secondary: 36 93 81; /* #245D51 */
   --primary-dark: 213 105 1; /* #D56901 */
   --light: 245 245 245; /* #F5F5F5 */
-  --font-cabin: 'Cabin', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: var(--font-cabin), sans-serif;
+  @apply font-sans;
 }
 
 a {
@@ -26,7 +24,7 @@ a {
 * {
   box-sizing: border-box;
   color: rgb(var(--secondary));
-  font-family: var(--font-cabin), sans-serif;
+  @apply font-sans;
 }
 
 h1 {
@@ -53,4 +51,8 @@ p {
   .logo-header {
     @apply relative left-1/2 -translate-x-1/2 origin-center;
   }
+}
+
+.font-sign-painter {
+  @apply font-sign;
 }

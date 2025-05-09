@@ -28,7 +28,7 @@
   },
   {
     "id": 5,
-    "title": "Nativa Interiors Gift Card $1500",
+    "title": "Nativa Interiors Gift Card",
     "shortDescription": "Gift card to choose any furniture from the Nativa Interiors collection.",
     "description": "Select the pieces of your choice in the whole Nativa Interiors collection including living, dining, bedroom, interior design\u2026",
     "image": "/images/lots/5.png",
@@ -68,7 +68,8 @@
     "shortDescription": "2 nights at Casa Maria Luigia + Michelin-star meals + parade access at Cavallino Classic Modena.",
     "description": "Enjoy Cavallino Classic Modena with our complete package during Spring 2026. Cavallino Classic Modena, a one-of-a-kind \u201cConcorso d\u2019Eleganza\u201d, takes place at Casa Maria Luigia, the enchanted property of Massimo Bottura, in Enzo Ferrari\u2019s hometown. This package includes for two people: two nights at Casa Maria Luigia, 2 dinners and one lunch with wine pairing with the three Michelin stars Chef Massimo Bottura, access to the Saturday Parade and to the Sunday Tour above Maranello, and a private lunch at Casa Canossa by the Michelin-starred Chef Andrea Incerti Vezzani.",
     "image": "/images/lots/9.png",
-    "type": "auction"
+    "type": "auction",
+    "reservePrice": 24000
   },
   {
     "id": 10,
@@ -76,6 +77,7 @@
     "shortDescription": "High Performance ECU tune for your car, Powered by Formula Dynamics and DME Tuning.",
     "description": "High Performance ECU tune for your car of choice, Powered by Formula Dynamics and DME Tuning.",
     "image": "/images/lots/10.png",
-    "type": "auction"
+    "type": "auction",
+    "reservePrice": 3000
   }
 ]
