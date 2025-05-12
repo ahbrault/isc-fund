@@ -32,12 +32,6 @@ It was launched for the **Las Vegas Charity Gala (May 9–10, 2025)** to help ra
 
 ---
 
-## 📊 Screenshots
-
-> _Add screenshots or GIFs here (admin dashboard, lots page, Stripe checkout, etc.)_
-
----
-
 ## 🧠 Architecture Highlights
 
 - ✨ **No backend server needed**: Using Vercel’s Edge/Serverless + Supabase
