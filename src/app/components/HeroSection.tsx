@@ -7,23 +7,23 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
   if (mobile) {
     return (
       <div className="my-8 rounded-lg bg-white/30 p-4 md:hidden">
-        <div className="mb-1 inline-flex items-center gap-2">
+        <div className="mb-1 mr-2 inline-flex items-center gap-2">
           <div className="rounded-full font-bold uppercase">Next event</div>
           <span>•</span>
-          <span className="font-medium">May 9–10, 2025</span>
+          <span className="font-medium">July 17th, 2025</span>
         </div>
         <div className="mx-auto inline-flex flex-wrap items-center gap-x-2">
           <span className="text-lg font-medium text-white">
-            Fast Lane Drive Auction for Sickle Cell Disease
+            Cathy Guetta for Sickle Cell Disease
           </span>
         </div>
-        <Image
-          src="/images/event-auction.jpg"
-          height="500"
-          width="300"
-          className="mt-6 w-full"
-          alt="Fast Lane Drive"
-        />
+        {/*<Image*/}
+        {/*  src="/images/events/nikki-beach.jpg"*/}
+        {/*  height="500"*/}
+        {/*  width="300"*/}
+        {/*  className="mt-6 w-full"*/}
+        {/*  alt="Cathy Guetta for Sickle Cell Disease"*/}
+        {/*/>*/}
       </div>
     );
   }
@@ -34,9 +34,9 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
         Next event
       </div>
       <div className="mx-auto mr-2 inline-flex flex-wrap items-center gap-x-1 font-medium">
-        <span className="text-sm text-white">May 9–10, 2025</span>
+        <span className="text-sm text-white">July 17th, 2025</span>
         <span className="hidden text-sm text-white md:block">·</span>
-        <span className="text-sm text-white">Fast Lane Drive Auction for Sickle Cell Disease</span>
+        <span className="text-sm text-white">Cathy Guetta for Sickle Cell Disease</span>
       </div>
     </div>
   );
