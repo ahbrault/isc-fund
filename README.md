@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎗 ISC Fund – Charity Gala Platform
 
-## Getting Started
+**https://www.iscfund.com/**
 
-First, run the development server:
+ISC Fund is a full-stack web application built with **Next.js** and **Stripe**, created to power high-end charity events through **online auctions**, **lotteries**, and **donations**.
+
+It was launched for the **Las Vegas Charity Gala (May 9–10, 2025)** to help raise funds through engaging and transparent digital fundraising.
+
+---
+
+## 🚀 Key Features
+
+- 🧾 **Lot Catalog**: 9 charity items with type-based interactions (donation, auction, or lottery)
+- 💳 **Stripe Payments**: Secure payments for donations and lottery entries
+- 📤 **Auction System**: Custom bid form (no payment at bid time), stored via **webhook + n8n**
+- 🎟️ **Lottery Management**: Entries tracked, winners drawn via a custom admin dashboard
+- ⚙️ **Admin Interface**: Visualize payments, bids, totals raised & trigger lottery draws
+- 📱 **Responsive & Elegant UI**: Tailored for both mobile and desktop, with Fast Lane Drive branding
+
+---
+
+## 🧱 Tech Stack
+
+| Category        | Technologies                                   |
+|----------------|------------------------------------------------|
+| **Frontend**    | Next.js App Router, React, TailwindCSS         |
+| **Backend**     | Edge & Server Actions, Stripe API              |
+| **Automation**  | Webhooks + [n8n](https://n8n.io) workflows     |
+| **Database**    | PostgreSQL via Supabase                        |
+| **Dev Tools**   | Prisma, TypeScript, Zod, React Hook Form       |
+| **Deployment**  | Vercel (frontend & backend API routes)         |
+
+---
+
+## 🧠 Architecture Highlights
+
+- ✨ **No backend server needed**: Using Vercel’s Edge/Serverless + Supabase
+- 🔄 **Decoupled Auctions**: Bids sent to n8n → Google Sheets → Admin UI (no payments triggered)
+- 🧩 **Prisma ORM**: Used only for internal admin panel & data queries
+- 📡 **Webhook Architecture**: Every Stripe/Lottery/Auction action is tracked via event triggers
+
+---
+
+## 💼 About the Project
+
+This platform was developed in just a few weeks for a live charity gala in partnership with **Fast Lane Drive**. The goal was to enable seamless **online participation**, reduce friction in fundraising, and provide transparent tracking of donations, bids, and lottery entries.
+
+It is now being extended into a **reusable SaaS foundation** for future charity events.
+
+---
+
+## 🧑‍💻 Setup Instructions
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
