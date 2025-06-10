@@ -36,7 +36,6 @@ model Event {
 model TableReservation {
   id         String            @id @default(uuid())
   createdAt  DateTime          @default(now())
-  tableName  String?
   totalSeats Int
   status     ReservationStatus @default(PENDING)
 
