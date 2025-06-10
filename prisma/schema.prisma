@@ -1,18 +1,10 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
-// datasource db {
-//   provider = "sqlite"
-//   url      = "file:./dev.db"
-// }
-// APRÈS :
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -27,4 +19,51 @@ model Bid {
   lotId     Int
   lotTitle  String
   createdAt DateTime @default(now())
+}
+
+model Event {
+  id         String   @id @default(uuid())
+  slug       String   @unique
+  name       String
+  date       DateTime
+  totalSeats Int
+  seatPrice  Float
+  currency   String   @default("eur")
+
+  reservations TableReservation[]
+}
+
+model TableReservation {
+  id         String            @id @default(uuid())
+  createdAt  DateTime          @default(now())
+  tableName  String?
+  totalSeats Int
+  status     ReservationStatus @default(PENDING)
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id])
+
+  guests TableGuest[]
+}
+
+model TableGuest {
+  id   String @id @default(uuid())
+  name String
+
+  email   String?
+  phone   String?
+  address Json?
+
+  isHost  Boolean @default(false)
+  hasPaid Boolean @default(false)
+
+  paymentIntentId String? @unique
+
+  reservationId String
+  reservation   TableReservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+}
+
+enum ReservationStatus {
+  PENDING
+  COMPLETE
 }
