@@ -10,7 +10,7 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
         <div className="mb-1 mr-2 inline-flex items-center gap-2">
           <div className="rounded-full font-bold uppercase">Next event</div>
           <span>•</span>
-          <span className="font-medium">July 17th, 2025</span>
+          <span className="font-medium">July 15th, 2025</span>
         </div>
         <div className="mx-auto inline-flex flex-wrap items-center gap-x-2">
           <span className="text-lg font-medium text-white">
@@ -34,7 +34,7 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
         Next event
       </div>
       <div className="mx-auto mr-2 inline-flex flex-wrap items-center gap-x-1 font-medium">
-        <span className="text-sm text-white">July 17th, 2025</span>
+        <span className="text-sm text-white">July 15th, 2025</span>
         <span className="hidden text-sm text-white md:block">·</span>
         <span className="text-sm text-white">Cathy Guetta for Sickle Cell Disease</span>
       </div>

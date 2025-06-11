@@ -95,7 +95,7 @@ export default function AuctionCatalogSection() {
             alt="Cathy Guetta"
           />
         </div>
-        <div>
+        <div className="flex flex-col items-center justify-center space-y-4">
           <h2 className="text-left">
             Cathy Guetta Named Ambassador for Sickle Cell Disease <br /> A New Light in the Fight
             for Life!
