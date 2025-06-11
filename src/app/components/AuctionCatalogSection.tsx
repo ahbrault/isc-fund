@@ -16,15 +16,15 @@ export default function AuctionCatalogSection() {
 
   return (
     <Section className="py-16" id="auction">
-      <div className="mb-16 flex items-center justify-center gap-4">
-        <Image
-          src="/images/cathyguetta-logo-ambassador.png"
-          width={500}
-          height={200}
-          className="mx-auto h-auto w-auto max-w-72 object-fill"
-          alt="Cathy Guetta"
-        />
-      </div>
+      {/*<div className="mb-16 flex items-center justify-center gap-4">*/}
+      {/*  <Image*/}
+      {/*    src="/images/cathyguetta-logo-ambassador.png"*/}
+      {/*    width={500}*/}
+      {/*    height={200}*/}
+      {/*    className="mx-auto h-auto w-auto max-w-72 object-fill"*/}
+      {/*    alt="Cathy Guetta"*/}
+      {/*  />*/}
+      {/*</div>*/}
       {/*<h2 className="mb-8 text-center text-3xl font-bold">Auction & Lottery Catalog</h2>*/}
       {/*<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">*/}
       {/*  {lots.map(lot => (*/}
@@ -85,8 +85,31 @@ export default function AuctionCatalogSection() {
       {/*    </div>*/}
       {/*  ))}*/}
       {/*</div>*/}
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="flex justify-center">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-16">
+        <div className="order-2 flex flex-col items-center justify-center space-y-4 md:order-1">
+          <h2 className="mb-0 text-left">
+            Cathy Guetta Named Ambassador for Sickle Cell Disease <br /> A New Light in the Fight
+            for Life!
+          </h2>
+          <p>
+            <b>Cathy Guetta</b>, the iconic Queen of the Night and successful entrepreneur, is now
+            channeling her boundless energy into a cause that urgently needs more visibility and
+            funding: <b>sickle cell disease</b>.
+          </p>
+          <p>
+            Recently named <b>Ambassador for Sickle Cell Disease</b> by the{' '}
+            <b>International Sickle Cell Fund (ISCF)</b>, Cathy is bringing her trademark passion
+            and drive to this global fight. Born in Dakar and raised in France, she’s not just
+            lighting up her powerful network—she’s igniting hope.
+          </p>
+          <p>
+            Cathy is launching a series of high-impact fundraising events in support of both{' '}
+            <b>ISCF</b>
+            and the NGO <b>Drep.Africa</b>, with a bold mission: to help save thousands of children
+            suffering from severe forms of this disease.
+          </p>
+        </div>
+        <div className="order-1 flex justify-center md:order-2">
           <Image
             src="/images/cathy-guetta.jpg"
             width={500}
@@ -95,51 +118,16 @@ export default function AuctionCatalogSection() {
             alt="Cathy Guetta"
           />
         </div>
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <h2 className="text-left">
-            Cathy Guetta Named Ambassador for Sickle Cell Disease <br /> A New Light in the Fight
-            for Life!
-          </h2>
-          <p>
-            Cathy Guetta, the iconic Queen of the Night, is now turning her energy to a cause that
-            desperately needs visibility: sickle cell disease. Named Ambassador for Sickle Cell
-            Disease by the International Sickle Cell Fund (ISCF), Cathy brings star power and a
-            fierce sense of purpose to this global fight.
-          </p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-4 sm:mt-16">
-          <p>
-            Born in Dakar and raised in France, she’s joining forces with ISCF and the NGO Drep
-            Afrique to champion the world’s most common genetic illness—one that claims nearly 1,000
-            young lives every day, mostly in Africa, and primarily affects Black communities.
-          </p>
-          <p>
-            With her new role, Cathy isn’t just lighting up nightlife—she’s igniting hope. She’s
-            launching a series of fundraising events to support access to DREPAF, the only treatment
-            proven to help children with severe forms of the disease, soon available at cost in
-            Senegal. Her goal is crystal clear: to give every child a fighting chance to celebrate
-            not just their fifth birthday, but a lifetime beyond.
-          </p>
-        </div>
-        <div className="mt-16 flex items-center justify-center">
-          <Image
-            src="/images/events/nikki-beach.jpg"
-            width={500}
-            height={200}
-            className="mx-auto h-auto w-auto max-w-96"
-            alt="Cathy Guetta for Sickle Cell Disease"
-          />
-        </div>
       </div>
-      {/*<div className="mt-16 flex items-center justify-center gap-4">*/}
-      {/*  <Image*/}
-      {/*    src="/images/cathyguetta-logo-ambassador.png"*/}
-      {/*    width={500}*/}
-      {/*    height={200}*/}
-      {/*    className="mx-auto h-auto w-auto max-w-72"*/}
-      {/*    alt="Cathy Guetta"*/}
-      {/*  />*/}
-      {/*</div>*/}
+      <div className="mt-24 flex items-center justify-center gap-4">
+        <Image
+          src="/images/cathyguetta-logo-ambassador.png"
+          width={500}
+          height={200}
+          className="mx-auto h-auto w-auto max-w-72"
+          alt="Cathy Guetta"
+        />
+      </div>
     </Section>
   );
 }

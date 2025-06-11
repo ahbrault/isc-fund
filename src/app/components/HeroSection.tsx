@@ -14,16 +14,16 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
         </div>
         <div className="mx-auto inline-flex flex-wrap items-center gap-x-2">
           <span className="text-lg font-medium text-white">
-            Cathy Guetta for Sickle Cell Disease
+            St Tropez - Cathy Guetta for Sickle Cell
           </span>
         </div>
-        {/*<Image*/}
-        {/*  src="/images/events/nikki-beach.jpg"*/}
-        {/*  height="500"*/}
-        {/*  width="300"*/}
-        {/*  className="mt-6 w-full"*/}
-        {/*  alt="Cathy Guetta for Sickle Cell Disease"*/}
-        {/*/>*/}
+        <Image
+          src="/images/events/nikki-beach.jpg"
+          height="500"
+          width="300"
+          className="mt-6 w-full"
+          alt="Cathy Guetta for Sickle Cell Disease"
+        />
       </div>
     );
   }
@@ -36,7 +36,7 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
       <div className="mx-auto mr-2 inline-flex flex-wrap items-center gap-x-1 font-medium">
         <span className="text-sm text-white">July 15th, 2025</span>
         <span className="hidden text-sm text-white md:block">·</span>
-        <span className="text-sm text-white">Cathy Guetta for Sickle Cell Disease</span>
+        <span className="text-sm text-white">St Tropez - Cathy Guetta for Sickle Cell</span>
       </div>
     </div>
   );
@@ -72,7 +72,7 @@ const HeroSection = () => {
             globally, with limited access to life-saving treatments.
           </p>
           <p className="text-white md:text-lg">
-            This silent epidemic claims more lives than HIV/AIDS in Africa...
+            This silent epidemic claims more children lives than...
           </p>
           <Button href={APP_ROUTES.donate.path} className="my-4 w-full font-bold md:w-auto">
             Donate Now

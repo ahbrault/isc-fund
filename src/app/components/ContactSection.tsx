@@ -31,8 +31,8 @@ const ContactSection: React.FC<ContactSectionProps> = () => {
         <p className="mb-4 text-xl font-semibold">
           For any inquiries, please feel free to contact Emmanuel Jayr, Co-founder and Treasurer of
           the ISC Fund, at{' '}
-          <Link href="mailto:manujayr@gmail.com" target="_blank" className="underline">
-            manujayr@gmail.com
+          <Link href="mailto:manu@iscfund.com" target="_blank" className="underline">
+            manu@iscfund.com
           </Link>
           .
         </p>
