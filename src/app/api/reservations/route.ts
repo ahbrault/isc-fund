@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 
 interface ReservationRequestBody {
   eventSlug: string;
-  tableName?: string;
   totalSeats: number;
   paymentOption: 'full' | 'partial';
   bookingType: 'individual' | 'table';
@@ -27,7 +26,7 @@ export async function POST(req: Request) {
   try {
     const body = (await req.json()) as ReservationRequestBody;
 
-    const { eventSlug, tableName, totalSeats, paymentOption, hostInfo, guests } = body;
+    const { eventSlug, totalSeats, paymentOption, hostInfo, guests } = body;
 
     if (!eventSlug || !totalSeats || !paymentOption || !hostInfo || !guests) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -63,7 +62,6 @@ export async function POST(req: Request) {
       // Step 1: Create reservation
       const reservation = await tx.tableReservation.create({
         data: {
-          tableName,
           totalSeats,
           eventId: event.id,
           status: 'PENDING',
@@ -115,7 +113,7 @@ export async function POST(req: Request) {
       amount: Math.round(amountToPay * 100),
       currency: event.currency,
       receipt_email: hostGuest.email || '',
-      description: `Gala Reservation: ${tableName || `Table for ${totalSeats}`}`,
+      description: `Gala Reservation: Table for ${totalSeats}`,
       automatic_payment_methods: { enabled: true },
       metadata: paymentMetadata,
     });

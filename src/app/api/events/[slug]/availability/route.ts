@@ -1,9 +1,9 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/common';
-import { NextResponse } from 'next/server';
 
-export async function GET(request: Request, { params }: { params: { slug: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   try {
-    const slug = params.slug;
+    const { slug } = await params;
 
     const event = await prisma.event.findUnique({
       where: { slug },
@@ -14,12 +14,7 @@ export async function GET(request: Request, { params }: { params: { slug: string
       return NextResponse.json({ error: 'Event not found' }, { status: 404 });
     }
 
-    // --- 1. Advanced Availability Logic ---
-    // Calculate the date for one week ago from now.
     const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-
-    // Count guests who have either paid OR have a pending reservation
-    // that is less than a week old.
     const reservedSeatsCount = await prisma.tableGuest.count({
       where: {
         reservation: { eventId: event.id },
