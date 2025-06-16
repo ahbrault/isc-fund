@@ -8,6 +8,7 @@ import { BookingForm, BookingFormData } from './BookingForm';
 import { PaymentCheckout } from './PaymentCheckout';
 import { SummaryCard } from './SummaryCard';
 import { Event, EventAvailability } from '@/common';
+import 'react-phone-number-input/style.css';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
@@ -94,7 +95,7 @@ export function BookingClient({
               currency: event.currency.toUpperCase(),
               compactDisplay: 'short',
             }).format(event.seatPrice)}{' '}
-            per guest
+            donation per guest
           </p>
           {/*<p className="mt-4 text-center text-lg font-semibold text-gray-900">*/}
           {/*  Seats left: {initialAvailability.availableSeats} / {initialAvailability.totalSeats}*/}

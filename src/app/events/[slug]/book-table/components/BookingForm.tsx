@@ -11,7 +11,7 @@ import {
 } from 'react-hook-form';
 import CountrySelect, { countries, Country } from './CountrySelect';
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
-import { PhoneInput } from '@/app/events/[slug]/book-table/components/PhoneInput';
+import PhoneInputLibrary from 'react-phone-number-input';
 
 export interface BookingFormData {
   bookingType: 'individual' | 'table';
@@ -81,17 +81,23 @@ const HostInfoFields = ({
       )}
     </div>
     <div>
+      <label className="block text-sm font-medium text-gray-900">Phone number</label>
       <Controller
         name="hostInfo.phone"
         control={control}
-        rules={{
-          required: 'Phone number is required',
-          minLength: { value: 10, message: 'Please enter a valid phone number' },
-        }}
-        render={({ field, fieldState: { error } }) => (
-          <PhoneInput value={field.value} onChange={field.onChange} error={error} />
+        rules={{ required: 'Phone number is required' }}
+        render={({ field }) => (
+          <PhoneInputLibrary
+            {...field}
+            international
+            defaultCountry="FR"
+            className="mt-1 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-base text-gray-900 focus-within:border-indigo-600 focus-within:ring-1 focus-within:ring-indigo-600"
+          />
         )}
       />
+      {errors.hostInfo?.phone && (
+        <p className="mt-1 text-sm text-red-600">{errors.hostInfo.phone.message}</p>
+      )}
     </div>
     <div>
       <label htmlFor="address_line1" className="text-sm font-medium text-gray-800">
