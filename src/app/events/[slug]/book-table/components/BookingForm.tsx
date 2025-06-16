@@ -11,6 +11,7 @@ import {
 } from 'react-hook-form';
 import CountrySelect, { countries, Country } from './CountrySelect';
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
+import { PhoneInput } from '@/app/events/[slug]/book-table/components/PhoneInput';
 
 export interface BookingFormData {
   bookingType: 'individual' | 'table';
@@ -32,7 +33,7 @@ export interface BookingFormData {
 }
 
 interface Props {
-  onFormSubmit: (dataForDb: any) => Promise<void>;
+  onFormSubmit: (formData: BookingFormData) => Promise<void>;
   isLoading: boolean;
 }
 
@@ -78,6 +79,19 @@ const HostInfoFields = ({
       {errors.hostInfo?.email && (
         <p className="mt-1 text-sm text-red-600">{errors.hostInfo.email.message}</p>
       )}
+    </div>
+    <div>
+      <Controller
+        name="hostInfo.phone"
+        control={control}
+        rules={{
+          required: 'Phone number is required',
+          minLength: { value: 10, message: 'Please enter a valid phone number' },
+        }}
+        render={({ field, fieldState: { error } }) => (
+          <PhoneInput value={field.value} onChange={field.onChange} error={error} />
+        )}
+      />
     </div>
     <div>
       <label htmlFor="address_line1" className="text-sm font-medium text-gray-800">
@@ -155,7 +169,7 @@ export function BookingForm({ onFormSubmit, isLoading }: Props) {
     defaultValues: {
       bookingType: undefined,
       totalSeats: 2,
-      paymentOption: 'partial',
+      paymentOption: 'full',
       hostInfo: {
         name: '',
         email: '',
@@ -220,20 +234,8 @@ export function BookingForm({ onFormSubmit, isLoading }: Props) {
     }
   };
 
-  // 5. La fonction qui transforme les données avant de les envoyer
   const processAndSubmit = async (formData: BookingFormData) => {
-    const payload = JSON.parse(JSON.stringify(formData));
-
-    await onFormSubmit({
-      ...payload,
-      hostInfo: {
-        ...payload.hostInfo,
-        address: {
-          ...payload.hostInfo.address,
-          country: payload.hostInfo.address.country?.name, // Le nom du pays pour la BDD
-        },
-      },
-    });
+    await onFormSubmit(formData);
   };
 
   const renderContent = () => {
@@ -314,8 +316,8 @@ export function BookingForm({ onFormSubmit, isLoading }: Props) {
         return (
           <div className="space-y-4 rounded-md border border-gray-200 p-4">
             <h3 className="text-lg font-semibold text-gray-800">How many seats at your table?</h3>
-            <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
-              {[...Array(12)].map((_, i) => {
+            <div className="grid grid-cols-3 gap-2 sm:grid-cols-3">
+              {[...Array(9)].map((_, i) => {
                 const seatCount = i + 2;
                 return (
                   <label
@@ -342,61 +344,61 @@ export function BookingForm({ onFormSubmit, isLoading }: Props) {
             </div>
           </div>
         );
+      // case 2:
+      //   return (
+      //     <div className="space-y-4 rounded-md border border-gray-200 p-4">
+      //       <h3 className="text-lg font-semibold text-gray-800">Who is paying?</h3>
+      //       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      //         <label
+      //           htmlFor="pay_partial"
+      //           className="b-gray-50 relative flex h-full flex-col justify-start rounded-md border p-4 transition-all hover:cursor-not-allowed"
+      //         >
+      //           <input
+      //             type="radio"
+      //             id="pay_partial"
+      //             value="partial"
+      //             className="sr-only"
+      //             {...register('paymentOption')}
+      //             // TODO Reactivate later
+      //             // onClick={() => {
+      //             //   setValue('paymentOption', 'partial');
+      //             //   setCurrentStep(3);
+      //             // }}
+      //           />
+      //           <span className="font-medium text-gray-800">Pay My Share</span>
+      //           <div className="text-sm text-gray-500">
+      //             You will pay for your seat, and guests will pay for theirs.
+      //           </div>
+      //           <div className="pt-4">
+      //             <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+      //               Coming soon
+      //             </span>
+      //           </div>
+      //         </label>
+      //         <label
+      //           htmlFor="pay_full"
+      //           className="relative flex h-full flex-col justify-start rounded-md border p-4 shadow-sm transition-all hover:cursor-pointer hover:bg-gray-100"
+      //         >
+      //           <input
+      //             type="radio"
+      //             id="pay_full"
+      //             value="full"
+      //             className="sr-only"
+      //             {...register('paymentOption')}
+      //             onClick={() => {
+      //               setValue('paymentOption', 'full');
+      //               setCurrentStep(3);
+      //             }}
+      //           />
+      //           <span className="font-medium text-gray-800">Pay for Full Table</span>
+      //           <div className="text-sm text-gray-500">
+      //             You will pay for all seats at the table now.
+      //           </div>
+      //         </label>
+      //       </div>
+      //     </div>
+      //   );
       case 2:
-        return (
-          <div className="space-y-4 rounded-md border border-gray-200 p-4">
-            <h3 className="text-lg font-semibold text-gray-800">Who is paying?</h3>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <label
-                htmlFor="pay_partial"
-                className="b-gray-50 relative flex h-full flex-col justify-start rounded-md border p-4 transition-all hover:cursor-not-allowed"
-              >
-                <input
-                  type="radio"
-                  id="pay_partial"
-                  value="partial"
-                  className="sr-only"
-                  {...register('paymentOption')}
-                  // TODO Reactivate later
-                  // onClick={() => {
-                  //   setValue('paymentOption', 'partial');
-                  //   setCurrentStep(3);
-                  // }}
-                />
-                <span className="font-medium text-gray-800">Pay My Share</span>
-                <div className="text-sm text-gray-500">
-                  You will pay for your seat, and guests will pay for theirs.
-                </div>
-                <div className="pt-4">
-                  <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-                    Coming soon
-                  </span>
-                </div>
-              </label>
-              <label
-                htmlFor="pay_full"
-                className="relative flex h-full flex-col justify-start rounded-md border p-4 shadow-sm transition-all hover:cursor-pointer hover:bg-gray-100"
-              >
-                <input
-                  type="radio"
-                  id="pay_full"
-                  value="full"
-                  className="sr-only"
-                  {...register('paymentOption')}
-                  onClick={() => {
-                    setValue('paymentOption', 'full');
-                    setCurrentStep(3);
-                  }}
-                />
-                <span className="font-medium text-gray-800">Pay for Full Table</span>
-                <div className="text-sm text-gray-500">
-                  You will pay for all seats at the table now.
-                </div>
-              </label>
-            </div>
-          </div>
-        );
-      case 3:
         return (
           <div className="space-y-4 rounded-md border border-gray-200 p-4">
             <h3 className="text-lg font-semibold text-gray-800">Your Information as Host</h3>
@@ -404,7 +406,7 @@ export function BookingForm({ onFormSubmit, isLoading }: Props) {
             <HostInfoFields register={register} errors={errors} control={control} />
           </div>
         );
-      case 4:
+      case 3:
         return (
           <div className="space-y-4 rounded-md border border-gray-200 p-4">
             <h3 className="text-lg font-semibold text-gray-800">Guest Names</h3>
@@ -463,7 +465,7 @@ export function BookingForm({ onFormSubmit, isLoading }: Props) {
             {isLoading ? 'Processing...' : 'Continue to Payment'}
           </button>
         )}
-        {currentStep === 3 && bookingType === 'table' && (
+        {currentStep === 2 && bookingType === 'table' && (
           <button
             type={paymentOption === 'full' ? 'submit' : 'button'}
             onClick={handleNext}
@@ -477,7 +479,7 @@ export function BookingForm({ onFormSubmit, isLoading }: Props) {
                 : 'Next'}
           </button>
         )}
-        {currentStep === 4 && bookingType === 'table' && (
+        {currentStep === 3 && bookingType === 'table' && (
           <button
             type="submit"
             disabled={isLoading}

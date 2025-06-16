@@ -46,17 +46,15 @@ model TableReservation {
 }
 
 model TableGuest {
-  id   String @id @default(uuid())
-  name String
-
+  id      String  @id @default(uuid())
+  name    String
   email   String?
   phone   String?
   address Json?
-
   isHost  Boolean @default(false)
-  hasPaid Boolean @default(false)
 
-  paymentIntentId String? @unique
+  paymentStatus   PaymentStatus @default(PENDING)
+  paymentIntentId String?       @unique
 
   reservationId String
   reservation   TableReservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
@@ -65,4 +63,10 @@ model TableGuest {
 enum ReservationStatus {
   PENDING
   COMPLETE
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
 }
