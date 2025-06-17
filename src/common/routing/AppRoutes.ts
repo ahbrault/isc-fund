@@ -22,8 +22,15 @@ const thankYou: RouteType = {
   build: () => '/thank-you',
 };
 
+const eventBookTable: RouteType = {
+  id: 'eventBookTableRoute',
+  path: '/events/:slug/book-table',
+  build: (slug: string) => `/events/${slug}/book-table`,
+};
+
 export const APP_ROUTES = Object.freeze({
   home,
   donate,
   thankYou,
+  eventBookTable,
 });

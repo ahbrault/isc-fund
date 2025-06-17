@@ -2,11 +2,12 @@ import React from 'react';
 import { NextPage } from 'next';
 import { Footer, Header } from '@/components';
 import {
-  AuctionCatalogSection,
+  // AuctionCatalogSection,
   BannerSection,
   ContactSection,
   DonateSection,
   DrepafSection,
+  EventPresentationSection,
   HeroSection,
   WhatIsSickleSection,
 } from './components';
@@ -18,7 +19,8 @@ const LandingPage: NextPage = () => {
 
       <main className="pt-20">
         <HeroSection />
-        <AuctionCatalogSection />
+        {/*<AuctionCatalogSection />*/}
+        <EventPresentationSection />
         <WhatIsSickleSection />
         <BannerSection />
         <DrepafSection />
