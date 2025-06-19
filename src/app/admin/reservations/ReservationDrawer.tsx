@@ -2,7 +2,7 @@
 
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import { XMarkIcon, ClockIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import Stripe from 'stripe';
 
@@ -27,7 +27,27 @@ function StripePaymentDetails({ paymentIntentId }: { paymentIntentId: string }) 
 
   const charge = paymentIntent.latest_charge as Stripe.Charge;
 
-  console.log('charge', charge);
+  const baseStatusClass = 'font-medium';
+  const statusStyles: { [key: string]: string } = {
+    // Success status
+    succeeded: `${baseStatusClass} text-green-600`,
+    // In-progress statuses
+    processing: `${baseStatusClass} text-blue-600`,
+    // Action-required baseStatusClass
+    requires_action: `${baseStatusClass} text-yellow-800`,
+    requires_capture: `${baseStatusClass} text-yellow-800`,
+    requires_confirmation: `${baseStatusClass} text-yellow-800`,
+    requires_payment_method: `${baseStatusClass} text-yellow-800`,
+    // Terminal statuses
+    canceled: `${baseStatusClass} text-gray-600`,
+    // Default/fallback style
+    default: `${baseStatusClass} text-gray-600 `,
+  };
+
+  // Helper to format the status text for readability
+  const formatStatus = (status: string) => {
+    return status.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+  };
 
   return (
     <div className="mt-8 space-y-8">
@@ -36,7 +56,9 @@ function StripePaymentDetails({ paymentIntentId }: { paymentIntentId: string }) 
         <dl className="mt-2 divide-y divide-gray-200 border-b border-t border-gray-200">
           <div className="flex justify-between py-3 text-sm font-medium">
             <dt className="text-gray-500">Status</dt>
-            <dd className="font-medium capitalize text-green-600">{paymentIntent.status}</dd>
+            <span className={statusStyles[paymentIntent.status] || statusStyles.default}>
+              {formatStatus(paymentIntent.status)}
+            </span>
           </div>
           <div className="flex justify-between py-3 text-sm font-medium">
             <dt className="text-gray-500">Date</dt>
@@ -93,21 +115,6 @@ export function ReservationDrawer({
   reservation: any | null;
   onClose: () => void;
 }) {
-  const queryClient = useQueryClient();
-  console.log('reservation', reservation);
-
-  const togglePaymentMutation = useMutation({
-    mutationFn: async (guestId: string) => {
-      const res = await fetch(`/api/admin/guests/${guestId}/toggle-payment`, { method: 'PATCH' });
-      if (!res.ok) throw new Error('Failed to update status');
-      return res.json();
-    },
-    onSuccess: () => {
-      // When the mutation is successful, invalidate the main reservations query to refetch data
-      queryClient.invalidateQueries({ queryKey: ['reservations'] });
-    },
-  });
-
   const host: GuestWithAddress = reservation?.guests.find((g: GuestWithAddress) => g.isHost);
   const otherGuests: GuestWithAddress[] = reservation?.guests.filter(
     (g: GuestWithAddress) => !g.isHost
@@ -210,15 +217,6 @@ export function ReservationDrawer({
                                 <p className="mb-0 ml-3 text-sm font-medium text-gray-900">
                                   {guest.name} {guest.isHost && '(Host)'}
                                 </p>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <button
-                                  onClick={() => togglePaymentMutation.mutate(guest.id)}
-                                  disabled={togglePaymentMutation.isPending}
-                                  className="rounded bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                                >
-                                  Toggle Paid
-                                </button>
                               </div>
                             </li>
                           ))}
