@@ -2,7 +2,6 @@
 
 import {
   ColumnDef,
-  flexRender,
   getCoreRowModel,
   getSortedRowModel,
   SortingState,
@@ -11,7 +10,7 @@ import {
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
-import { ArrowUpIcon, ArrowDownIcon, ArrowsUpDownIcon } from '@heroicons/react/20/solid';
+import { DataTable } from '@/components';
 
 export type Payment = {
   id: string;
@@ -150,7 +149,7 @@ export default function ClientPaymentsDashboard() {
   });
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="justify-between md:flex">
         <h1 className="mb-6 text-3xl font-bold text-indigo-500">
           Payments Dashboard (Live from Stripe)
@@ -222,48 +221,7 @@ export default function ClientPaymentsDashboard() {
             />
           </div>
 
-          <div className="overflow-x-auto rounded-md bg-white shadow-sm ring-1 ring-gray-200">
-            <table className="min-w-full divide-y divide-gray-300 text-sm">
-              <thead className="bg-gray-100">
-                {table.getHeaderGroups().map(headerGroup => (
-                  <tr key={headerGroup.id}>
-                    {headerGroup.headers.map(header => {
-                      const sorted = header.column.getIsSorted();
-                      return (
-                        <th
-                          key={header.id}
-                          onClick={header.column.getToggleSortingHandler()}
-                          className="group cursor-pointer px-4 py-3 text-left font-semibold text-gray-900"
-                        >
-                          <div className="inline-flex items-center gap-1 text-gray-900">
-                            {flexRender(header.column.columnDef.header, header.getContext())}
-                            {sorted === 'asc' ? (
-                              <ArrowUpIcon className="h-4 w-4 fill-gray-900" />
-                            ) : sorted === 'desc' ? (
-                              <ArrowDownIcon className="h-4 w-4 fill-gray-900" />
-                            ) : (
-                              <ArrowsUpDownIcon className="invisible h-4 w-4 fill-gray-500 group-hover:visible" />
-                            )}
-                          </div>
-                        </th>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {table.getRowModel().rows.map(row => (
-                  <tr key={row.id}>
-                    {row.getVisibleCells().map(cell => (
-                      <td key={cell.id} className="px-4 py-3 text-gray-700">
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <DataTable table={table} isLoading={isLoading} />
         </>
       )}
     </div>

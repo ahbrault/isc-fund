@@ -10,6 +10,7 @@ import Image from 'next/image';
 
 const navigationItems = [
   { name: 'Payments', href: '/admin/payments', startsWith: '/admin/payments' },
+  { name: 'Reservations', href: '/admin/reservations', startsWith: '/admin/reservations' },
   { name: 'Bids', href: '/admin/bids', startsWith: '/admin/bids' },
   { name: 'Raffle', href: '/admin/raffle', startsWith: '/admin/raffle' },
 ];
@@ -26,7 +27,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <AdminAuthGate>
         <div className="min-h-full">
           <Disclosure as="nav" className="border-b border-gray-200 bg-white">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <div className="flex h-16 justify-between">
                 <div className="flex">
                   <div className="flex shrink-0 items-center">

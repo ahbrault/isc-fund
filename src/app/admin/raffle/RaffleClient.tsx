@@ -69,7 +69,7 @@ export default function RaffleClient() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="items-center justify-between md:flex">
         <h1 className="mb-6 text-3xl font-bold text-indigo-500">Lottery Raffle Winners</h1>
         <button
