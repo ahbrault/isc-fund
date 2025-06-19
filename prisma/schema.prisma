@@ -46,12 +46,13 @@ model TableReservation {
 }
 
 model TableGuest {
-  id      String  @id @default(uuid())
-  name    String
-  email   String?
-  phone   String?
-  address Json?
-  isHost  Boolean @default(false)
+  id          String  @id @default(uuid())
+  name        String
+  companyName String?
+  email       String?
+  phone       String?
+  address     Json?
+  isHost      Boolean @default(false)
 
   paymentStatus   PaymentStatus @default(PENDING)
   paymentIntentId String?       @unique

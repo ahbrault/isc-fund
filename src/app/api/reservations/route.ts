@@ -11,6 +11,7 @@ interface ReservationRequestBody {
   paymentOption: 'full' | 'partial';
   hostInfo: {
     name: string;
+    companyName?: string;
     email: string;
     phone?: string;
     address: {

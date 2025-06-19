@@ -20,33 +20,44 @@ export function PaymentCheckout({ billingDetails, onSuccessfulPayment }: Props) 
     e.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
     setIsLoading(true);
     setMessage(null);
 
-    // This is the core of the payment processing.
+    const stripeBillingDetails: {
+      name?: string;
+      email?: string;
+      phone?: string;
+      address?: {
+        line1?: string | null;
+        city?: string | null;
+        postal_code?: string | null;
+        country?: string | null;
+      };
+    } = {
+      name: billingDetails.name,
+      email: billingDetails.email,
+      phone: billingDetails.phone,
+      address: {
+        line1: billingDetails.address.line1,
+        city: billingDetails.address.city,
+        postal_code: billingDetails.address.postal_code,
+        country: billingDetails.address.country?.value,
+      },
+    };
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         payment_method_data: {
-          billing_details: {
-            ...billingDetails,
-            address: {
-              ...billingDetails.address,
-              country: billingDetails.address.country?.name,
-            },
-          },
+          billing_details: stripeBillingDetails,
         },
       },
       redirect: 'if_required',
     });
 
-    // This point will only be reached if the payment fails or requires an extra step.
-    // If it succeeds immediately, the `else` block below is triggered.
     if (error) {
       if (error.type === 'card_error' || error.type === 'validation_error') {
         setMessage(error.message || 'An unexpected error occurred.');
@@ -54,8 +65,6 @@ export function PaymentCheckout({ billingDetails, onSuccessfulPayment }: Props) 
         setMessage('An unexpected error occurred.');
       }
     } else {
-      // The payment was successful and did not require a redirect.
-      // We can now update our UI to show the confirmation step.
       onSuccessfulPayment();
     }
 
@@ -71,15 +80,6 @@ export function PaymentCheckout({ billingDetails, onSuccessfulPayment }: Props) 
             layout: {
               type: 'tabs',
               defaultCollapsed: false,
-            },
-            defaultValues: {
-              billingDetails: {
-                ...billingDetails,
-                address: {
-                  ...billingDetails.address,
-                  country: billingDetails.address.country?.name,
-                },
-              },
             },
           }}
           onChange={() => setMessage(null)}

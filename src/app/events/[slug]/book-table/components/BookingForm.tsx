@@ -20,6 +20,7 @@ export interface BookingFormData {
   paymentOption: 'full' | 'partial';
   hostInfo: {
     name: string;
+    companyName?: string;
     email: string;
     phone?: string;
     address: {
@@ -62,6 +63,19 @@ const HostInfoFields = ({
         <p className="mt-1 text-sm text-red-600">{errors.hostInfo.name.message}</p>
       )}
     </div>
+    <div>
+      <label htmlFor="companyName" className="text-sm font-medium text-gray-800">
+        Company Name (Optional)
+      </label>
+      <input
+        type="text"
+        id="companyName"
+        placeholder="e.g., ISC Fund Inc."
+        {...register('hostInfo.companyName')} // No validation needed, it's optional
+        className="mt-1 w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 transition-all placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
+      />
+    </div>
+
     <div>
       <label htmlFor="hostEmail" className="text-sm font-medium text-gray-800">
         Email Address
