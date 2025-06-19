@@ -18,7 +18,6 @@ export type Country = {
   name: string;
 };
 
-// La liste des pays extraite de votre HTML
 export const countries: Country[] = [
   { value: 'AF', name: 'Afghanistan' },
   { value: 'AX', name: 'Åland Islands' },
@@ -259,7 +258,6 @@ export const countries: Country[] = [
   { value: 'ZW', name: 'Zimbabwe' },
 ];
 
-// Props pour notre composant contrôlé
 interface CountrySelectProps {
   value: Country | null;
   onChange: (country: Country | null) => void;
@@ -277,13 +275,9 @@ export default function CountrySelect({ value, onChange, error }: CountrySelectP
         });
 
   return (
-    // Combobox est déjà un bon choix car il est sémantiquement un champ de formulaire
     <Field>
       <Label className="text-sm font-medium text-gray-900">Country</Label>
-      <Combobox
-        value={value}
-        onChange={onChange} // Utilise la fonction onChange de react-hook-form
-      >
+      <Combobox value={value} onChange={onChange}>
         <div className="relative mt-1">
           <ComboboxInput
             className="block w-full rounded-md bg-white py-2 pl-3 pr-12 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 transition-all placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"

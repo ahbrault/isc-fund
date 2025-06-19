@@ -1,4 +1,4 @@
-'use client'; // This directive is crucial and applies to this entire file.
+'use client';
 
 import React, { useState } from 'react';
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';

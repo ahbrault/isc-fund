@@ -13,6 +13,7 @@ const navigationItems = [
   { name: 'Reservations', href: '/admin/reservations', startsWith: '/admin/reservations' },
   { name: 'Bids', href: '/admin/bids', startsWith: '/admin/bids' },
   { name: 'Raffle', href: '/admin/raffle', startsWith: '/admin/raffle' },
+  { name: <>Go to website &rarr;</>, href: '/', target: '_blank' },
 ];
 
 function classNames(...classes: string[]) {
@@ -51,14 +52,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                     {navigationItems.map(item => (
                       <Link
-                        key={item.name}
+                        key={item.name.toString()}
                         href={item.href}
                         className={classNames(
-                          pathname?.startsWith(item.startsWith)
+                          item?.startsWith && pathname?.startsWith(item.startsWith)
                             ? 'border-indigo-500 text-gray-900'
                             : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
                           'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
                         )}
+                        target={item?.target ?? '_self'}
                       >
                         {item.name}
                       </Link>
@@ -89,11 +91,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <div className="space-y-1 pb-3 pt-2">
                 {navigationItems.map(item => (
                   <DisclosureButton
-                    key={item.name}
+                    key={item.name.toString()}
                     as={Link}
                     href={item.href}
                     className={classNames(
-                      pathname?.startsWith(item.startsWith)
+                      item?.startsWith && pathname?.startsWith(item.startsWith)
                         ? 'border-indigo-500 text-gray-900'
                         : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
                       'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
