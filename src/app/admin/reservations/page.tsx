@@ -10,6 +10,7 @@ import {
 } from '@tanstack/react-table';
 import { useMemo, useState } from 'react';
 import { DataTable } from '@/components';
+import { ReservationDrawer } from './ReservationDrawer';
 
 type ReservationData = {
   id: string;
@@ -31,6 +32,7 @@ type ReservationData = {
 
 export default function AdminReservationsPage() {
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [selectedReservation, setSelectedReservation] = useState<ReservationData | null>(null);
 
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: ['reservations'],
@@ -121,6 +123,18 @@ export default function AdminReservationsPage() {
         accessorKey: 'createdAt',
         cell: info => new Date(info.getValue<string>()).toLocaleString(),
       },
+      {
+        id: 'actions',
+        header: () => <span className="sr-only">Actions</span>,
+        cell: ({ row }) => (
+          <button
+            onClick={() => setSelectedReservation(row.original)}
+            className="text-sm font-semibold text-indigo-600"
+          >
+            View<span className="sr-only">, {row.original.host?.name}</span>
+          </button>
+        ),
+      },
     ],
     []
   );
@@ -136,6 +150,11 @@ export default function AdminReservationsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+      <ReservationDrawer
+        reservation={selectedReservation}
+        onClose={() => setSelectedReservation(null)}
+      />
+
       <div className="justify-between md:flex">
         <h1 className="mb-6 text-3xl font-bold text-indigo-500">Table Reservations</h1>
         <button

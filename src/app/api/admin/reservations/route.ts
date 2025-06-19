@@ -37,10 +37,7 @@ export async function GET() {
               companyName: host.companyName,
             }
           : null,
-        guests: res.guests.map(g => ({
-          name: g.name,
-          paymentStatus: g.paymentStatus,
-        })),
+        guests: res.guests,
       };
     });
 
