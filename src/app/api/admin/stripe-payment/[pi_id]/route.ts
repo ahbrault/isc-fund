@@ -1,9 +1,9 @@
 import { stripe } from '@/common/config/stripe';
 import { NextResponse } from 'next/server';
 
-export async function GET(request: Request, { params }: { params: { pi_id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ pi_id: string }> }) {
   try {
-    const paymentIntentId = params.pi_id;
+    const { pi_id: paymentIntentId } = await params;
 
     if (!paymentIntentId) {
       return NextResponse.json({ error: 'Payment Intent ID is required' }, { status: 400 });

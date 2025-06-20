@@ -2,11 +2,13 @@
 
 import React, { useState } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
-import { BookingFormData } from './BookingForm';
 
 interface Props {
   onSuccessfulPayment: () => void;
-  billingDetails: BookingFormData['hostInfo'];
+  billingDetails: {
+    name: string;
+    email: string;
+  };
 }
 
 export function PaymentCheckout({ billingDetails, onSuccessfulPayment }: Props) {
@@ -26,33 +28,14 @@ export function PaymentCheckout({ billingDetails, onSuccessfulPayment }: Props) 
     setIsLoading(true);
     setMessage(null);
 
-    const stripeBillingDetails: {
-      name?: string;
-      email?: string;
-      phone?: string;
-      address?: {
-        line1?: string | null;
-        city?: string | null;
-        postal_code?: string | null;
-        country?: string | null;
-      };
-    } = {
-      name: billingDetails.name,
-      email: billingDetails.email,
-      phone: billingDetails.phone,
-      address: {
-        line1: billingDetails.address.line1,
-        city: billingDetails.address.city,
-        postal_code: billingDetails.address.postal_code,
-        country: billingDetails.address.country?.value,
-      },
-    };
-
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         payment_method_data: {
-          billing_details: stripeBillingDetails,
+          billing_details: {
+            name: billingDetails.name,
+            email: billingDetails.email,
+          },
         },
       },
       redirect: 'if_required',

@@ -1,12 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  BuildingOffice2Icon,
-  UserIcon,
-  EnvelopeIcon,
-  TicketIcon,
-} from '@heroicons/react/24/outline';
+import { UserIcon, EnvelopeIcon, TicketIcon } from '@heroicons/react/24/outline';
 import { BookingFormData } from './BookingForm';
 
 interface SummaryCardProps {
@@ -29,7 +24,7 @@ export const SummaryCard: React.FC<SummaryCardProps> = ({
   // Currency formatter for a clean display
   const formattedAmount = new Intl.NumberFormat(currency === 'eur' ? 'fr-FR' : 'en-US', {
     style: 'currency',
-    currency: currency.toUpperCase(), // Change this according to your event's currency
+    currency: currency.toUpperCase(),
   }).format(totalAmount / 100); // Stripe works in cents
 
   // Creates a clear description of what is being paid for
@@ -59,15 +54,6 @@ export const SummaryCard: React.FC<SummaryCardProps> = ({
             <p className="mb-0 font-medium text-gray-900">{hostInfo.name}</p>
           </div>
         </div>
-        {hostInfo.companyName && (
-          <div className="flex items-center">
-            <BuildingOffice2Icon className="mr-4 h-5 w-5 flex-shrink-0 stroke-indigo-600" />
-            <div>
-              <p className="mb-0 text-sm text-gray-500">Company</p>
-              <p className="mb-0 font-medium text-gray-900">{hostInfo.companyName}</p>
-            </div>
-          </div>
-        )}
         <div className="flex items-center">
           <EnvelopeIcon className="mr-4 h-5 w-5 flex-shrink-0 stroke-indigo-600" />
           <div>

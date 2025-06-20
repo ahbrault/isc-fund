@@ -283,6 +283,7 @@ export default function CountrySelect({ value, onChange, error }: CountrySelectP
             className="block w-full rounded-md bg-white py-2 pl-3 pr-12 text-lg text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 transition-all placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
             onChange={event => setQuery(event.target.value)}
             onBlur={() => setQuery('')}
+            name="country"
             displayValue={(country: Country) => country?.name || ''}
             placeholder="Select a country"
           />

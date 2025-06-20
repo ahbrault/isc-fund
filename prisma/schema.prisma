@@ -34,15 +34,17 @@ model Event {
 }
 
 model TableReservation {
-  id         String            @id @default(uuid())
-  createdAt  DateTime          @default(now())
-  totalSeats Int
-  status     ReservationStatus @default(PENDING)
+  id              String   @id @default(uuid())
+  createdAt       DateTime @default(now())
+  totalSeats      Int
+  managementToken String   @unique @default(uuid())
+
+  status    ReservationStatus @default(PENDING)
+  createdBy CreatedBy         @default(USER)
 
   eventId String
-  event   Event  @relation(fields: [eventId], references: [id])
-
-  guests TableGuest[]
+  event   Event        @relation(fields: [eventId], references: [id])
+  guests  TableGuest[]
 }
 
 model TableGuest {
@@ -70,4 +72,9 @@ enum PaymentStatus {
   PENDING
   PAID
   FAILED
+}
+
+enum CreatedBy {
+  USER
+  ADMIN
 }

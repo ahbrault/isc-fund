@@ -1,9 +1,9 @@
-// pages/api/webhooks/stripe.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { buffer } from 'micro';
 import { stripe } from '@/common/config/stripe';
 import { prisma } from '@/common';
 import Stripe from 'stripe';
+import { PaymentStatus } from '@prisma/client';
 
 export const config = {
   api: {
@@ -36,24 +36,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (event.type) {
     case 'payment_intent.succeeded':
       if (!reservationId || !guestId) {
-        console.warn('[Stripe Webhook] Missing metadata. Skipping.');
+        console.warn('[Stripe Webhook] Missing metadata on successful payment. Skipping.');
         break;
       }
 
+      console.log(
+        `[Stripe Webhook] Processing successful payment for reservation ${reservationId}`
+      );
       try {
         if (metadata.payingFor === 'full_table') {
           await prisma.$transaction(async tx => {
             await tx.tableGuest.update({
               where: { id: guestId },
-              data: { paymentStatus: 'PAID', paymentIntentId: paymentIntent.id },
+              data: { paymentStatus: PaymentStatus.PAID, paymentIntentId: paymentIntent.id },
             });
 
             await tx.tableGuest.updateMany({
-              where: {
-                reservationId,
-                id: { not: guestId },
-              },
-              data: { paymentStatus: 'PAID' },
+              where: { reservationId, id: { not: guestId } },
+              data: { paymentStatus: PaymentStatus.PAID },
             });
 
             await tx.tableReservation.update({
@@ -68,14 +68,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           await prisma.$transaction(async tx => {
             await tx.tableGuest.update({
               where: { id: guestId },
-              data: { paymentStatus: 'PAID', paymentIntentId: paymentIntent.id },
+              data: { paymentStatus: PaymentStatus.PAID, paymentIntentId: paymentIntent.id },
             });
 
             const unpaidGuests = await tx.tableGuest.count({
-              where: {
-                reservationId,
-                paymentStatus: { not: 'PAID' },
-              },
+              where: { reservationId, paymentStatus: { not: PaymentStatus.PAID } },
             });
 
             if (unpaidGuests === 0) {
@@ -88,7 +85,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           });
         }
       } catch (err) {
-        console.error('[Stripe Webhook] Error updating database:', err);
+        console.error('[Stripe Webhook] Error updating database on success:', err);
         return res.status(500).json({ error: 'Database update failed' });
       }
 
@@ -96,15 +93,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     case 'payment_intent.payment_failed':
       console.warn(`[Stripe Webhook] Payment failed for intent ${paymentIntent.id}`);
-
       if (guestId) {
         await prisma.tableGuest.update({
           where: { id: guestId },
-          data: { paymentStatus: 'FAILED' },
+          data: { paymentStatus: PaymentStatus.FAILED },
         });
         console.log(`[Stripe Webhook] Guest ${guestId} marked as FAILED`);
       }
-
       break;
 
     default:

@@ -1,53 +1,45 @@
 import { prisma } from '@/common';
 import { stripe } from '@/common/config/stripe';
 import { NextResponse } from 'next/server';
+import { PaymentStatus } from '@prisma/client';
 
-// The request body interface is complete
 interface ReservationRequestBody {
   eventSlug: string;
   bookingType: 'individual' | 'table';
-  joinByEmail?: string;
   totalSeats: number;
   paymentOption: 'full' | 'partial';
   hostInfo: {
     name: string;
-    companyName?: string;
     email: string;
-    phone?: string;
-    address: {
-      line1: string;
-      city: string;
-      postal_code: string;
-      country: string;
-    };
   };
-  guests: { name: string }[];
 }
 
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as ReservationRequestBody;
-    const { eventSlug, bookingType, joinByEmail, hostInfo, totalSeats, paymentOption, guests } =
-      body;
+    const { eventSlug, bookingType, hostInfo, paymentOption } = body;
+    const totalSeats = Number(body.totalSeats);
 
-    // --- 1. Find the Event ---
+    // --- 1. Validate minimal required fields ---
+    if (!eventSlug || !bookingType || !hostInfo?.name || !hostInfo?.email || !totalSeats) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    // --- 2. Fetch Event ---
     const event = await prisma.event.findUnique({ where: { slug: eventSlug } });
     if (!event) {
       return NextResponse.json({ error: 'Event not found' }, { status: 404 });
     }
 
-    // --- 2. Advanced Availability Check ---
-    const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    // --- 3. Advanced Availability Check (to prevent race conditions) ---
     const reservedSeatsCount = await prisma.tableGuest.count({
       where: {
         reservation: { eventId: event.id },
-        OR: [{ paymentStatus: 'PAID' }, { reservation: { createdAt: { gte: oneWeekAgo } } }],
+        paymentStatus: PaymentStatus.PAID,
       },
     });
 
-    const seatsForThisBooking = bookingType === 'table' ? totalSeats : 1;
-
-    if (reservedSeatsCount + seatsForThisBooking > event.totalSeats) {
+    if (reservedSeatsCount + totalSeats > event.totalSeats) {
       const availableSeats = event.totalSeats - reservedSeatsCount;
       return NextResponse.json(
         { error: `Not enough seats available. Only ${availableSeats} seats left.` },
@@ -55,94 +47,59 @@ export async function POST(req: Request) {
       );
     }
 
-    let reservationId: string;
-    let guestId: string;
-    let amountToPay: number;
-    let paymentMetadata: { [key: string]: string } = {};
-
-    // --- 3. Handle different booking types ---
-
-    if (bookingType === 'individual' && joinByEmail) {
-      // --- SCENARIO A: Join an existing table ---
-      const guestToJoin = await prisma.tableGuest.findFirst({
-        where: { email: joinByEmail, reservation: { eventId: event.id } },
-        include: { reservation: true },
-      });
-
-      if (!guestToJoin) {
-        return NextResponse.json(
-          { error: 'No reservation found with this email for this event.' },
-          { status: 404 }
-        );
-      }
-
-      const tableGuestCount = await prisma.tableGuest.count({
-        where: { reservationId: guestToJoin.reservationId },
-      });
-
-      if (tableGuestCount >= guestToJoin.reservation.totalSeats) {
-        return NextResponse.json({ error: 'This table is already full.' }, { status: 409 });
-      }
-
-      const newGuest = await prisma.tableGuest.create({
+    // --- 4. Create Reservation Shell in a Transaction ---
+    const { newReservation, hostGuest } = await prisma.$transaction(async tx => {
+      // Step A: Create the reservation record
+      const reservation = await tx.tableReservation.create({
         data: {
-          ...hostInfo,
-          isHost: false,
-          paymentStatus: 'PENDING',
-          reservationId: guestToJoin.reservationId,
+          totalSeats: totalSeats,
+          eventId: event.id,
+          status: PaymentStatus.PENDING,
         },
       });
 
-      reservationId = newGuest.reservationId;
-      guestId = newGuest.id;
-      amountToPay = event.seatPrice;
-      paymentMetadata = { reservationId, guestId };
-    } else {
-      // --- SCENARIO B & C: Create a new reservation (for a table or an individual) ---
-      const { newReservation, hostGuest } = await prisma.$transaction(async tx => {
-        const reservation = await tx.tableReservation.create({
-          data: {
-            totalSeats: seatsForThisBooking,
-            eventId: event.id,
-            status: 'PENDING',
-          },
-        });
-
-        const host = await tx.tableGuest.create({
-          data: {
-            ...hostInfo,
-            isHost: true,
-            paymentStatus: 'PENDING',
-            reservationId: reservation.id,
-          },
-        });
-
-        if (bookingType === 'table' && guests.length > 0) {
-          await tx.tableGuest.createMany({
-            data: guests.map(guest => ({
-              name: guest.name,
-              isHost: false,
-              paymentStatus: 'PENDING',
-              reservationId: reservation.id,
-            })),
-          });
-        }
-        return { newReservation: reservation, hostGuest: host };
+      // Step B: Create the host guest with minimal info
+      const host = await tx.tableGuest.create({
+        data: {
+          name: hostInfo.name,
+          email: hostInfo.email,
+          isHost: true,
+          paymentStatus: PaymentStatus.PENDING,
+          reservationId: reservation.id,
+        },
       });
 
-      reservationId = newReservation.id;
-      guestId = hostGuest.id;
-      amountToPay =
-        bookingType === 'table' && paymentOption === 'full'
-          ? event.seatPrice * totalSeats
-          : event.seatPrice;
-      paymentMetadata = { reservationId, guestId };
-      if (bookingType === 'table' && paymentOption === 'full') {
-        paymentMetadata.payingFor = 'full_table';
+      // Step C: If it's a table, create placeholder guests to reserve the seats
+      if (bookingType === 'table' && totalSeats > 1) {
+        const guestPlaceholders = Array.from({ length: totalSeats - 1 }).map((_, index) => ({
+          name: `Guest ${index + 1}`,
+          isHost: false,
+          paymentStatus: PaymentStatus.PENDING,
+          reservationId: reservation.id,
+        }));
+        await tx.tableGuest.createMany({
+          data: guestPlaceholders,
+        });
       }
+
+      return { newReservation: reservation, hostGuest: host };
+    });
+
+    // --- 5. Create Stripe Payment Intent ---
+    let amountToPay: number;
+    const paymentMetadata: { [key: string]: string } = {
+      reservationId: newReservation.id,
+      guestId: hostGuest.id,
+    };
+
+    if (bookingType === 'table' && paymentOption === 'full') {
+      amountToPay = event.seatPrice * totalSeats;
+      paymentMetadata.payingFor = 'full_table';
+    } else {
+      // For individual bookings or partial table payment, host pays for one seat.
+      amountToPay = event.seatPrice;
     }
 
-    // --- 4. Create Stripe Payment Intent ---
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(amountToPay * 100),
       currency: event.currency,
@@ -152,10 +109,11 @@ export async function POST(req: Request) {
       metadata: paymentMetadata,
     });
 
-    // --- 5. Return Response to Client ---
+    // --- 6. Return the necessary info to the client ---
     return NextResponse.json({
       clientSecret: paymentIntent.client_secret,
-      reservationId,
+      reservationId: newReservation.id,
+      managementToken: newReservation.managementToken,
       amount: amountToPay,
       currency: event.currency,
     });
