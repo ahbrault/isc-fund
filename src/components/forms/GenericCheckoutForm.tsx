@@ -230,7 +230,7 @@ export default function GenericCheckoutForm({
         {mode === 'donation' || mode === 'auction' ? (
           <label className="block">
             <span className="text-sm font-medium text-gray-800">
-              {mode === 'auction' ? 'Bid Amount (USD)' : 'Donation Amount (USD)'}
+              {mode === 'auction' ? 'Bid Amount (EUR)' : 'Donation Amount (EUR)'}
             </span>
             <input
               type="number"

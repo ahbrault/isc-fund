@@ -12,9 +12,9 @@ import {
 import { SummaryCard } from '@/components';
 
 const donationOptions = [
-  { id: 'price_1RGfQ3LgzWiYznm9S4Lt5nh9', label: '$60 – Help 1 child', amount: 60 },
-  { id: 'price_1RGfTqLgzWiYznm9pTmmVIFP', label: '$600 – Help 10 children', amount: 600 },
-  { id: 'price_1RGfTuLgzWiYznm9Xlay7FL6', label: '$6000 – Help 100 children', amount: 6000 },
+  { id: 'price_1RGfQ3LgzWiYznm9S4Lt5nh9', label: '60€ – Help 1 child', amount: 60 },
+  { id: 'price_1RGfTqLgzWiYznm9pTmmVIFP', label: '600€ – Help 10 children', amount: 600 },
+  { id: 'price_1RGfTuLgzWiYznm9Xlay7FL6', label: '6000$ – Help 100 children', amount: 6000 },
   { id: 'custom', label: 'Custom amount', amount: 0 },
 ];
 
@@ -194,7 +194,7 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
                     })}
                     className="block w-full grow border-0 bg-transparent py-1.5 pl-2 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm"
                   />
-                  <span className="shrink-0 text-sm text-gray-500">USD</span>
+                  <span className="shrink-0 text-sm text-gray-500">EUR</span>
                 </div>
                 {errors.customAmount && selectedOption.id === 'custom' && (
                   <p className="mt-1 text-sm text-red-600">Please enter a valid amount.</p>
