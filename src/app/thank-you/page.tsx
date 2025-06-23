@@ -93,7 +93,7 @@ function ReturnClient() {
         </p>
         {amount && (
           <p>
-            <strong>Amount:</strong> ${amount.toFixed(2)}
+            <strong>Amount:</strong> {amount.toFixed(2)}€
           </p>
         )}
       </div>

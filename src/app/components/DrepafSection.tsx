@@ -27,7 +27,7 @@ const DrepafSection = () => {
           mortality among patients with Sickle Cell Disease using the hydroxyurea molecule.
         </p>
         <p>
-          The only hydroxyurea treatment offered at cost, priced between $25 and $60 for a child
+          The only hydroxyurea treatment offered at cost, priced between 25€ and 6$0 for a child
           weighing approximately 22 to 66 pounds (treatment cost may vary based on the dosage
           prescribed by the prescribing physician
         </p>
@@ -46,7 +46,7 @@ const DrepafSection = () => {
             mortality among patients with Sickle Cell Disease using the hydroxyurea molecule.
           </p>
           <p>
-            The only hydroxyurea treatment offered at cost, priced between $25 and $60 for a child
+            The only hydroxyurea treatment offered at cost, priced between 25€ and 60€ for a child
             weighing approximately 22 to 66 pounds (treatment cost may vary based on the dosage
             prescribed by the prescribing physician
           </p>

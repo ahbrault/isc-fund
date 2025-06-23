@@ -49,7 +49,7 @@ export default function DonatePage() {
             email: summary.email,
             phone: summary.phone,
             customAmount:
-              summary.amount && !['$60', '$600', '$6000'].includes(summary.label)
+              summary.amount && !['60€', '600€', '6000€'].includes(summary.label)
                 ? summary.amount
                 : undefined,
           }}

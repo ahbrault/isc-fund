@@ -178,9 +178,9 @@ export default function ClientPaymentsDashboard() {
         <>
           <div className="mb-8 grid grid-cols-1 gap-px bg-gray-900/5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { name: 'Total', value: `$${(getTotal() / 100).toLocaleString()}` },
-              { name: 'Donations', value: `$${(getTotal('donation') / 100).toLocaleString()}` },
-              { name: 'Lotteries', value: `$${(getTotal('lottery') / 100).toLocaleString()}` },
+              { name: 'Total', value: `${(getTotal() / 100).toLocaleString()}€` },
+              { name: 'Donations', value: `${(getTotal('donation') / 100).toLocaleString()}€` },
+              { name: 'Lotteries', value: `${(getTotal('lottery') / 100).toLocaleString()}€` },
             ].map(stat => (
               <div
                 key={stat.name}

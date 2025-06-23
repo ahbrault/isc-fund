@@ -54,7 +54,7 @@ export default function AuctionCatalogSection() {
                     ? lot.reserve
                       ? 'AUCTION – WITH RESERVE'
                       : 'AUCTION – NO RESERVE'
-                    : `LOTTERY – $${lot.ticketPrice} TICKET`}
+                    : `LOTTERY – ${lot.ticketPrice}€ TICKET`}
                 </span>
 
                 <h3 className="text-lg font-semibold text-gray-900">{lot.title}</h3>

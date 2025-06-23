@@ -7,7 +7,7 @@ const DonateSection = () => {
   return (
     <Section backgroundColor="bg-primary" id="donate">
       <div className="md:hidden">
-        <h2 className="text-4xl uppercase text-white">You can save a life for $60 per year</h2>
+        <h2 className="text-4xl uppercase text-white">You can save a life for 60€ per year</h2>
         <Image
           src="/images/kid-2.png"
           width={300}
@@ -35,7 +35,7 @@ const DonateSection = () => {
 
       <div className="hidden items-center md:grid md:grid-cols-2 md:gap-x-16">
         <h2 className="col-span-2 text-center text-5xl uppercase text-white">
-          You can save a life for $60 per year
+          You can save a life for 60€ per year
         </h2>
         <div>
           <p className="text-lg text-white">

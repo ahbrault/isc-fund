@@ -14,7 +14,7 @@ import { SummaryCard } from '@/components';
 const donationOptions = [
   { id: 'price_1RGfQ3LgzWiYznm9S4Lt5nh9', label: '60€ – Help 1 child', amount: 60 },
   { id: 'price_1RGfTqLgzWiYznm9pTmmVIFP', label: '600€ – Help 10 children', amount: 600 },
-  { id: 'price_1RGfTuLgzWiYznm9Xlay7FL6', label: '6000$ – Help 100 children', amount: 6000 },
+  { id: 'price_1RGfTuLgzWiYznm9Xlay7FL6', label: '6000€ – Help 100 children', amount: 6000 },
   { id: 'custom', label: 'Custom amount', amount: 0 },
 ];
 
@@ -181,7 +181,7 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
                   Enter custom amount
                 </label>
                 <div className="mt-1 flex items-center rounded-md bg-white px-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-indigo-600">
-                  <span className="shrink-0 text-sm text-gray-500">$</span>
+                  <span className="shrink-0 text-sm text-gray-500">€</span>
                   <input
                     id="customAmount"
                     type="number"

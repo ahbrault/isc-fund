@@ -32,7 +32,7 @@ export default function SummaryCard({ name, email, phone, action, amount }: Prop
       </div>
       {amount && (
         <p className="inline-flex w-full justify-between text-lg font-medium text-indigo-600">
-          <strong className="text-bold text-indigo-600">Total:</strong> ${amount.toFixed(2)}
+          <strong className="text-bold text-indigo-600">Total:</strong> {amount.toFixed(2)}€
         </p>
       )}
     </div>
