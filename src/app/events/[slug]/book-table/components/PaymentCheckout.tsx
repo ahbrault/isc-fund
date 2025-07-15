@@ -64,6 +64,9 @@ export function PaymentCheckout({ billingDetails, onSuccessfulPayment }: Props) 
               type: 'tabs',
               defaultCollapsed: false,
             },
+            defaultValues: {
+              billingDetails,
+            },
           }}
           onChange={() => setMessage(null)}
         />

@@ -1,6 +1,5 @@
 import { validateEnv } from '@/common';
 
-// Valider les variables d'environnement au démarrage
 try {
   validateEnv();
 } catch (error) {
@@ -12,6 +11,8 @@ try {
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['framer-motion'],
+  // This will prevent Vercel from issuing redirects on your API routes.
+  trailingSlash: false,
 };
 
 module.exports = nextConfig;

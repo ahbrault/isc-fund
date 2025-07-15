@@ -86,7 +86,7 @@ export async function POST(req: Request) {
     });
 
     // --- 5. Create Stripe Payment Intent ---
-    let amountToPay: number;
+    let amountToPay = 0;
     const paymentMetadata: { [key: string]: string } = {
       reservationId: newReservation.id,
       guestId: hostGuest.id,
