@@ -36,7 +36,7 @@ const PartnersSection = () => {
           align-items: center;
           gap: 60px;
           width: max-content;
-          animation: marquee-scroll 80s linear infinite;
+          animation: marquee-scroll 90s linear infinite;
         }
         .marquee-track:hover { animation-play-state: paused; }
         .marquee-set {

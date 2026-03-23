@@ -1,9 +1,12 @@
 import { prisma } from '@/common';
 import { NextResponse, NextRequest } from 'next/server';
 
-export async function DELETE(req: NextRequest) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const id = req.nextUrl.pathname.split('/').pop();
+    const { id } = await params;
     if (!id) {
       return NextResponse.json({ error: 'Missing bid ID' }, { status: 400 });
     }
