@@ -11,12 +11,19 @@ import {
 } from '@/common';
 import { SummaryCard } from '@/components';
 
+const galaOptions = [
+  { id: 'gala_vip_table', label: 'VIP Table – €5,000 (up to 8 guests)', amount: 5000 },
+  { id: 'gala_individual', label: 'Individual Seat – €500', amount: 500 },
+];
+
 const donationOptions = [
   { id: 'price_1RGfQ3LgzWiYznm9S4Lt5nh9', label: '60€ – Help 1 child', amount: 60 },
   { id: 'price_1RGfTqLgzWiYznm9pTmmVIFP', label: '600€ – Help 10 children', amount: 600 },
   { id: 'price_1RGfTuLgzWiYznm9Xlay7FL6', label: '6000€ – Help 100 children', amount: 6000 },
   { id: 'custom', label: 'Custom amount', amount: 0 },
 ];
+
+const allOptions = [...galaOptions, ...donationOptions];
 
 type FormValues = DonorInfo & {
   customAmount?: number;
@@ -56,7 +63,7 @@ const donorFields = [
 ] as const;
 
 export default function DonationSelector({ onClientSecret, onSummary, defaultValues }: Props) {
-  const [selectedOption, setSelectedOption] = useState(donationOptions[0]);
+  const [selectedOption, setSelectedOption] = useState(galaOptions[0]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
@@ -97,7 +104,9 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
         body: JSON.stringify({
           amount,
           email: infos.email,
-          description: selectedOption.label,
+          description: galaOptions.some(g => g.id === selectedOption.id)
+            ? `Gala 2026 – ${selectedOption.label}`
+            : selectedOption.label,
           metadata: {
             name: infos.name,
             phone: infos.phone,
@@ -128,9 +137,9 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
 
   useEffect(() => {
     if (defaultValues?.customAmount) {
-      setSelectedOption(donationOptions.find(d => d.id === 'custom') || donationOptions[0]);
+      setSelectedOption(allOptions.find(d => d.id === 'custom') || galaOptions[0]);
     } else if (defaultValues) {
-      const match = donationOptions.find(opt => opt.amount === defaultValues.customAmount);
+      const match = allOptions.find(opt => opt.amount === defaultValues.customAmount);
       if (match) setSelectedOption(match);
     }
   }, [defaultValues]);
@@ -142,16 +151,29 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
 
   return isLoaded ? (
     <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8 w-full max-w-xl space-y-6">
-      <h2 className="text-center text-2xl font-semibold text-indigo-600">Make a donation</h2>
+      <div className="space-y-4">
+        <div className="relative flex items-center justify-center">
+          <div className="absolute h-px w-12 bg-gradient-to-r from-transparent via-secondary to-transparent" />
+        </div>
+        <h2 className="text-center text-4xl font-bold tracking-wider text-secondary">
+          Gala Dinner — July 16th, 2026
+        </h2>
+        <p className="text-center text-sm font-light tracking-wide text-gray-600">
+          Cathy Guetta for Sickle Cell — 2nd Edition at Nikki Beach Saint-Tropez
+        </p>
+        <div className="relative flex items-center justify-center">
+          <div className="h-px w-12 bg-gradient-to-r from-transparent via-secondary to-transparent" />
+        </div>
+      </div>
 
-      <div className="grid gap-4">
-        {donationOptions.map(opt => (
+      <div className="grid gap-3">
+        {galaOptions.map(opt => (
           <label
             key={opt.id}
-            className={`relative block cursor-pointer rounded-md border p-4 shadow-sm transition-all hover:shadow-md ${
+            className={`relative block cursor-pointer rounded-lg border-l-4 p-4 shadow-md transition-all duration-200 hover:shadow-lg ${
               selectedOption.id === opt.id
-                ? 'border-indigo-600 bg-indigo-50 ring-2 ring-indigo-400'
-                : 'border-gray-200'
+                ? 'bg-secondary/8 border-secondary border-l-primary ring-2 ring-secondary/30'
+                : 'border-gray-200 border-l-gray-200 bg-white'
             }`}
           >
             <input
@@ -163,10 +185,62 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
               checked={selectedOption.id === opt.id}
             />
             <div className="flex items-center justify-between">
-              <span className="font-medium text-gray-800">{opt.label}</span>
+              <span
+                className={`font-semibold ${selectedOption.id === opt.id ? 'text-secondary' : 'text-gray-900'}`}
+              >
+                {opt.label}
+              </span>
               {selectedOption.id === opt.id && (
                 <svg
-                  className="h-5 w-5 fill-indigo-600 text-indigo-600"
+                  className="h-6 w-6 fill-primary text-primary"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" />
+                </svg>
+              )}
+            </div>
+          </label>
+        ))}
+      </div>
+
+      <div className="relative my-8 flex items-center">
+        <div className="flex-grow border-t border-gray-200" />
+        <span className="mx-4 flex-shrink text-xs tracking-widest text-gray-400">
+          ◆ or make a donation ◆
+        </span>
+        <div className="flex-grow border-t border-gray-200" />
+      </div>
+
+      <h3 className="text-center text-lg font-semibold text-gray-800">Support the cause</h3>
+
+      <div className="grid gap-3">
+        {donationOptions.map(opt => (
+          <label
+            key={opt.id}
+            className={`relative block cursor-pointer rounded-lg border p-4 shadow-md transition-all duration-200 hover:shadow-lg ${
+              selectedOption.id === opt.id
+                ? 'border-indigo-500 bg-indigo-50/70 ring-2 ring-indigo-300'
+                : 'border-gray-200 bg-white'
+            }`}
+          >
+            <input
+              type="radio"
+              name="donation"
+              value={opt.id}
+              className="sr-only"
+              onChange={() => setSelectedOption(opt)}
+              checked={selectedOption.id === opt.id}
+            />
+            <div className="flex items-center justify-between">
+              <span
+                className={`font-semibold ${selectedOption.id === opt.id ? 'text-indigo-900' : 'text-gray-900'}`}
+              >
+                {opt.label}
+              </span>
+              {selectedOption.id === opt.id && (
+                <svg
+                  className="h-6 w-6 fill-indigo-600 text-indigo-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -180,8 +254,8 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
                 <label htmlFor="customAmount" className="block text-sm font-medium text-gray-900">
                   Enter custom amount
                 </label>
-                <div className="mt-1 flex items-center rounded-md bg-white px-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-indigo-600">
-                  <span className="shrink-0 text-sm text-gray-500">€</span>
+                <div className="mt-1 flex items-center rounded-lg bg-white px-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-indigo-600">
+                  <span className="shrink-0 text-sm font-medium text-gray-600">€</span>
                   <input
                     id="customAmount"
                     type="number"
@@ -194,7 +268,7 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
                     })}
                     className="block w-full grow border-0 bg-transparent py-1.5 pl-2 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm"
                   />
-                  <span className="shrink-0 text-sm text-gray-500">EUR</span>
+                  <span className="shrink-0 text-sm font-medium text-gray-600">EUR</span>
                 </div>
                 {errors.customAmount && selectedOption.id === 'custom' && (
                   <p className="mt-1 text-sm text-red-600">Please enter a valid amount.</p>
@@ -236,7 +310,11 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-md bg-indigo-600 py-2 text-white hover:bg-indigo-700"
+        className={`w-full rounded-lg py-2.5 font-semibold text-white transition-all duration-200 ${
+          galaOptions.some(g => g.id === selectedOption.id)
+            ? 'bg-secondary hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50'
+            : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500/50'
+        } disabled:opacity-70`}
       >
         {loading ? 'Preparing…' : 'Continue to payment'}
       </button>

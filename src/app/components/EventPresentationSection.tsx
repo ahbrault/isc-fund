@@ -11,25 +11,25 @@ const EventBanner = () => {
     <div className="my-8 grid items-center justify-center gap-4 rounded-lg bg-white/30 p-4 sm:grid-cols-2 sm:gap-8">
       <div className="order-2 sm:order-1">
         <h2 className="text-left">An Unforgettable Night of Hope and Elegance</h2>
-        <h3 className="font-bold">Tuesday, July 15th, 2025 at Nikki Beach Saint-Tropez</h3>
+        <h3 className="font-bold">Thursday, July 16th, 2026 at Nikki Beach Saint-Tropez</h3>
         <p className="mt-4">
           Step into a world of chic sophistication and radiant glamour, where breathtaking decor
           meets the energy of an extraordinary cause.
         </p>
         <p className="mt-4">
-          With Cathy’s unique charisma and creative spirit, this first Gala will transcend
-          expectations to become a truly magical and unforgettable experience.
+          With Cathy’s unique charisma and creative spirit, this Gala will transcend expectations to
+          become a truly magical and unforgettable experience.
         </p>
         <p className="mt-4 font-semibold">Good vibes, Emotions, and Great People</p>
         <p className="mt-4 font-semibold">Exclusive auction – One-of-a-kind experiences & items</p>
         <p className="mt-4 font-semibold">Your participation can save a child’s life.</p>
         <p className="mt-8 font-bold">DONATION PACKAGES:</p>
         <ul className="list-inside list-disc">
-          <li>Individual seat – €1,000</li>
-          <li>Table of 10 – €10,000</li>
+          <li>Individual seat – €500</li>
+          <li>VIP Table (up to 8 guests) – €5,000</li>
         </ul>
-        <Button className="mt-8" href={APP_ROUTES.eventBookTable.build('nikki-beach-july-25')}>
-          Book my seat
+        <Button className="mt-8" href={APP_ROUTES.donate.path}>
+          Reserve now
         </Button>
       </div>
       <Image
@@ -49,8 +49,8 @@ export default function EventPresentationSection() {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-16">
         <div className="order-2 flex flex-col items-center justify-center space-y-4 md:order-1">
           <h2 className="mb-0 text-left">
-            Cathy Guetta Named Ambassador for Sickle Cell Disease <br /> A New Light in the Fight
-            for Life!
+            Cathy Guetta Named Ambassador for Sickle Cell Disease <br /> The 2nd Edition — Expanding
+            Hope
           </h2>
           <p>
             <b>Cathy Guetta</b>, the iconic Queen of the Night and successful entrepreneur, is now
@@ -80,6 +80,55 @@ export default function EventPresentationSection() {
           />
         </div>
       </div>
+      <div className="mt-6 space-y-6">
+        <div>
+          <h3 className="relative mb-6 text-left text-xl font-bold text-secondary">
+            1st Edition Impact
+            <span className="absolute bottom-0 left-0 h-1 w-16 bg-primary"></span>
+          </h3>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-lg border border-primary/20 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
+            <p className="text-3xl font-bold text-primary">€250,000</p>
+            <p className="mt-2 text-sm text-gray-700">Raised during the gala</p>
+          </div>
+
+          <div className="rounded-lg border border-primary/20 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
+            <p className="text-3xl font-bold text-primary">95%</p>
+            <p className="mt-2 text-sm text-gray-700">Funds allocated to Drep.Afrique</p>
+          </div>
+
+          <div className="rounded-lg border border-primary/20 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
+            <p className="text-3xl font-bold text-primary">1,000</p>
+            <p className="mt-2 text-sm text-gray-700">
+              Children in Senegal receiving 3 years of free treatment
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-primary/20 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
+            <p className="text-3xl font-bold text-primary">300</p>
+            <p className="mt-2 text-sm text-gray-700">
+              African doctors trained via medical conference
+            </p>
+          </div>
+        </div>
+
+        <div className="rounded-lg border-l-4 border-secondary bg-secondary/5 p-4">
+          <p className="mb-2 font-semibold text-secondary">
+            Official launch of <b>DREPAF</b>
+          </p>
+          <p className="text-sm text-gray-700">First sickle cell treatment produced in Africa</p>
+        </div>
+
+        <div className="rounded-lg border-l-4 border-secondary bg-secondary/10 p-4">
+          <p className="font-semibold text-secondary">2026 Goal</p>
+          <p className="mt-1 text-sm text-gray-700">
+            Raise €300,000 to expand DREPAF access to Niger, Cameroon, Côte d&apos;Ivoire, DRC, and
+            Guinea.
+          </p>
+        </div>
+      </div>
       <div className="mt-24 flex items-center justify-center gap-4">
         <Image
           src="/images/cathyguetta-logo-ambassador.png"
@@ -89,6 +138,7 @@ export default function EventPresentationSection() {
           alt="Cathy Guetta"
         />
       </div>
+
       <EventBanner />
     </Section>
   );
