@@ -27,6 +27,7 @@ export async function GET() {
         id: res.id,
         createdAt: res.createdAt,
         eventName: res.event.name,
+        seatPrice: res.event.seatPrice,
         totalSeats: res.totalSeats,
         paidSeats: paidSeats,
         status: res.status,

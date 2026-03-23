@@ -4,11 +4,15 @@ import React, { useState } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { APP_ROUTES, DonorInfo } from '@/common';
 
-export default function DonationCheckout({ name, email, phone }: DonorInfo) {
+type Props = DonorInfo & { label?: string };
+
+export default function DonationCheckout({ name, email, phone, label }: Props) {
   const stripe = useStripe();
   const elements = useElements();
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const isGala = label?.startsWith('Gala 2026');
 
   const handleConfirm = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,6 +20,12 @@ export default function DonationCheckout({ name, email, phone }: DonorInfo) {
     if (!stripe || !elements) return;
 
     setLoading(true);
+
+    // Store the payment type for the thank-you page
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('payment_type', isGala ? 'gala' : 'donation');
+      if (label) sessionStorage.setItem('payment_label', label);
+    }
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -60,9 +70,11 @@ export default function DonationCheckout({ name, email, phone }: DonorInfo) {
       <button
         type="submit"
         disabled={!stripe || loading}
-        className="w-full rounded-md bg-indigo-600 py-2 text-white hover:bg-indigo-700"
+        className={`w-full rounded-md py-2 text-white ${
+          isGala ? 'bg-secondary hover:bg-secondary/90' : 'bg-indigo-600 hover:bg-indigo-700'
+        }`}
       >
-        {loading ? 'Processing…' : 'Confirm Donation'}
+        {loading ? 'Processing…' : isGala ? 'Confirm Reservation' : 'Confirm Donation'}
       </button>
       {message && <p className="text-center text-red-600">{message}</p>}
     </form>

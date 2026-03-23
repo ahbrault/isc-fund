@@ -3,7 +3,10 @@ import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
   try {
-    const event = await prisma.event.findFirstOrThrow({});
+    const event = await prisma.event.findFirstOrThrow({
+      where: { date: { gte: new Date() } },
+      orderBy: { date: 'asc' },
+    });
     return NextResponse.json(event);
   } catch (err) {
     console.error('[API Create Reservation] Error:', err);

@@ -10,33 +10,46 @@ const partners = [
   { name: 'Amiri', logo: '/images/partners/amiri.svg', width: 130 },
   { name: 'Pucci', logo: '/images/partners/pucci.svg', width: 120 },
   { name: 'APM Monaco', logo: '/images/partners/apm-monaco.svg', width: 120 },
-  { name: 'Cincoro', logo: '/images/partners/cincoro.svg', width: 140 },
+  { name: 'Cincoro Tequila', logo: '/images/partners/cincoro.svg', width: 160 },
   { name: 'Kujten', logo: '/images/partners/kujten.svg', width: 130 },
-  { name: 'Sentara', logo: '/images/partners/sentara.svg', width: 140 },
-  { name: 'So To', logo: '/images/partners/solo.svg', width: 100 },
+  { name: 'Sentara Holistic', logo: '/images/partners/sentara.svg', width: 160 },
+  { name: 'So To Saint Tropez', logo: '/images/partners/solo.svg', width: 180 },
+  { name: 'Djaayz', logo: '/images/partners/djaayz.svg', width: 130 },
+  {
+    name: 'David Guetta Tomorrowland',
+    logo: '/images/partners/david-guetta-tomorrowland.svg',
+    width: 220,
+  },
 ];
 
 const PartnersSection = () => {
   return (
     <Section id="partners" backgroundColor="bg-[#1a1a1a]">
       <style>{`
-        @keyframes marquee {
+        @keyframes marquee-scroll {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(calc(-100% - 60px)); }
         }
-        .marquee-container { overflow: hidden; }
-        .marquee-content {
-          display: inline-flex;
+        .marquee-outer { overflow: hidden; }
+        .marquee-track {
+          display: flex;
           align-items: center;
-          animation: marquee 35s linear infinite;
           gap: 60px;
-          padding-right: 60px;
+          width: max-content;
+          animation: marquee-scroll 80s linear infinite;
         }
-        .marquee-content:hover { animation-play-state: paused; }
+        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-set {
+          display: flex;
+          align-items: center;
+          gap: 60px;
+          flex-shrink: 0;
+        }
         .partner-logo {
           opacity: 0.7;
           filter: brightness(0) invert(1);
           transition: all 0.3s ease;
+          flex-shrink: 0;
         }
         .partner-logo:hover {
           opacity: 1;
@@ -58,18 +71,32 @@ const PartnersSection = () => {
       </div>
 
       <div className="relative mb-12">
-        <div className="marquee-container">
-          <div className="marquee-content">
-            {[...partners, ...partners].map((partner, index) => (
-              <Image
-                key={`${partner.name}-${index}`}
-                src={partner.logo}
-                alt={partner.name}
-                width={partner.width}
-                height={50}
-                className="partner-logo h-10 w-auto md:h-12"
-              />
-            ))}
+        <div className="marquee-outer">
+          <div className="marquee-track">
+            <div className="marquee-set">
+              {partners.map(partner => (
+                <Image
+                  key={partner.name}
+                  src={partner.logo}
+                  alt={partner.name}
+                  width={partner.width}
+                  height={50}
+                  className="partner-logo h-10 w-auto md:h-12"
+                />
+              ))}
+            </div>
+            <div className="marquee-set" aria-hidden="true">
+              {partners.map(partner => (
+                <Image
+                  key={`dup-${partner.name}`}
+                  src={partner.logo}
+                  alt={partner.name}
+                  width={partner.width}
+                  height={50}
+                  className="partner-logo h-10 w-auto md:h-12"
+                />
+              ))}
+            </div>
           </div>
         </div>
         <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-[#1a1a1a] to-transparent"></div>

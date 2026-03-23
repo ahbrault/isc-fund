@@ -16,6 +16,7 @@ type ReservationData = {
   id: string;
   createdAt: string;
   eventName: string;
+  seatPrice: number;
   totalSeats: number;
   paidSeats: number;
   status: 'PENDING' | 'COMPLETE';
@@ -49,7 +50,10 @@ export default function AdminReservationsPage() {
   const stats = useMemo(() => {
     const totalReservations = reservations.length;
     const seatsConfirmed = reservations.reduce((acc, res) => acc + res.paidSeats, 0);
-    const totalRevenue = seatsConfirmed * 1000;
+    const totalRevenue = reservations.reduce(
+      (acc, res) => acc + res.paidSeats * (res.seatPrice ?? 500),
+      0
+    );
 
     return [
       { name: 'Total Tables', value: totalReservations },

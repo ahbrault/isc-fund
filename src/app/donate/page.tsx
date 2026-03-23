@@ -66,7 +66,12 @@ export default function DonatePage() {
                 }}
               />
             )}
-            <DonationCheckout name={summary.name} email={summary.email} phone={summary.phone} />
+            <DonationCheckout
+              name={summary.name}
+              email={summary.email}
+              phone={summary.phone}
+              label={summary.label}
+            />
           </Elements>
         </div>
       ) : null}

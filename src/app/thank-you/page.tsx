@@ -19,6 +19,8 @@ function ReturnClient() {
   const [email, setEmail] = useState<string | null>(null);
   const [donorInfo, setDonorInfo] = useState<DonorInfo | null>(null);
   const [amount, setAmount] = useState<number | null>(null);
+  const [paymentType, setPaymentType] = useState<string | null>(null);
+  const [paymentLabel, setPaymentLabel] = useState<string | null>(null);
 
   useEffect(() => {
     if (mode === 'bid' && lotId) {
@@ -40,6 +42,11 @@ function ReturnClient() {
     if (storedAmount) {
       setAmount(Number(storedAmount));
     }
+
+    const storedType = sessionStorage.getItem('payment_type');
+    if (storedType) setPaymentType(storedType);
+    const storedLabel = sessionStorage.getItem('payment_label');
+    if (storedLabel) setPaymentLabel(storedLabel);
 
     if (!clientSecret) {
       setStatus('error');
@@ -121,13 +128,30 @@ function ReturnClient() {
           message: 'Please wait while we verify your transaction.',
         };
       case 'succeeded':
+        if (paymentType === 'gala') {
+          return {
+            icon: <CheckCircleIcon className="mx-auto h-12 w-12 stroke-green-600" />,
+            title: 'Your reservation is confirmed!',
+            message: email
+              ? `A confirmation has been sent to ${email}.`
+              : 'Your reservation for the Gala Dinner has been confirmed.',
+            note: paymentLabel
+              ? `${paymentLabel} — July 16th, 2026 at Nikki Beach Saint-Tropez`
+              : 'Gala Dinner — July 16th, 2026 at Nikki Beach Saint-Tropez',
+            action: {
+              label: 'Back to homepage',
+              href: APP_ROUTES.home.path,
+            },
+            summary: summaryBlock,
+          };
+        }
         return {
           icon: <CheckCircleIcon className="mx-auto h-12 w-12 stroke-green-600" />,
           title: 'Thank you for your donation!',
           message: email
             ? `A receipt has been sent to ${email}.`
             : 'Your donation has been confirmed.',
-          note: 'Your support makes a real difference ❤️',
+          note: 'Your support makes a real difference',
           action: {
             label: 'Make another donation',
             href: APP_ROUTES.donate.path,
