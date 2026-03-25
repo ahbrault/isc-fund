@@ -9,7 +9,7 @@ async function main() {
       name: 'Cathy Guetta for Sickle Cell — 2nd Edition',
       date: new Date('2026-07-16T19:00:00.000Z'),
       totalSeats: 200,
-      seatPrice: 500,
+      seatPrice: 600,
       currency: 'eur',
     },
     create: {
@@ -17,7 +17,7 @@ async function main() {
       name: 'Cathy Guetta for Sickle Cell — 2nd Edition',
       date: new Date('2026-07-16T19:00:00.000Z'),
       totalSeats: 200,
-      seatPrice: 500,
+      seatPrice: 600,
       currency: 'eur',
     },
   });

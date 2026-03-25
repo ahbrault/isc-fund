@@ -12,14 +12,26 @@ import {
 import { SummaryCard } from '@/components';
 
 const galaOptions = [
-  { id: 'gala_vip_table', label: 'VIP Table – €5,000 (up to 8 guests)', amount: 5000 },
-  { id: 'gala_individual', label: 'Individual Seat – €500', amount: 500 },
+  { id: 'gala_vip_table', label: 'VIP Table – €5,000 (8 guests)', amount: 5000 },
+  { id: 'gala_individual', label: 'Individual VIP Seat – €600', amount: 600 },
 ];
 
 const donationOptions = [
-  { id: 'price_1RGfQ3LgzWiYznm9S4Lt5nh9', label: '60€ – Help 1 child', amount: 60 },
-  { id: 'price_1RGfTqLgzWiYznm9pTmmVIFP', label: '600€ – Help 10 children', amount: 600 },
-  { id: 'price_1RGfTuLgzWiYznm9Xlay7FL6', label: '6000€ – Help 100 children', amount: 6000 },
+  {
+    id: 'price_1RGfQ3LgzWiYznm9S4Lt5nh9',
+    label: '60€ – One year of treatment for 1 child',
+    amount: 60,
+  },
+  {
+    id: 'price_1RGfTqLgzWiYznm9pTmmVIFP',
+    label: '600€ – One year of treatment for 10 children',
+    amount: 600,
+  },
+  {
+    id: 'price_1RGfTuLgzWiYznm9Xlay7FL6',
+    label: '6000€ – One year of treatment for 100 children',
+    amount: 6000,
+  },
   { id: 'custom', label: 'Custom amount', amount: 0 },
 ];
 
@@ -153,16 +165,16 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
     <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-8 w-full max-w-xl space-y-6">
       <div className="space-y-4">
         <div className="relative flex items-center justify-center">
-          <div className="absolute h-px w-12 bg-gradient-to-r from-transparent via-secondary to-transparent" />
+          <div className="absolute h-px w-12 bg-gradient-to-r from-transparent via-indigo-600 to-transparent" />
         </div>
-        <h2 className="text-center text-4xl font-bold tracking-wider text-secondary">
+        <h2 className="text-center text-4xl font-bold tracking-wider text-indigo-600">
           Gala Dinner — July 16th, 2026
         </h2>
         <p className="text-center text-sm font-light tracking-wide text-gray-600">
           Cathy Guetta for Sickle Cell — 2nd Edition at Nikki Beach Saint-Tropez
         </p>
         <div className="relative flex items-center justify-center">
-          <div className="h-px w-12 bg-gradient-to-r from-transparent via-secondary to-transparent" />
+          <div className="h-px w-12 bg-gradient-to-r from-transparent via-indigo-600 to-transparent" />
         </div>
       </div>
 
@@ -170,9 +182,9 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
         {galaOptions.map(opt => (
           <label
             key={opt.id}
-            className={`relative block cursor-pointer rounded-lg border-l-4 p-4 shadow-md transition-all duration-200 hover:shadow-lg ${
+            className={`relative block cursor-pointer rounded-lg p-4 shadow-md transition-all duration-200 hover:shadow-lg ${
               selectedOption.id === opt.id
-                ? 'bg-secondary/8 border-secondary border-l-primary ring-2 ring-secondary/30'
+                ? 'border-indigo-500 bg-indigo-50/70 ring-2 ring-indigo-300'
                 : 'border-gray-200 border-l-gray-200 bg-white'
             }`}
           >
@@ -186,13 +198,13 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
             />
             <div className="flex items-center justify-between">
               <span
-                className={`font-semibold ${selectedOption.id === opt.id ? 'text-secondary' : 'text-gray-900'}`}
+                className={`font-semibold ${selectedOption.id === opt.id ? 'text-indigo-900' : 'text-gray-900'}`}
               >
                 {opt.label}
               </span>
               {selectedOption.id === opt.id && (
                 <svg
-                  className="h-6 w-6 fill-primary text-primary"
+                  className="h-6 w-6 fill-indigo-600 text-indigo-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -206,13 +218,11 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
 
       <div className="relative my-8 flex items-center">
         <div className="flex-grow border-t border-gray-200" />
-        <span className="mx-4 flex-shrink text-xs tracking-widest text-gray-400">
-          ◆ or make a donation ◆
+        <span className="mx-4 flex-shrink font-semibold tracking-widest text-gray-600">
+          or make a donation
         </span>
         <div className="flex-grow border-t border-gray-200" />
       </div>
-
-      <h3 className="text-center text-lg font-semibold text-gray-800">Support the cause</h3>
 
       <div className="grid gap-3">
         {donationOptions.map(opt => (
@@ -310,11 +320,7 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
       <button
         type="submit"
         disabled={loading}
-        className={`w-full rounded-lg py-2.5 font-semibold text-white transition-all duration-200 ${
-          galaOptions.some(g => g.id === selectedOption.id)
-            ? 'bg-secondary hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50'
-            : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500/50'
-        } disabled:opacity-70`}
+        className={`w-full rounded-lg py-2.5 font-semibold text-white transition-all duration-200 ${'bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500/50'} disabled:opacity-70`}
       >
         {loading ? 'Preparing…' : 'Continue to payment'}
       </button>

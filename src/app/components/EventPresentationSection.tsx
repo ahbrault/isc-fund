@@ -25,15 +25,15 @@ const EventBanner = () => {
         <p className="mt-4 font-semibold">Your participation can save a child’s life.</p>
         <p className="mt-8 font-bold">DONATION PACKAGES:</p>
         <ul className="list-inside list-disc">
-          <li>Individual seat – €500</li>
-          <li>VIP Table (up to 8 guests) – €5,000</li>
+          <li>Individual VIP Seat – €600</li>
+          <li>VIP Table – €5,000 (8 guests)</li>
         </ul>
         <Button className="mt-8" href={APP_ROUTES.donate.path}>
           Reserve now
         </Button>
       </div>
       <Image
-        src="/images/events/nikki-beach.jpg"
+        src="/images/events/nikki-beach-26.jpg"
         height="500"
         width="300"
         className="max-h-xl order-1 mx-auto mb-8 w-auto sm:order-2"

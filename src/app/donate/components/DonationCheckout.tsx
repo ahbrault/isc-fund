@@ -71,7 +71,7 @@ export default function DonationCheckout({ name, email, phone, label }: Props) {
         type="submit"
         disabled={!stripe || loading}
         className={`w-full rounded-md py-2 text-white ${
-          isGala ? 'bg-secondary hover:bg-secondary/90' : 'bg-indigo-600 hover:bg-indigo-700'
+          'bg-indigo-600 hover:bg-indigo-700'
         }`}
       >
         {loading ? 'Processing…' : isGala ? 'Confirm Reservation' : 'Confirm Donation'}

@@ -18,7 +18,7 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
           </span>
         </div>
         <Image
-          src="/images/events/nikki-beach.jpg"
+          src="/images/events/nikki-beach-26.jpg"
           height="500"
           width="300"
           className="mt-6 w-full"
