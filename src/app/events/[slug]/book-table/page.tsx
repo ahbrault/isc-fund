@@ -5,6 +5,29 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { APP_ROUTES, Event } from '@/common';
 import { BookingClient } from './components/BookingClient';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const event = await prisma.event.findUnique({ where: { slug } });
+  if (!event) return {};
+
+  const dateStr = event.date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  return {
+    title: `Book a Table — ${event.name}`,
+    description: `Reserve your table for ${event.name} on ${dateStr}. Support children with Sickle Cell Disease.`,
+    alternates: { canonical: `/events/${slug}/book-table` },
+  };
+}
 
 export default async function BookTablePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

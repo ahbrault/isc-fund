@@ -7,6 +7,37 @@ import Link from 'next/link';
 import AuctionLotClient from './AuctionLotClient';
 import React from 'react';
 import { ScrollToTopOnMount } from '@/components';
+import type { Metadata } from 'next';
+
+async function getLotBySlug(slug: string): Promise<Lot | null> {
+  const filePath = path.join(process.cwd(), 'public', 'data', 'lots.json');
+  const json = await fs.readFile(filePath, 'utf-8');
+  const lots: Lot[] = JSON.parse(json);
+
+  const id = parseInt(slug.replace('lot-', ''));
+  return lots.find(lot => lot.id === id) || null;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const lot = await getLotBySlug(slug);
+  if (!lot) return {};
+
+  return {
+    title: `${lot.title} — ISC Fund Auction`,
+    description: lot.shortDescription || lot.description.slice(0, 160),
+    alternates: { canonical: `/auction/${slug}` },
+    openGraph: {
+      title: `${lot.title} — ISC Fund Auction`,
+      description: lot.shortDescription || lot.description.slice(0, 160),
+      images: [{ url: lot.image, width: 800, height: 400, alt: lot.title }],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const filePath = path.join(process.cwd(), 'public', 'data', 'lots.json');
@@ -16,15 +47,6 @@ export async function generateStaticParams() {
   return lots.map(lot => ({
     slug: `lot-${lot.id}`,
   }));
-}
-
-async function getLotBySlug(slug: string): Promise<Lot | null> {
-  const filePath = path.join(process.cwd(), 'public', 'data', 'lots.json');
-  const json = await fs.readFile(filePath, 'utf-8');
-  const lots: Lot[] = JSON.parse(json);
-
-  const id = parseInt(slug.replace('lot-', ''));
-  return lots.find(lot => lot.id === id) || null;
 }
 
 export default async function AuctionLotPage({ params }: { params: Promise<{ slug: string }> }) {
