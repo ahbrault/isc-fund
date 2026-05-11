@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button, Section } from '@/components';
 import { APP_ROUTES } from '@/common';
 
@@ -32,13 +33,19 @@ const EventBanner = () => {
           Reserve now
         </Button>
       </div>
-      <Image
-        src="/images/events/nikki-beach-26.jpg"
-        height="500"
-        width="300"
+      <Link
+        href={APP_ROUTES.donate.path}
+        aria-label="Reserve your seat for the Gala"
         className="max-h-xl order-1 mx-auto mb-8 w-auto sm:order-2"
-        alt="Cathy Guetta for Sickle Cell Disease"
-      />
+      >
+        <Image
+          src="/images/events/nikki-beach-26.jpg"
+          height="500"
+          width="300"
+          className="h-auto w-auto"
+          alt="Cathy Guetta for Sickle Cell Disease"
+        />
+      </Link>
     </div>
   );
 };
