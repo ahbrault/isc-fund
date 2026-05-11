@@ -33,14 +33,22 @@ export const metadata: Metadata = {
       'ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children.',
     url: '/',
     type: 'website',
+    siteName: 'ISC Fund',
     images: [
       {
         url: '/images/events/nikki-beach-26.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'International Sickle Cell Fund',
+        width: 1023,
+        height: 1537,
+        alt: 'ISC Fund Gala 2026 — Nikki Beach flyer',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'International Sickle Cell Fund',
+    description:
+      'ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children.',
+    images: ['/images/events/nikki-beach-26.jpg'],
   },
   robots: 'index, follow',
 };
