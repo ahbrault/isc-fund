@@ -7,10 +7,10 @@ const BabiesSection = () => {
     <Section id="babies" className="relative py-20 md:py-28">
       {/* Warm gradient background with subtle radial element */}
       <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 opacity-40" />
-      <div className="bg-gradient-radial absolute right-0 top-0 -mr-48 -mt-32 h-96 w-96 rounded-full from-amber-200 via-orange-100 to-transparent opacity-15 blur-3xl" />
 
-      {/* Soft baby icon background element */}
+      {/* Decorative elements clipped to the section to avoid horizontal overflow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="bg-gradient-radial absolute right-0 top-0 -mr-48 -mt-32 h-96 w-96 rounded-full from-amber-200 via-orange-100 to-transparent opacity-15 blur-3xl" />
         <div className="absolute -right-32 -top-16 opacity-5">
           <Image src="/icons/baby.png" width={400} height={400} alt="" className="blur-sm" />
         </div>
