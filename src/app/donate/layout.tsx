@@ -17,8 +17,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/images/events/nikki-beach-26.jpg',
-        width: 1023,
-        height: 1537,
+        width: 800,
+        height: 1202,
         alt: 'ISC Fund Gala 2026 — Nikki Beach flyer',
       },
     ],
