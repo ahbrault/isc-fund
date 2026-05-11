@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Section } from '@/components';
 import Image from 'next/image';
+import Link from 'next/link';
 import { APP_ROUTES } from '@/common';
 
 const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
@@ -17,13 +18,19 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
             St Tropez - Cathy Guetta for Sickle Cell — 2nd Edition
           </span>
         </div>
-        <Image
-          src="/images/events/nikki-beach-26.jpg"
-          height="500"
-          width="300"
-          className="mt-6 w-full"
-          alt="Cathy Guetta for Sickle Cell Disease"
-        />
+        <Link
+          href={APP_ROUTES.donate.path}
+          aria-label="Reserve your seat for the Gala"
+          className="mt-6 block w-full"
+        >
+          <Image
+            src="/images/events/nikki-beach-26.jpg"
+            height="500"
+            width="300"
+            className="w-full"
+            alt="Cathy Guetta for Sickle Cell Disease"
+          />
+        </Link>
       </div>
     );
   }
