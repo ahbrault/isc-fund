@@ -219,7 +219,7 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
       <div className="relative my-8 flex items-center">
         <div className="flex-grow border-t border-gray-200" />
         <span className="mx-4 flex-shrink font-semibold tracking-widest text-gray-600">
-          or make a donation
+          or make a donation to save lives
         </span>
         <div className="flex-grow border-t border-gray-200" />
       </div>
