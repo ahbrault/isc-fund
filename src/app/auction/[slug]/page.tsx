@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import path from 'path';
 import fs from 'fs/promises';
-import { APP_ROUTES, Lot } from '@/common';
+import { APP_ROUTES, Lot, getLotBySlug as findLotBySlug } from '@/common';
 import Link from 'next/link';
 import AuctionLotClient from './AuctionLotClient';
 import React from 'react';
@@ -14,8 +14,7 @@ async function getLotBySlug(slug: string): Promise<Lot | null> {
   const json = await fs.readFile(filePath, 'utf-8');
   const lots: Lot[] = JSON.parse(json);
 
-  const id = parseInt(slug.replace('lot-', ''));
-  return lots.find(lot => lot.id === id) || null;
+  return findLotBySlug(slug, lots);
 }
 
 export async function generateMetadata({

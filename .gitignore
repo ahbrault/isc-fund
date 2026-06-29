@@ -12,6 +12,12 @@
 
 # testing
 /coverage
+/test-results
+/playwright-report
+.playwright-mcp/
+
+# catalogue source PDF (large; not served — drop locally + run scripts/extract-catalog.ts)
+*.pdf
 
 # next.js
 /.next/

@@ -1,5 +1,6 @@
 export type Lot = {
   id: number;
+  lotNumber: number;
   title: string;
   description: string;
   shortDescription?: string;
@@ -9,4 +10,7 @@ export type Lot = {
   reservePrice?: number;
   ticketPrice?: number;
   video?: string;
+  includes?: string[];
+  chapter?: string;
+  catalogPage?: number;
 };

@@ -26,6 +26,7 @@ type Props = {
 
 type FormValues = DonorInfo & {
   customAmount?: number;
+  acceptTerms?: boolean;
 };
 
 export default function GenericCheckoutForm({
@@ -51,6 +52,7 @@ export default function GenericCheckoutForm({
   } = useForm<FormValues>({ defaultValues });
 
   const watchCustomAmount = watch('customAmount');
+  const watchAcceptTerms = watch('acceptTerms');
 
   useEffect(() => {
     if (mode === 'auction' && metadata?.lot_id) {
@@ -99,16 +101,18 @@ export default function GenericCheckoutForm({
 
       if (mode === 'auction') {
         // Send to n8n webhook
-        await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK || '', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            ...infos,
-            amount,
-            metadata,
-            type: 'bid',
-          }),
-        });
+        if (process.env.NEXT_PUBLIC_N8N_WEBHOOK) {
+          await fetch(process.env.NEXT_PUBLIC_N8N_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...infos,
+              amount,
+              metadata,
+              type: 'bid',
+            }),
+          });
+        }
 
         const res = await fetch('/api/admin/bids', {
           method: 'POST',
@@ -251,9 +255,25 @@ export default function GenericCheckoutForm({
         )}
       </div>
 
+      {mode === 'auction' && (
+        <div className="space-y-2">
+          <label className="flex items-start gap-2">
+            <input
+              type="checkbox"
+              {...register('acceptTerms', { required: true })}
+              className="mt-1"
+            />
+            <span className="text-sm text-gray-800">I accept the terms &amp; conditions</span>
+          </label>
+          <a href={APP_ROUTES.auctionTerms.build()} className="text-sm text-indigo-600 underline">
+            Read the rules
+          </a>
+        </div>
+      )}
+
       <button
         type="submit"
-        disabled={loading}
+        disabled={loading || (mode === 'auction' && !watchAcceptTerms)}
         className="w-full rounded-md bg-indigo-600 py-2 text-white hover:bg-indigo-700"
       >
         {loading ? 'Processing…' : mode === 'auction' ? 'Place your bid' : 'Continue to payment'}

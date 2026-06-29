@@ -1,0 +1,129 @@
+{
+  "pages": [
+    {
+      "pageIndex": 1,
+      "image": "/images/catalog/page-01.webp",
+      "kind": "cover"
+    },
+    {
+      "pageIndex": 2,
+      "image": "/images/catalog/page-02.webp",
+      "kind": "chapter"
+    },
+    {
+      "pageIndex": 3,
+      "image": "/images/catalog/page-03.webp",
+      "kind": "chapter"
+    },
+    {
+      "pageIndex": 4,
+      "image": "/images/catalog/page-04.webp",
+      "kind": "chapter"
+    },
+    {
+      "pageIndex": 5,
+      "image": "/images/catalog/page-05.webp",
+      "kind": "lot",
+      "lotId": 1
+    },
+    {
+      "pageIndex": 6,
+      "image": "/images/catalog/page-06.webp",
+      "kind": "lot",
+      "lotId": 3
+    },
+    {
+      "pageIndex": 7,
+      "image": "/images/catalog/page-07.webp",
+      "kind": "lot",
+      "lotId": 4
+    },
+    {
+      "pageIndex": 8,
+      "image": "/images/catalog/page-08.webp",
+      "kind": "chapter"
+    },
+    {
+      "pageIndex": 9,
+      "image": "/images/catalog/page-09.webp",
+      "kind": "lot",
+      "lotId": 5
+    },
+    {
+      "pageIndex": 10,
+      "image": "/images/catalog/page-10.webp",
+      "kind": "lot",
+      "lotId": 6
+    },
+    {
+      "pageIndex": 11,
+      "image": "/images/catalog/page-11.webp",
+      "kind": "lot",
+      "lotId": 7
+    },
+    {
+      "pageIndex": 12,
+      "image": "/images/catalog/page-12.webp",
+      "kind": "lot",
+      "lotId": 8
+    },
+    {
+      "pageIndex": 13,
+      "image": "/images/catalog/page-13.webp",
+      "kind": "lot",
+      "lotId": 9
+    },
+    {
+      "pageIndex": 14,
+      "image": "/images/catalog/page-14.webp",
+      "kind": "lot",
+      "lotId": 10
+    },
+    {
+      "pageIndex": 15,
+      "image": "/images/catalog/page-15.webp",
+      "kind": "lot",
+      "lotId": 11
+    },
+    {
+      "pageIndex": 16,
+      "image": "/images/catalog/page-16.webp",
+      "kind": "lot",
+      "lotId": 12
+    },
+    {
+      "pageIndex": 17,
+      "image": "/images/catalog/page-17.webp",
+      "kind": "lot",
+      "lotId": 13
+    },
+    {
+      "pageIndex": 18,
+      "image": "/images/catalog/page-18.webp",
+      "kind": "chapter"
+    },
+    {
+      "pageIndex": 19,
+      "image": "/images/catalog/page-19.webp",
+      "kind": "lot",
+      "lotId": 14
+    },
+    {
+      "pageIndex": 20,
+      "image": "/images/catalog/page-20.webp",
+      "kind": "lot",
+      "lotId": 16
+    },
+    {
+      "pageIndex": 21,
+      "image": "/images/catalog/page-21.webp",
+      "kind": "lot",
+      "lotId": 17
+    },
+    {
+      "pageIndex": 22,
+      "image": "/images/catalog/page-22.webp",
+      "kind": "rules"
+    }
+  ]
+}

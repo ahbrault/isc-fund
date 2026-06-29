@@ -1,7 +1,7 @@
 export type RouteType = {
   id: string;
   path: string;
-  build: (...params: string[]) => string;
+  build: (...params: (string | number)[]) => string;
 };
 
 const home: RouteType = {
@@ -25,7 +25,25 @@ const thankYou: RouteType = {
 const eventBookTable: RouteType = {
   id: 'eventBookTableRoute',
   path: '/events/:slug/book-table',
-  build: (slug: string) => `/events/${slug}/book-table`,
+  build: (slug: string | number) => `/events/${slug}/book-table`,
+};
+
+const auction: RouteType = {
+  id: 'auctionRoute',
+  path: '/auction',
+  build: () => '/auction',
+};
+
+const auctionLot: RouteType = {
+  id: 'auctionLotRoute',
+  path: '/auction/lot-:id',
+  build: (id: number | string) => `/auction/lot-${id}`,
+};
+
+const auctionTerms: RouteType = {
+  id: 'auctionTermsRoute',
+  path: '/auction/terms',
+  build: () => '/auction/terms',
 };
 
 export const APP_ROUTES = Object.freeze({
@@ -33,4 +51,7 @@ export const APP_ROUTES = Object.freeze({
   donate,
   thankYou,
   eventBookTable,
+  auction,
+  auctionLot,
+  auctionTerms,
 });
