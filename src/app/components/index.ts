@@ -5,6 +5,7 @@ export { default as DrepafSection } from './DrepafSection';
 export { default as HeroSection } from './HeroSection';
 export { default as WhatIsSickleSection } from './WhatIsSickleSection';
 export { default as AuctionCatalogSection } from './AuctionCatalogSection';
+export { default as AuctionCtaSection } from './AuctionCtaSection';
 export { default as EventPresentationSection } from './EventPresentationSection';
 export { default as BabiesSection } from './BabiesSection';
 export { default as PartnersSection } from './PartnersSection';

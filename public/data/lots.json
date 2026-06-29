@@ -1,83 +1,225 @@
 [
   {
     "id": 1,
-    "title": "David Guetta Gold Record",
-    "shortDescription": "Signed gold record from David Guetta\u2019s personal collection \u2013 a rare piece of music history.",
-    "description": "An exceptional piece from David Guetta\u2019s personal collection, this gold record commemorates his most celebrated hits. Signed by the artist himself, it stands as a rare and irreplaceable piece of music history, as the industry has largely moved away from producing gold records.",
-    "image": "/images/lots/1.png",
-    "video": "/videos/david-guetta.mp4",
+    "lotNumber": 1,
+    "title": "Christian Louboutin — Shoe Toboggan",
+    "shortDescription": "One-of-a-kind monumental resin shoe sculpture by Louboutin & David LaChapelle.",
+    "description": "A unique monumental resin shoe sculpture co-created by Christian Louboutin and David LaChapelle for the 2024 'Paris Is Louboutining' Molitor show.",
+    "image": "/images/catalog/page-05.webp",
     "type": "auction",
-    "reserve": true
+    "chapter": "The Art of Collecting",
+    "catalogPage": 5,
+    "includes": [
+      "Shoe sculpture, 600 × 200 cm, made of resin",
+      "Shipping, storage and customs are the buyer's responsibility"
+    ]
   },
   {
-    "id": 2,
-    "title": "Private Dinner with Cathy Guetta in Ibiza",
-    "shortDescription": "Dinner for 2 with Cathy Guetta at a top Ibiza restaurant \u2013 glimpse into global nightlife.",
-    "description": "The winning bidder and a guest will join Cathy Guetta - the visionary behind the iconic F*** ME I'M FAMOUS! parties - for an intimate dinner for 2 people at one of Ibiza's most prestigious restaurants. This experience offers a rare glimpse into the world of global nightlife and entertainment. Travel and accommodations not included, valid between June 7, 2025 and September 20th, 2025. Subject to availability.",
-    "image": "/images/lots/2.jpg",
+    "id": 3,
+    "lotNumber": 3,
+    "title": "Petrus Double Magnum 2012",
+    "shortDescription": "A 3L double magnum of Petrus 2012 Pomerol.",
+    "description": "A double magnum (3L) of Petrus 2012 from the legendary blue-clay terroir of Pomerol.",
+    "image": "/images/catalog/page-06.webp",
     "type": "auction",
-    "reserve": true
+    "reserve": true,
+    "chapter": "The Art of Collecting",
+    "catalogPage": 6,
+    "includes": [
+      "One double magnum (3L) Petrus 2012, Pomerol",
+      "Shipping and customs are the buyer's responsibility"
+    ]
   },
   {
     "id": 4,
-    "title": "Weekend in Las Vegas with Ferrari Rentals",
-    "shortDescription": "2 nights at Fontainebleau + Ferrari rental in Vegas \u2013 unforgettable weekend.",
-    "description": "Includes 2 nights at the Fontainebleau Hotel and a Ferrari rental in Las Vegas.",
-    "image": "/images/lots/4.png",
-    "type": "auction"
+    "lotNumber": 4,
+    "title": "Mr. Brainwash — Original Artwork",
+    "shortDescription": "Signed mixed-media canvas created specially for the gala.",
+    "description": "'Mr & Mrs Classic II, 2026', a signed mixed-media canvas created specially for the gala.",
+    "image": "/images/catalog/page-07.webp",
+    "type": "auction",
+    "chapter": "The Art of Collecting",
+    "catalogPage": 7,
+    "includes": [
+      "Mr & Mrs Classic II, 2026 — Mixed Media Canvas with Frame, 104 × 104 cm",
+      "Shipping and customs are the buyer's responsibility"
+    ]
   },
   {
     "id": 5,
-    "title": "Nativa Interiors Gift Card",
-    "shortDescription": "Gift card to choose any furniture from the Nativa Interiors collection.",
-    "description": "Select the pieces of your choice in the whole Nativa Interiors collection including living, dining, bedroom, interior design\u2026",
-    "image": "/images/lots/5.png",
-    "type": "auction"
+    "lotNumber": 5,
+    "title": "France 2026 Official Team Jersey",
+    "shortDescription": "Official FIFA World Cup 2026 France jersey signed by the full squad.",
+    "description": "Official FIFA World Cup 2026 France match jersey signed by Deschamps' entire squad; delivered after the tournament. Illustration only — not the actual auction lot.",
+    "image": "/images/catalog/page-09.webp",
+    "type": "auction",
+    "chapter": "Sport Legends",
+    "catalogPage": 9,
+    "includes": [
+      "Official France 2026 World Cup jersey, signed by all players"
+    ]
   },
   {
     "id": 6,
-    "title": "Hennessy Louis XIII Tasting x10",
-    "shortDescription": "Exclusive Louis XIII tasting for 10 people \u2013 location and date arranged with brand.",
-    "description": "The LOUIS XIII \u00abXIIIth Hour experience\u00bb is a fantastic tasting for 10 guests, location to be determined based on availability and provided by a brand-team member.",
-    "image": "/images/lots/6.png",
+    "lotNumber": 6,
+    "title": "Charles Leclerc x APM Monaco",
+    "shortDescription": "Unique APM Monaco 'Yummy XXL' piece signed by Charles Leclerc.",
+    "description": "A unique APM Monaco 'Yummy XXL' jewellery piece signed by Charles Leclerc — 'Charles for Sickle Cell'.",
+    "image": "/images/catalog/page-10.webp",
     "type": "auction",
-    "reserve": true,
-    "reservePrice": 4000
+    "chapter": "Sport Legends",
+    "catalogPage": 10,
+    "includes": [
+      "APM Monaco XXL YUMMY, signed by Charles Leclerc"
+    ]
   },
   {
     "id": 7,
-    "title": "Three Days Health Retreat in Mexico",
-    "shortDescription": "Luxury wellness stay near Ensenada: 2 nights in a villa, full board & spa package.",
-    "description": "Just two hours south of San Diego and thirty minutes from Ensenada, Montevalle offers an ideal wellness retreat surrounded by natural beauty and renowned wineries. Often compared to Sonoma in Northern California, this peaceful haven blends tranquility, nature, and world-class amenities. Includes a complimentary 3 days / 2 night stay for two guests in a Villa, with 3 meals per day at Restaurant Liebre, one wellness package, and full access to amenities.",
-    "image": "/images/lots/7.png",
-    "type": "lottery",
-    "ticketPrice": 100
+    "lotNumber": 7,
+    "title": "Zinédine Zidane — Predator Cleats",
+    "shortDescription": "A pair of Adidas Predator cleats worn and signed by Zidane.",
+    "description": "A pair of Adidas Predator cleats worn and personally signed by Zinédine Zidane.",
+    "image": "/images/catalog/page-11.webp",
+    "type": "auction",
+    "chapter": "Sport Legends",
+    "catalogPage": 11,
+    "includes": [
+      "A pair of Adidas Predator, worn & signed by Zinédine Zidane"
+    ]
   },
   {
     "id": 8,
-    "title": "VIP Experience with David Guetta at LIV Beach Party",
-    "shortDescription": "DJ booth access + photo with David Guetta during his May 10th LIV Beach performance.",
-    "description": "Enjoy privileged access to David Guetta's DJ booth during his performance at the LIV Beach Party at the Fontainebleau on May 10th. The winning bidder and a guest will also have the opportunity for a personal photo with David Guetta amidst one of the most electric atmospheres in the world.",
-    "image": "/images/lots/8.png",
-    "type": "lottery",
-    "ticketPrice": 200
+    "lotNumber": 8,
+    "title": "George Russell — F1 Signed Helmet",
+    "shortDescription": "Official 1:1 replica of Russell's 2026 helmet, signed.",
+    "description": "Official 1:1 scale replica of George Russell's 2026 Bell Racing helmet, personally signed.",
+    "image": "/images/catalog/page-12.webp",
+    "type": "auction",
+    "chapter": "Sport Legends",
+    "catalogPage": 12,
+    "includes": [
+      "Official 1:1 scale replica helmet signed by George Russell"
+    ]
   },
   {
     "id": 9,
-    "title": "Cavallino Grand Weekend Package",
-    "shortDescription": "2 nights at Casa Maria Luigia + Michelin-star meals + parade access at Cavallino Classic Modena.",
-    "description": "Enjoy Cavallino Classic Modena with our complete package during Spring 2026. Cavallino Classic Modena, a one-of-a-kind \u201cConcorso d\u2019Eleganza\u201d, takes place at Casa Maria Luigia, the enchanted property of Massimo Bottura, in Enzo Ferrari\u2019s hometown. This package includes for two people: two nights at Casa Maria Luigia, 2 dinners and one lunch with wine pairing with the three Michelin stars Chef Massimo Bottura, access to the Saturday Parade and to the Sunday Tour above Maranello, and a private lunch at Casa Canossa by the Michelin-starred Chef Andrea Incerti Vezzani.",
-    "image": "/images/lots/9.png",
+    "lotNumber": 9,
+    "title": "PSG 2025-2026 Signed Jersey",
+    "shortDescription": "Official PSG two-star home shirt signed by the full squad.",
+    "description": "Official PSG 2025-2026 home (two-star) shirt signed by the full first-team squad. Illustration only — not the actual auction lot.",
+    "image": "/images/catalog/page-13.webp",
     "type": "auction",
-    "reservePrice": 24000
+    "chapter": "Sport Legends",
+    "catalogPage": 13,
+    "includes": [
+      "Official 2026 PSG home shirt (two-star jersey), signed by the full squad"
+    ]
   },
   {
     "id": 10,
-    "title": "ECU tune for your car of choice",
-    "shortDescription": "High Performance ECU tune for your car, Powered by Formula Dynamics and DME Tuning.",
-    "description": "High Performance ECU tune for your car of choice, Powered by Formula Dynamics and DME Tuning.",
-    "image": "/images/lots/10.png",
+    "lotNumber": 10,
+    "title": "Wembanyama & Gobert — Two Signed Jerseys",
+    "shortDescription": "Signed Wembanyama & Gobert jerseys + two VIP Spurs seats.",
+    "description": "Signed jerseys of Victor Wembanyama (Spurs) and Rudy Gobert (Timberwolves), plus two VIP Spurs game seats (2026/2027). Illustration only — not the actual auction lot.",
+    "image": "/images/catalog/page-14.webp",
     "type": "auction",
-    "reservePrice": 3000
+    "chapter": "Sport Legends",
+    "catalogPage": 14,
+    "includes": [
+      "Official San Antonio Spurs jersey signed by Victor Wembanyama",
+      "Official Minnesota Timberwolves jersey signed by Rudy Gobert",
+      "Two (2) tickets to an NBA Spurs home game (transport not included)"
+    ]
+  },
+  {
+    "id": 11,
+    "lotNumber": 11,
+    "title": "Ronaldinho — Brazil Team Jersey",
+    "shortDescription": "Official Brazil jersey hand-signed by Ronaldinho.",
+    "description": "Official Brazil national team jersey hand-signed by Ronaldinho.",
+    "image": "/images/catalog/page-15.webp",
+    "type": "auction",
+    "chapter": "Sport Legends",
+    "catalogPage": 15,
+    "includes": [
+      "Brazil national team jersey, personally signed by Ronaldinho"
+    ]
+  },
+  {
+    "id": 12,
+    "lotNumber": 12,
+    "title": "Alpine F1 x Perfect Moment — Signed by Gasly",
+    "shortDescription": "Silverstone Down Bomber signed by Pierre Gasly — one in the world.",
+    "description": "The Perfect Moment x Alpine F1 Team Unisex Silverstone Down Bomber jacket, signed by Pierre Gasly — one in the world.",
+    "image": "/images/catalog/page-16.webp",
+    "type": "auction",
+    "chapter": "Sport Legends",
+    "catalogPage": 16,
+    "includes": [
+      "Perfect Moment x Alpine F1 Team Unisex Silverstone Down Bomber, signed by Pierre Gasly"
+    ]
+  },
+  {
+    "id": 13,
+    "lotNumber": 13,
+    "title": "FC Barcelona — Signed Jersey + El Clásico",
+    "shortDescription": "Squad-signed Barça jersey + two premium El Clásico seats.",
+    "description": "Official 2025-2026 FC Barcelona jersey signed by the full squad, plus two premium El Clásico (Barça vs Real Madrid) seats at the new Camp Nou. Illustration only — not the actual auction lot.",
+    "image": "/images/catalog/page-17.webp",
+    "type": "auction",
+    "chapter": "Sport Legends",
+    "catalogPage": 17,
+    "includes": [
+      "2025-2026 FC Barcelona jersey signed by all players",
+      "Two premium seats for FC Barcelona vs Real Madrid",
+      "Travel and transport at the buyer's expense"
+    ]
+  },
+  {
+    "id": 14,
+    "lotNumber": 14,
+    "title": "Loewe x David Guetta — Headphones",
+    "shortDescription": "Loewe leo wireless headphones signed by David Guetta.",
+    "description": "Loewe leo wireless headphones personally signed by David Guetta.",
+    "image": "/images/catalog/page-19.webp",
+    "type": "auction",
+    "chapter": "The Art of Celebration",
+    "catalogPage": 19,
+    "includes": [
+      "Loewe leo wireless headphones, signed by David Guetta"
+    ]
+  },
+  {
+    "id": 16,
+    "lotNumber": 16,
+    "title": "SantAnna Mykonos — The Ultimate Experience x10",
+    "shortDescription": "VIP table for 10 at SantAnna Mykonos incl. €6,000 spend.",
+    "description": "A VIP table for 10 at SantAnna Mykonos (Solèy / Francis Mercier residency) on Paraga Beach, including €6,000 spend. Available 22 July / 8 Aug / 19 Aug 2026.",
+    "image": "/images/catalog/page-20.webp",
+    "type": "auction",
+    "chapter": "The Art of Celebration",
+    "catalogPage": 20,
+    "includes": [
+      "VIP table for 10",
+      "Fully curated dining experience",
+      "€6,000 spend included",
+      "VIP access & high-end hospitality"
+    ]
+  },
+  {
+    "id": 17,
+    "lotNumber": 17,
+    "title": "Pucci Fashion Show — Front-Row Seats x2",
+    "shortDescription": "Two front-row seats at the Pucci SS27 Paris show + silk scarf.",
+    "description": "A personal invitation from Creative Director Camille Miceli to the Pucci Spring-Summer 2027 Paris runway show: two front-row seats plus an exclusive Pucci silk scarf.",
+    "image": "/images/catalog/page-21.webp",
+    "type": "auction",
+    "chapter": "The Art of Celebration",
+    "catalogPage": 21,
+    "includes": [
+      "Two (2) front-row seats — Pucci Spring-Summer 27 show",
+      "Exclusive Pucci silk scarf",
+      "Show April 2027; travel and hospitality at the buyer's expense"
+    ]
   }
 ]
