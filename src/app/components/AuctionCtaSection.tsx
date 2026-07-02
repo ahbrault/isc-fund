@@ -16,13 +16,14 @@ export default function AuctionCtaSection() {
         />
         <h2 className="mb-4 text-center text-3xl font-bold text-gray-900 md:text-center">
           Cathy Guetta for Sickle Cell
-          <br />
+        </h2>
+        <p className="mb-4 text-center text-lg font-medium text-gray-700">
           Charity Gala Dinner
           <br />
           Saint-Tropez, July 16
           <br />
           Auctions Preview Catalog
-        </h2>
+        </p>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">
           Exceptional auction lots donated by our partners. Browse the lots and bid now.
         </p>
