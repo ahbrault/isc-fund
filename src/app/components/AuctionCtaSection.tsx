@@ -14,12 +14,17 @@ export default function AuctionCtaSection() {
           className="mx-auto mb-8 h-auto w-auto max-w-72 object-contain"
           alt="Cathy Guetta"
         />
-        <h2 className="mb-4 text-3xl font-bold text-gray-900">
-          The Cathy For Sickle Cell Gala Is Back
+        <h2 className="mb-4 text-center text-3xl font-bold text-gray-900 md:text-center">
+          Cathy Guetta for Sickle Cell
+          <br />
+          Charity Gala Dinner
+          <br />
+          Saint-Tropez, July 16
+          <br />
+          Auctions Preview Catalog
         </h2>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">
-          July 16, 2026, Nikki Beach Saint-Tropez. Exceptional auction lots donated by our
-          partners. Bid now.
+          Exceptional auction lots donated by our partners. Browse the lots and bid now.
         </p>
         <Button href={APP_ROUTES.auction.build()} className="font-bold">
           Browse the Catalogue
