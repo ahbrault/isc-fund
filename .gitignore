@@ -45,3 +45,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# DB backups & scratch
+db_cluster-*.backup.gz
+clipboard-*.png

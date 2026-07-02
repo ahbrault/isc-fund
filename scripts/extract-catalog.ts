@@ -34,7 +34,7 @@ import type { Lot } from '../src/common/@types/Lot.type';
 const REPO_ROOT = process.cwd();
 const DEFAULT_PDF = 'AUCTION PREVIEW V5.pdf';
 const COVER_PAGE = 1;
-const RULES_PAGE = 22;
+const RULES_PAGE = 23;
 
 const RENDER_DPI = 300;
 const WEBP_QUALITY = 90;

@@ -18,6 +18,7 @@ model Bid {
   amount    Int
   lotId     Int
   lotTitle  String
+  archived  Boolean  @default(false)
   createdAt DateTime @default(now())
 }
 
