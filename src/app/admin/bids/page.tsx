@@ -20,33 +20,28 @@ export type AuctionBid = {
   email: string;
   phone?: string;
   amount: number;
+  archived: boolean;
   createdAt: string;
 };
 
-const lots: Record<number, string> = {
-  1: 'David Guetta Gold Record',
-  2: 'Private Dinner with Cathy Guetta in Ibiza',
-  4: 'Weekend in Las Vegas with Ferrari Rentals',
-  5: 'Nativa Interiors Gift Card',
-  6: 'Hennessy Louis XIII Tasting x10',
-  9: 'Cavallino Grand Weekend Package',
-  10: 'ECU tune for your car of choice',
-};
+// Badge colors cycle by lot id so any catalogue gets a stable color.
+const badgePalette = [
+  'bg-red-50 text-red-700 ring-red-600/10',
+  'bg-yellow-50 text-yellow-800 ring-yellow-600/20',
+  'bg-green-50 text-green-700 ring-green-600/20',
+  'bg-blue-50 text-blue-700 ring-blue-700/10',
+  'bg-indigo-50 text-indigo-700 ring-indigo-700/10',
+  'bg-purple-50 text-purple-700 ring-purple-700/10',
+  'bg-pink-50 text-pink-700 ring-pink-700/10',
+];
 
-const lotBadgeColors: Record<number, string> = {
-  1: 'bg-red-50 text-red-700 ring-red-600/10',
-  2: 'bg-yellow-50 text-yellow-800 ring-yellow-600/20',
-  4: 'bg-green-50 text-green-700 ring-green-600/20',
-  5: 'bg-blue-50 text-blue-700 ring-blue-700/10',
-  6: 'bg-indigo-50 text-indigo-700 ring-indigo-700/10',
-  9: 'bg-purple-50 text-purple-700 ring-purple-700/10',
-  10: 'bg-pink-50 text-pink-700 ring-pink-700/10',
-};
+const badgeColor = (id: number) => badgePalette[id % badgePalette.length];
 
 export default function AdminBidsPage() {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [search, setSearch] = useState('');
   const [activeLot, setActiveLot] = useState<'all' | number>('all');
+  const [scope, setScope] = useState<'active' | 'archived'>('active');
   const [selectedBid, setSelectedBid] = useState<AuctionBid | null>(null);
 
   const { data, isLoading, isFetching, refetch } = useQuery({
@@ -67,9 +62,24 @@ export default function AdminBidsPage() {
     onSuccess: () => refetch(),
   });
 
+  // Derive the lot tabs from the bids actually present (id -> title),
+  // so the filter always matches the current catalogue.
+  // Bids belonging to the currently selected scope (active vs archived).
+  const scopedBids = useMemo(
+    () => (data?.items ?? []).filter(bid => (scope === 'archived' ? bid.archived : !bid.archived)),
+    [data, scope]
+  );
+
+  const lots = useMemo<Record<number, string>>(() => {
+    const map: Record<number, string> = {};
+    for (const bid of scopedBids) {
+      if (!map[bid.lotId]) map[bid.lotId] = bid.lotTitle;
+    }
+    return map;
+  }, [scopedBids]);
+
   const filteredBids = useMemo(() => {
-    const all = data?.items ?? [];
-    let filtered = all;
+    let filtered = scopedBids;
     if (activeLot !== 'all') {
       filtered = filtered.filter(bid => bid.lotId === activeLot);
     }
@@ -83,7 +93,7 @@ export default function AdminBidsPage() {
       );
     }
     return filtered;
-  }, [data, search, activeLot]);
+  }, [scopedBids, search, activeLot]);
 
   const columns = useMemo<ColumnDef<AuctionBid>[]>(
     () => [
@@ -97,11 +107,12 @@ export default function AdminBidsPage() {
         accessorKey: 'lotId',
         cell: info => {
           const id = info.getValue<number>();
+          const title = info.row.original.lotTitle || `Lot #${id}`;
           return (
             <span
-              className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${lotBadgeColors[id]}`}
+              className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${badgeColor(id)}`}
             >
-              {lots[id] || `Lot #${id}`}
+              {title}
             </span>
           );
         },
@@ -154,7 +165,25 @@ export default function AdminBidsPage() {
       />
 
       <div className="mb-6 items-center justify-between md:flex">
-        <h1 className="text-3xl font-bold text-indigo-600">Auction Bids</h1>
+        <div className="flex items-center gap-3">
+          <h1 className="text-3xl font-bold text-indigo-600">Auction Bids</h1>
+          <div className="inline-flex rounded-md border border-gray-200 p-0.5 text-sm">
+            {(['active', 'archived'] as const).map(s => (
+              <button
+                key={s}
+                onClick={() => {
+                  setScope(s);
+                  setActiveLot('all');
+                }}
+                className={`rounded px-3 py-1 font-medium capitalize ${
+                  scope === s ? 'bg-indigo-100 text-indigo-700' : 'text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+        </div>
         <button
           onClick={() => refetch()}
           disabled={isFetching}

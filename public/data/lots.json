@@ -15,8 +15,8 @@
     ]
   },
   {
-    "id": 3,
-    "lotNumber": 3,
+    "id": 2,
+    "lotNumber": 2,
     "title": "Petrus Double Magnum 2012",
     "shortDescription": "A 3L double magnum of Petrus 2012 Pomerol.",
     "description": "A double magnum (3L) of Petrus 2012 from the legendary blue-clay terroir of Pomerol.",
@@ -31,8 +31,8 @@
     ]
   },
   {
-    "id": 4,
-    "lotNumber": 4,
+    "id": 3,
+    "lotNumber": 3,
     "title": "Mr. Brainwash — Original Artwork",
     "shortDescription": "Signed mixed-media canvas created specially for the gala.",
     "description": "'Mr & Mrs Classic II, 2026', a signed mixed-media canvas created specially for the gala.",
@@ -46,8 +46,8 @@
     ]
   },
   {
-    "id": 5,
-    "lotNumber": 5,
+    "id": 4,
+    "lotNumber": 4,
     "title": "France 2026 Official Team Jersey",
     "shortDescription": "Official FIFA World Cup 2026 France jersey signed by the full squad.",
     "description": "Official FIFA World Cup 2026 France match jersey signed by Deschamps' entire squad; delivered after the tournament. Illustration only — not the actual auction lot.",
@@ -60,8 +60,8 @@
     ]
   },
   {
-    "id": 6,
-    "lotNumber": 6,
+    "id": 5,
+    "lotNumber": 5,
     "title": "Charles Leclerc x APM Monaco",
     "shortDescription": "Unique APM Monaco 'Yummy XXL' piece signed by Charles Leclerc.",
     "description": "A unique APM Monaco 'Yummy XXL' jewellery piece signed by Charles Leclerc — 'Charles for Sickle Cell'.",
@@ -74,8 +74,8 @@
     ]
   },
   {
-    "id": 7,
-    "lotNumber": 7,
+    "id": 6,
+    "lotNumber": 6,
     "title": "Zinédine Zidane — Predator Cleats",
     "shortDescription": "A pair of Adidas Predator cleats worn and signed by Zidane.",
     "description": "A pair of Adidas Predator cleats worn and personally signed by Zinédine Zidane.",
@@ -88,8 +88,8 @@
     ]
   },
   {
-    "id": 8,
-    "lotNumber": 8,
+    "id": 7,
+    "lotNumber": 7,
     "title": "George Russell — F1 Signed Helmet",
     "shortDescription": "Official 1:1 replica of Russell's 2026 helmet, signed.",
     "description": "Official 1:1 scale replica of George Russell's 2026 Bell Racing helmet, personally signed.",
@@ -102,8 +102,8 @@
     ]
   },
   {
-    "id": 9,
-    "lotNumber": 9,
+    "id": 8,
+    "lotNumber": 8,
     "title": "PSG 2025-2026 Signed Jersey",
     "shortDescription": "Official PSG two-star home shirt signed by the full squad.",
     "description": "Official PSG 2025-2026 home (two-star) shirt signed by the full first-team squad. Illustration only — not the actual auction lot.",
@@ -116,8 +116,8 @@
     ]
   },
   {
-    "id": 10,
-    "lotNumber": 10,
+    "id": 9,
+    "lotNumber": 9,
     "title": "Wembanyama & Gobert — Two Signed Jerseys",
     "shortDescription": "Signed Wembanyama & Gobert jerseys + two VIP Spurs seats.",
     "description": "Signed jerseys of Victor Wembanyama (Spurs) and Rudy Gobert (Timberwolves), plus two VIP Spurs game seats (2026/2027). Illustration only — not the actual auction lot.",
@@ -132,22 +132,24 @@
     ]
   },
   {
-    "id": 11,
-    "lotNumber": 11,
-    "title": "Ronaldinho — Brazil Team Jersey",
-    "shortDescription": "Official Brazil jersey hand-signed by Ronaldinho.",
-    "description": "Official Brazil national team jersey hand-signed by Ronaldinho.",
+    "id": 10,
+    "lotNumber": 10,
+    "title": "FC Barcelona — Signed Jersey + El Clásico",
+    "shortDescription": "Squad-signed Barça jersey + two premium El Clásico seats.",
+    "description": "Official 2025-2026 FC Barcelona jersey signed by the full squad, plus two premium El Clásico (Barça vs Real Madrid) seats at the new Camp Nou. Illustration only — not the actual auction lot.",
     "image": "/images/catalog/page-15.webp",
     "type": "auction",
     "chapter": "Sport Legends",
     "catalogPage": 15,
     "includes": [
-      "Brazil national team jersey, personally signed by Ronaldinho"
+      "2025-2026 FC Barcelona jersey signed by all players",
+      "Two premium seats for FC Barcelona vs Real Madrid",
+      "Travel and transport at the buyer's expense"
     ]
   },
   {
-    "id": 12,
-    "lotNumber": 12,
+    "id": 11,
+    "lotNumber": 11,
     "title": "Alpine F1 x Perfect Moment — Signed by Gasly",
     "shortDescription": "Silverstone Down Bomber signed by Pierre Gasly — one in the world.",
     "description": "The Perfect Moment x Alpine F1 Team Unisex Silverstone Down Bomber jacket, signed by Pierre Gasly — one in the world.",
@@ -160,24 +162,22 @@
     ]
   },
   {
-    "id": 13,
-    "lotNumber": 13,
-    "title": "FC Barcelona — Signed Jersey + El Clásico",
-    "shortDescription": "Squad-signed Barça jersey + two premium El Clásico seats.",
-    "description": "Official 2025-2026 FC Barcelona jersey signed by the full squad, plus two premium El Clásico (Barça vs Real Madrid) seats at the new Camp Nou. Illustration only — not the actual auction lot.",
+    "id": 12,
+    "lotNumber": 12,
+    "title": "Ronaldinho — Brazil Team Jersey",
+    "shortDescription": "Official Brazil jersey hand-signed by Ronaldinho.",
+    "description": "Official Brazil national team jersey hand-signed by Ronaldinho.",
     "image": "/images/catalog/page-17.webp",
     "type": "auction",
     "chapter": "Sport Legends",
     "catalogPage": 17,
     "includes": [
-      "2025-2026 FC Barcelona jersey signed by all players",
-      "Two premium seats for FC Barcelona vs Real Madrid",
-      "Travel and transport at the buyer's expense"
+      "Brazil national team jersey, personally signed by Ronaldinho"
     ]
   },
   {
-    "id": 14,
-    "lotNumber": 14,
+    "id": 13,
+    "lotNumber": 13,
     "title": "Loewe x David Guetta — Headphones",
     "shortDescription": "Loewe leo wireless headphones signed by David Guetta.",
     "description": "Loewe leo wireless headphones personally signed by David Guetta.",
@@ -190,8 +190,8 @@
     ]
   },
   {
-    "id": 16,
-    "lotNumber": 16,
+    "id": 14,
+    "lotNumber": 14,
     "title": "SantAnna Mykonos — The Ultimate Experience x10",
     "shortDescription": "VIP table for 10 at SantAnna Mykonos incl. €6,000 spend.",
     "description": "A VIP table for 10 at SantAnna Mykonos (Solèy / Francis Mercier residency) on Paraga Beach, including €6,000 spend. Available 22 July / 8 Aug / 19 Aug 2026.",
@@ -207,8 +207,8 @@
     ]
   },
   {
-    "id": 17,
-    "lotNumber": 17,
+    "id": 15,
+    "lotNumber": 15,
     "title": "Pucci Fashion Show — Front-Row Seats x2",
     "shortDescription": "Two front-row seats at the Pucci SS27 Paris show + silk scarf.",
     "description": "A personal invitation from Creative Director Camille Miceli to the Pucci Spring-Summer 2027 Paris runway show: two front-row seats plus an exclusive Pucci silk scarf.",
@@ -220,6 +220,23 @@
       "Two (2) front-row seats — Pucci Spring-Summer 27 show",
       "Exclusive Pucci silk scarf",
       "Show April 2027; travel and hospitality at the buyer's expense"
+    ]
+  },
+  {
+    "id": 16,
+    "lotNumber": 16,
+    "title": "Orient Express Sailing Yachts — The Corinthian Cruise",
+    "shortDescription": "Three days, two nights in a Panoramic Suite aboard The Corinthian.",
+    "description": "Three days and two nights aboard The Corinthian, the Orient Express Sailing Yachts' newest vessel — a Panoramic Suite along the Mediterranean coast from Monaco to Saint-Tropez and Marseille. October 3–5, 2026.",
+    "image": "/images/catalog/page-22.webp",
+    "type": "auction",
+    "chapter": "The Art of Celebration",
+    "catalogPage": 22,
+    "includes": [
+      "Three days, two nights in a Panoramic Suite",
+      "All-inclusive dining",
+      "Transfers from the closest airport",
+      "Travel to Monaco is the buyer's responsibility"
     ]
   }
 ]
