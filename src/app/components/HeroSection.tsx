@@ -24,11 +24,11 @@ const EventBanner = ({ mobile = false }: { mobile?: boolean }) => {
           className="mt-6 block w-full"
         >
           <Image
-            src="/images/events/nikki-beach-26.jpg"
+            src="/images/events/cathy-guetta-gala-sickle-cell-july-16-2026.webp"
             height="500"
             width="300"
             className="w-full"
-            alt="Cathy Guetta for Sickle Cell Disease"
+            alt="Cathy Guetta for Sickle Cell Gala invitation - July 16, 2026 at Nikki Beach Saint-Tropez"
           />
         </Link>
       </div>

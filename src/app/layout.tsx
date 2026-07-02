@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     siteName: 'ISC Fund',
     images: [
       {
-        url: '/images/events/nikki-beach-26.jpg',
-        width: 800,
-        height: 1202,
-        alt: 'ISC Fund Gala 2026 — Nikki Beach flyer',
+        url: '/images/events/cathy-guetta-gala-sickle-cell-july-16-2026.webp',
+        width: 848,
+        height: 1200,
+        alt: 'Cathy Guetta for Sickle Cell Gala — July 16, 2026, Nikki Beach Saint-Tropez',
       },
     ],
   },
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: 'International Sickle Cell Fund',
     description:
       'ISC Fund fights Sickle Cell Disease by funding life-saving treatment for children.',
-    images: ['/images/events/nikki-beach-26.jpg'],
+    images: ['/images/events/cathy-guetta-gala-sickle-cell-july-16-2026.webp'],
   },
   robots: 'index, follow',
 };

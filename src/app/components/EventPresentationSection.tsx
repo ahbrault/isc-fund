@@ -39,11 +39,11 @@ const EventBanner = () => {
         className="max-h-xl order-1 mx-auto mb-8 w-auto sm:order-2"
       >
         <Image
-          src="/images/events/nikki-beach-26.jpg"
+          src="/images/events/cathy-guetta-gala-sickle-cell-july-16-2026.webp"
           height="500"
           width="300"
           className="h-auto w-auto"
-          alt="Cathy Guetta for Sickle Cell Disease"
+          alt="Cathy Guetta for Sickle Cell Gala invitation - July 16, 2026 at Nikki Beach Saint-Tropez"
         />
       </Link>
     </div>
@@ -55,26 +55,37 @@ export default function EventPresentationSection() {
     <Section className="py-16" id="event-presentation">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-16">
         <div className="order-2 flex flex-col items-center justify-center space-y-4 md:order-1">
-          <h2 className="mb-0 text-left">
-            Cathy Guetta Named Ambassador for Sickle Cell Disease <br /> The 2nd Edition — Expanding
-            Hope
-          </h2>
+          <h2 className="mb-0 text-left">Cathy Guetta, Global Ambassador for Sickle Cell Disease</h2>
           <p>
-            <b>Cathy Guetta</b>, the iconic Queen of the Night and successful entrepreneur, is now
-            channeling her boundless energy into a cause that urgently needs more visibility and
-            funding: <b>sickle cell disease</b>.
+            Some encounters change a cause. When Emmanuel Jayr, Robert Hue, and Professor
+            Jean-Benoît Arlet asked <b>Cathy Guetta</b> to join the International Sickle Cell Fund,
+            they were hoping for support for their fight. What they found was an extraordinary
+            champion.
           </p>
           <p>
-            Recently named <b>Ambassador for Sickle Cell Disease</b> by the{' '}
-            <b>International Sickle Cell Fund (ISCF)</b>, Cathy is bringing her trademark passion
-            and drive to this global fight. Born in Dakar and raised in France, she’s not just
-            lighting up her powerful network—she’s igniting hope.
+            Cathy Guetta never does anything by halves. The entrepreneur who reinvented nightlife,
+            the creator who turns every idea into an event, the tireless producer, the devoted
+            mother: she has poured that same energy, talent, and immense heart into the cause of
+            sick children in Africa. Sickle cell disease, the world’s most common genetic disease,
+            remains one of the most overlooked. Cathy chose to become its voice, to give it a face,
+            a light, a global reach.
           </p>
           <p>
-            Cathy is launching a series of high-impact fundraising events in support of both{' '}
-            <b>ISCF</b>
-            and the NGO <b>Drep.Africa</b>, with a bold mission: to help save thousands of children
-            suffering from severe forms of this disease.
+            The second edition of the Cathy Guetta for Sickle Cell gala, on <b>July 16th</b> at{' '}
+            <b>Nikki Beach Saint-Tropez</b>, will bring together more than 200 prestigious guests.
+            Cathy has spent months preparing this charity dinner down to the smallest detail—both
+            to raise the funds needed to save the lives of thousands of children with sickle cell
+            disease, and, in making this a must-attend event on the Saint-Tropez peninsula, to send
+            a message of hope, energy, and ambition, carried by her enthusiasm, generosity, and
+            deep sincerity.
+          </p>
+          <p>
+            Cathy has made this fight her mission. As Global Ambassador, as a woman, as a mother:
+            so that sickle cell disease is no longer overlooked, and so that millions of patients
+            can access treatment. Because we cannot let a thousand children die every day from a
+            disease that can be treated. What Cathy Guetta is achieving is remarkable. On behalf of
+            the International Sickle Cell Fund and the NGO Drep Africa, we want to express our
+            deepest gratitude to her.
           </p>
         </div>
         <div className="order-1 flex justify-center md:order-2">
