@@ -12,8 +12,8 @@ import {
 import { SummaryCard } from '@/components';
 
 const galaOptions = [
-  { id: 'gala_vip_table', label: 'VIP Table – €5,000 (8 guests)', amount: 5000 },
-  { id: 'gala_individual', label: 'Individual VIP Seat – €600', amount: 600 },
+  { id: 'gala_vip_table', label: 'VIP Table – €5,000 (8 guests)', amount: 5000, soldOut: true },
+  { id: 'gala_individual', label: 'Individual VIP Seat – €600', amount: 600, soldOut: true },
 ];
 
 const donationOptions = [
@@ -75,7 +75,9 @@ const donorFields = [
 ] as const;
 
 export default function DonationSelector({ onClientSecret, onSummary, defaultValues }: Props) {
-  const [selectedOption, setSelectedOption] = useState(galaOptions[0]);
+  const [selectedOption, setSelectedOption] = useState<(typeof allOptions)[number]>(
+    donationOptions[0]
+  );
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
@@ -149,7 +151,7 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
 
   useEffect(() => {
     if (defaultValues?.customAmount) {
-      setSelectedOption(allOptions.find(d => d.id === 'custom') || galaOptions[0]);
+      setSelectedOption(allOptions.find(d => d.id === 'custom') || donationOptions[0]);
     } else if (defaultValues) {
       const match = allOptions.find(opt => opt.amount === defaultValues.customAmount);
       if (match) setSelectedOption(match);
@@ -179,41 +181,59 @@ export default function DonationSelector({ onClientSecret, onSummary, defaultVal
       </div>
 
       <div className="grid gap-3">
-        {galaOptions.map(opt => (
-          <label
-            key={opt.id}
-            className={`relative block cursor-pointer rounded-lg p-4 shadow-md transition-all duration-200 hover:shadow-lg ${
-              selectedOption.id === opt.id
-                ? 'border-indigo-500 bg-indigo-50/70 ring-2 ring-indigo-300'
-                : 'border-gray-200 border-l-gray-200 bg-white'
-            }`}
-          >
-            <input
-              type="radio"
-              name="donation"
-              value={opt.id}
-              className="sr-only"
-              onChange={() => setSelectedOption(opt)}
-              checked={selectedOption.id === opt.id}
-            />
-            <div className="flex items-center justify-between">
-              <span
-                className={`font-semibold ${selectedOption.id === opt.id ? 'text-indigo-900' : 'text-gray-900'}`}
-              >
-                {opt.label}
-              </span>
-              {selectedOption.id === opt.id && (
-                <svg
-                  className="h-6 w-6 fill-indigo-600 text-indigo-600"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
+        {galaOptions.map(opt => {
+          const soldOut = 'soldOut' in opt && opt.soldOut;
+          return (
+            <label
+              key={opt.id}
+              className={`relative block rounded-lg p-4 shadow-md transition-all duration-200 ${
+                soldOut
+                  ? 'cursor-not-allowed border-red-200 bg-gray-50 opacity-80'
+                  : selectedOption.id === opt.id
+                    ? 'cursor-pointer border-indigo-500 bg-indigo-50/70 ring-2 ring-indigo-300 hover:shadow-lg'
+                    : 'cursor-pointer border-gray-200 border-l-gray-200 bg-white hover:shadow-lg'
+              }`}
+            >
+              <input
+                type="radio"
+                name="donation"
+                value={opt.id}
+                className="sr-only"
+                disabled={soldOut}
+                onChange={() => !soldOut && setSelectedOption(opt)}
+                checked={selectedOption.id === opt.id}
+              />
+              <div className="flex items-center justify-between gap-3">
+                <span
+                  className={`font-semibold ${
+                    soldOut
+                      ? 'text-gray-400 line-through'
+                      : selectedOption.id === opt.id
+                        ? 'text-indigo-900'
+                        : 'text-gray-900'
+                  }`}
                 >
-                  <path d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" />
-                </svg>
-              )}
-            </div>
-          </label>
-        ))}
+                  {opt.label}
+                </span>
+                {soldOut ? (
+                  <span className="shrink-0 rounded-full bg-red-600 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                    Sold out
+                  </span>
+                ) : (
+                  selectedOption.id === opt.id && (
+                    <svg
+                      className="h-6 w-6 fill-indigo-600 text-indigo-600"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" />
+                    </svg>
+                  )
+                )}
+              </div>
+            </label>
+          );
+        })}
       </div>
 
       <div className="relative my-8 flex items-center">
